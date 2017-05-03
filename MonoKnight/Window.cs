@@ -1,6 +1,6 @@
 ﻿using System;
 using OpenTK;
-using OpenTK.Graphics.OpenGL4;
+using OpenTK.Graphics.OpenGL;
 using OpenTK.Graphics;
 
 namespace MonoKnight
@@ -26,28 +26,26 @@ namespace MonoKnight
 		protected override void OnLoad(EventArgs e)
 		{
 			CursorVisible = true;
-			VBO = GL.GenBuffer();
-			VAO = GL.GenVertexArray();
-			GL.BindVertexArray(VAO);
-				GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
+			GL.GenBuffers(2, VBO);
+			EBO = GL.GenBuffer();
+			GL.GenVertexArrays(2, VAO);
+			GL.BindVertexArray(VAO[0]);
+				GL.BindBuffer(BufferTarget.ArrayBuffer, VBO[0]);
 				GL.BufferData(BufferTarget.ArrayBuffer, sizeof(float) * vertice.Length, vertice, BufferUsageHint.DynamicDraw);
+				GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBO);
+				GL.BufferData(BufferTarget.ElementArrayBuffer, sizeof(int) * indices.Length, indices, BufferUsageHint.DynamicDraw);
 				GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
 				GL.EnableVertexAttribArray(0);
 			GL.BindVertexArray(0);
-			vertexShader = GL.CreateShader(ShaderType.VertexShader);
-			fragShader = GL.CreateShader(ShaderType.FragmentShader);
-			string vertShaderSource = System.IO.File.ReadAllText(@"sprite.vert");
-			string fragShaderSource = System.IO.File.ReadAllText(@"sprite.frag");
-			GL.ShaderSource(vertexShader, vertShaderSource);
-			GL.ShaderSource(fragShader, fragShaderSource);
-			GL.CompileShader(vertexShader);
-			GL.CompileShader(fragShader);
-			program = GL.CreateProgram();
-			GL.AttachShader(program, vertexShader);
-			GL.AttachShader(program, fragShader);
-			GL.LinkProgram(program);
-			GL.DeleteShader(vertexShader);
-			GL.DeleteShader(fragShader);
+			//
+			GL.BindVertexArray(VAO[1]);
+				GL.BindBuffer(BufferTarget.ArrayBuffer, VBO[1]);
+				GL.BufferData(BufferTarget.ArrayBuffer, sizeof(float) * otherVertice.Length, otherVertice, BufferUsageHint.DynamicDraw);
+				GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
+				GL.EnableVertexAttribArray(0);
+			GL.BindVertexArray(0);
+			//
+			shader = new Shader(@"Resources/sprite.vert", @"Resources/sprite.frag");
 		}
 
 		protected override void OnResize(EventArgs e)
@@ -57,27 +55,53 @@ namespace MonoKnight
 
 		protected override void OnRenderFrame(FrameEventArgs e)
 		{
+			Time.DeltaTime = e.Time;
 			Render();
 		}
 
-		private int VBO = 0;
-		private int VAO = 0;
-		private int vertexShader = 0;
-		private int fragShader = 0;
-		private int program = 0;
-		private float[] vertice = { -0.5f, -0.5f, 0.0f,
-     								0.5f, -0.5f, 0.0f,
-     								0.0f,  0.5f, 0.0f };
+		private int[] VBO = new int[2];
+		private int[] VAO = new int[2];
+		private int EBO = 0;
+		private Shader shader = null;
+		private Vector4 myColor = new Vector4(1.0f, 0.5f, 0.2f, 1.0f);
+		private readonly float[] vertice = 
+		{      
+			0.5f, 0.5f, 0.0f, // Top Right
+     		0.5f, -0.5f, 0.0f, // Bottom Right
+   			-0.5f, 0.5f, 0.0f, // Top Left
+    		-0.5f, -0.5f, 0.0f, // Bottom Left
+		};
+		private readonly float[] otherVertice =
+		{
+			0.8f, 0.5f, 0.0f, // Top Right
+     		0.5f, -0.9f, 0.0f, // Bottom Right
+   			-0.8f, 0.5f, 0.0f, // Top Left
+    		//-0.5f, -0.5f, 0.0f, // Bottom Left
+		};
+		private readonly int[] indices =
+		{
+			0,1,2,
+			1,2,3
+		};
 		private void Render()
 		{
 			Color4 backColor = new Color4(49.0f/255.0f, 77.0f/255.0f, 121.0f/255.0f, 1.0f);
 			GL.ClearColor(backColor);
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-			GL.UseProgram(program);
-			GL.BindVertexArray(VAO);
-			GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
+			int myColorUniform = shader.GetUniformLocation(@"myColor");
+			GL.Uniform4(myColorUniform, myColor);
+
+			shader.Use();
+
+			GL.BindVertexArray(VAO[0]);
+				GL.DrawElements(BeginMode.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
 			GL.BindVertexArray(0);
+
+			GL.BindVertexArray(VAO[1]);
+				GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
+			GL.BindVertexArray(0);
+
 			SwapBuffers();
 		}
 	}

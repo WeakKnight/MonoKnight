@@ -41,12 +41,16 @@
     <Compile Include="Window.cs" />
     <Compile Include="Time.cs" />
     <Compile Include="Shader.cs" />
+    <Compile Include="Texture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sprite.frag">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\sprite.vert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\wall.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

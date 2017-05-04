@@ -25,7 +25,8 @@ namespace MonoKnight
 
 		protected override void OnLoad(EventArgs e)
 		{
-			CursorVisible = true;
+            GL.Enable(EnableCap.Texture2D);
+            CursorVisible = true;
 			GL.GenBuffers(2, VBO);
 			EBO = GL.GenBuffer();
 			GL.GenVertexArrays(2, VAO);
@@ -34,22 +35,22 @@ namespace MonoKnight
 				GL.BufferData(BufferTarget.ArrayBuffer, sizeof(float) * vertice.Length, vertice, BufferUsageHint.DynamicDraw);
 				GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBO);
 				GL.BufferData(BufferTarget.ElementArrayBuffer, sizeof(int) * indices.Length, indices, BufferUsageHint.DynamicDraw);
-				GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
+				GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 0);
 				GL.EnableVertexAttribArray(0);
-			GL.BindVertexArray(0);
-			//
-			GL.BindVertexArray(VAO[1]);
-				GL.BindBuffer(BufferTarget.ArrayBuffer, VBO[1]);
-				GL.BufferData(BufferTarget.ArrayBuffer, sizeof(float) * otherVertice.Length, otherVertice, BufferUsageHint.DynamicDraw);
-				GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
-				GL.EnableVertexAttribArray(0);
-			GL.BindVertexArray(0);
+                GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 3 * sizeof(float));
+                GL.EnableVertexAttribArray(1);
+                GL.VertexAttribPointer(2, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 6 * sizeof(float));
+                GL.EnableVertexAttribArray(2);
+            GL.BindVertexArray(0);
 			//
 			shader = new Shader(@"Resources/sprite.vert", @"Resources/sprite.frag");
-		}
+            //
+            texture = new Texture(@"Resources/wall.jpg");
+        }
 
 		protected override void OnResize(EventArgs e)
 		{
+            GL.Viewport(0, 0, this.ClientSize.Width, this.ClientSize.Height);
 			Render();
 		}
 
@@ -64,24 +65,18 @@ namespace MonoKnight
 		private int EBO = 0;
 		private Shader shader = null;
 		private Vector4 myColor = new Vector4(1.0f, 0.5f, 0.2f, 1.0f);
+        private Texture texture = null;
 		private readonly float[] vertice = 
-		{      
-			0.5f, 0.5f, 0.0f, // Top Right
-     		0.5f, -0.5f, 0.0f, // Bottom Right
-   			-0.5f, 0.5f, 0.0f, // Top Left
-    		-0.5f, -0.5f, 0.0f, // Bottom Left
-		};
-		private readonly float[] otherVertice =
 		{
-			0.8f, 0.5f, 0.0f, // Top Right
-     		0.5f, -0.9f, 0.0f, // Bottom Right
-   			-0.8f, 0.5f, 0.0f, // Top Left
-    		//-0.5f, -0.5f, 0.0f, // Bottom Left
+         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f, // Top Right
+         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, // Bottom Right
+        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f, // Bottom Left
+        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.0f  // Top Left 
 		};
 		private readonly int[] indices =
 		{
 			0,1,2,
-			1,2,3
+			0,2,3
 		};
 		private void Render()
 		{
@@ -92,14 +87,10 @@ namespace MonoKnight
 			int myColorUniform = shader.GetUniformLocation(@"myColor");
 			GL.Uniform4(myColorUniform, myColor);
 
-			shader.Use();
-
-			GL.BindVertexArray(VAO[0]);
+            texture.Bind();
+            shader.Use();
+            GL.BindVertexArray(VAO[0]);
 				GL.DrawElements(BeginMode.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
-			GL.BindVertexArray(0);
-
-			GL.BindVertexArray(VAO[1]);
-				GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
 			GL.BindVertexArray(0);
 
 			SwapBuffers();

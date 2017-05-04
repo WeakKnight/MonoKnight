@@ -66,6 +66,8 @@ namespace MonoKnight
 		private Shader shader = null;
 		private Vector4 myColor = new Vector4(1.0f, 0.5f, 0.2f, 1.0f);
         private Texture texture = null;
+        private OpenTK.Matrix4 transform = new Matrix4();
+        private float rotate = 0;
 		private readonly float[] vertice = 
 		{
          0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f, // Top Right
@@ -80,13 +82,19 @@ namespace MonoKnight
 		};
 		private void Render()
 		{
-			Color4 backColor = new Color4(49.0f/255.0f, 77.0f/255.0f, 121.0f/255.0f, 1.0f);
+            rotate += 0.03f;
+            
+            transform = Matrix4.CreateTranslation(0.5f, -0.5f, 0.0f);
+            transform = Matrix4.CreateRotationZ(rotate) * transform;
+            transform = Matrix4.CreateScale(0.3f) * transform;
+            Color4 backColor = new Color4(49.0f/255.0f, 77.0f/255.0f, 121.0f/255.0f, 1.0f);
 			GL.ClearColor(backColor);
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
 			int myColorUniform = shader.GetUniformLocation(@"myColor");
 			GL.Uniform4(myColorUniform, myColor);
-
+            int myTransformUniform = shader.GetUniformLocation(@"transform");
+            GL.UniformMatrix4(myTransformUniform, false, ref transform);
             texture.Bind();
             shader.Use();
             GL.BindVertexArray(VAO[0]);

@@ -10,8 +10,8 @@ namespace MonoKnight
 		public Window() :
 		base
 		(
-		1280, // initial width
-		720, // initial height
+		800, // initial width
+		600, // initial height
 		GraphicsMode.Default,
 		"dreamstatecoding",  // initial title
 		GameWindowFlags.Default,
@@ -33,14 +33,10 @@ namespace MonoKnight
 			GL.BindVertexArray(VAO[0]);
 				GL.BindBuffer(BufferTarget.ArrayBuffer, VBO[0]);
 				GL.BufferData(BufferTarget.ArrayBuffer, sizeof(float) * vertice.Length, vertice, BufferUsageHint.DynamicDraw);
-				GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBO);
-				GL.BufferData(BufferTarget.ElementArrayBuffer, sizeof(int) * indices.Length, indices, BufferUsageHint.DynamicDraw);
-				GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 0);
+				GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
 				GL.EnableVertexAttribArray(0);
-                GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 3 * sizeof(float));
+                GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
                 GL.EnableVertexAttribArray(1);
-                GL.VertexAttribPointer(2, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 6 * sizeof(float));
-                GL.EnableVertexAttribArray(2);
             GL.BindVertexArray(0);
 			//
 			shader = new Shader(@"Resources/sprite.vert", @"Resources/sprite.frag");
@@ -50,7 +46,7 @@ namespace MonoKnight
 
 		protected override void OnResize(EventArgs e)
 		{
-            GL.Viewport(0, 0, this.ClientSize.Width, this.ClientSize.Height);
+            //GL.Viewport(0, 0, this.ClientSize.Width, this.ClientSize.Height);
 			Render();
 		}
 
@@ -64,41 +60,78 @@ namespace MonoKnight
 		private int[] VAO = new int[2];
 		private int EBO = 0;
 		private Shader shader = null;
-		private Vector4 myColor = new Vector4(1.0f, 0.5f, 0.2f, 1.0f);
         private Texture texture = null;
-        private OpenTK.Matrix4 transform = new Matrix4();
+        private OpenTK.Matrix4 model = new Matrix4();
+        private OpenTK.Matrix4 view = new Matrix4();
+        private OpenTK.Matrix4 project = new Matrix4();
         private float rotate = 0;
 		private readonly float[] vertice = 
 		{
-         0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 0.0f, // Top Right
-         0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 1.0f, // Bottom Right
-        -0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 1.0f, // Bottom Left
-        -0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 0.0f  // Top Left 
-		};
-		private readonly int[] indices =
-		{
-			0,1,2,
-			0,2,3
-		};
+         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+        };
 		private void Render()
 		{
+            GL.Viewport(0, 0, Width, Height);
             rotate += 0.03f;
-            
-            transform = Matrix4.CreateTranslation(0.5f, -0.5f, 0.0f);
-            transform = Matrix4.CreateRotationZ(rotate) * transform;
-            transform = Matrix4.CreateScale(0.3f) * transform;
-            Color4 backColor = new Color4(49.0f/255.0f, 77.0f/255.0f, 121.0f/255.0f, 1.0f);
-			GL.ClearColor(backColor);
+            Matrix4.CreateTranslation(0.0f, 0.0f, 0.0f, out model);
+            model = Matrix4.CreateFromAxisAngle(new Vector3(1.0f, 0.3f, 0.5f), 20.0f)* model;
+            Matrix4.CreateTranslation(0.0f, 0.0f, -3.0f, out view);
+            project = Matrix4.CreatePerspectiveFieldOfView(1.0f, Width / (float)Height, 1.0f, 40.0f);
+            GL.Enable(EnableCap.DepthTest);
+            GL.ClearColor(new Color4(49.0f / 255.0f, 77.0f / 255.0f, 121.0f / 255.0f, 1.0f));
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-			int myColorUniform = shader.GetUniformLocation(@"myColor");
-			GL.Uniform4(myColorUniform, myColor);
-            int myTransformUniform = shader.GetUniformLocation(@"transform");
-            GL.UniformMatrix4(myTransformUniform, false, ref transform);
+            int myModelUniform = shader.GetUniformLocation(@"model");
+            GL.UniformMatrix4(myModelUniform, false, ref model);
+            int myViewUniform = shader.GetUniformLocation(@"view");
+            GL.UniformMatrix4(myViewUniform, false, ref view);
+            int myProjectUniform = shader.GetUniformLocation(@"project");
+            GL.UniformMatrix4(myProjectUniform, false, ref project);
             texture.Bind();
             shader.Use();
             GL.BindVertexArray(VAO[0]);
-				GL.DrawElements(BeginMode.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
+                GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
+				//GL.DrawElements(BeginMode.Triangles, 36, DrawElementsType.UnsignedInt, 0);
 			GL.BindVertexArray(0);
 
 			SwapBuffers();

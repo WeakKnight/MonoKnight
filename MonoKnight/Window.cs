@@ -65,58 +65,61 @@ namespace MonoKnight
         private OpenTK.Matrix4 view = new Matrix4();
         private OpenTK.Matrix4 project = new Matrix4();
         private float rotate = 0;
+        private Camera camera = new Camera();
 		private readonly float[] vertice = 
 		{
-         -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+         -1.0f, -1.0f, -1.0f,  0.0f, 0.0f,
+         1.0f, -1.0f, -1.0f,  1.0f, 0.0f,
+         1.0f,  1.0f, -1.0f,  1.0f, 1.0f,
+         1.0f,  1.0f, -1.0f,  1.0f, 1.0f,
+        -1.0f,  1.0f, -1.0f,  0.0f, 1.0f,
+        -1.0f, -1.0f, -1.0f,  0.0f, 0.0f,
 
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+        -1.0f, -1.0f,  1.0f,  0.0f, 0.0f,
+         1.0f, -1.0f,  1.0f,  1.0f, 0.0f,
+         1.0f,  1.0f,  1.0f,  1.0f, 1.0f,
+         1.0f,  1.0f,  1.0f,  1.0f, 1.0f,
+        -1.0f,  1.0f,  1.0f,  0.0f, 1.0f,
+        -1.0f, -1.0f,  1.0f,  0.0f, 0.0f,
 
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+        -1.0f,  1.0f,  1.0f,  1.0f, 0.0f,
+        -1.0f,  1.0f, -1.0f,  1.0f, 1.0f,
+        -1.0f, -1.0f, -1.0f,  0.0f, 1.0f,
+        -1.0f, -1.0f, -1.0f,  0.0f, 1.0f,
+        -1.0f, -1.0f,  1.0f,  0.0f, 0.0f,
+        -1.0f,  1.0f,  1.0f,  1.0f, 0.0f,
 
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+         1.0f,  1.0f,  1.0f,  1.0f, 0.0f,
+         1.0f,  1.0f, -1.0f,  1.0f, 1.0f,
+         1.0f, -1.0f, -1.0f,  0.0f, 1.0f,
+         1.0f, -1.0f, -1.0f,  0.0f, 1.0f,
+         1.0f, -1.0f,  1.0f,  0.0f, 0.0f,
+         1.0f,  1.0f,  1.0f,  1.0f, 0.0f,
 
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+        -1.0f, -1.0f, -1.0f,  0.0f, 1.0f,
+         1.0f, -1.0f, -1.0f,  1.0f, 1.0f,
+         1.0f, -1.0f,  1.0f,  1.0f, 0.0f,
+         1.0f, -1.0f,  1.0f,  1.0f, 0.0f,
+        -1.0f, -1.0f,  1.0f,  0.0f, 0.0f,
+        -1.0f, -1.0f, -1.0f,  0.0f, 1.0f,
 
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+        -1.0f,  1.0f, -1.0f,  0.0f, 1.0f,
+         1.0f,  1.0f, -1.0f,  1.0f, 1.0f,
+         1.0f,  1.0f,  1.0f,  1.0f, 0.0f,
+         1.0f,  1.0f,  1.0f,  1.0f, 0.0f,
+        -1.0f,  1.0f,  1.0f,  0.0f, 0.0f,
+        -1.0f,  1.0f, -1.0f,  0.0f, 1.0f
         };
 		private void Render()
 		{
             GL.Viewport(0, 0, Width, Height);
-            rotate += 0.03f;
+            //rotate += 0.03f;
             Matrix4.CreateTranslation(0.0f, 0.0f, 0.0f, out model);
-            model = Matrix4.CreateFromAxisAngle(new Vector3(1.0f, 0.3f, 0.5f), 20.0f)* model;
-            Matrix4.CreateTranslation(0.0f, 0.0f, -3.0f, out view);
-            project = Matrix4.CreatePerspectiveFieldOfView(1.0f, Width / (float)Height, 1.0f, 40.0f);
+            //model = Matrix4.CreateFromAxisAngle(new Vector3(1.0f, 0.3f, 0.5f), 20.0f)* model;
+            camera.transform.position = new Vector3(0.0f, 0.0f, -3.0f);
+            view = camera.transform.localToWorldMatrix;
+            project = Matrix4.CreateOrthographic(Width/100.0f, Height/100.0f, 0.1f, 100.0f);
+            //project = Matrix4.CreatePerspectiveFieldOfView(1.0f, Width / (float)Height, 1.0f, 40.0f);
             GL.Enable(EnableCap.DepthTest);
             GL.ClearColor(new Color4(49.0f / 255.0f, 77.0f / 255.0f, 121.0f / 255.0f, 1.0f));
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);

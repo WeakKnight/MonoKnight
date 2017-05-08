@@ -116,4 +116,8 @@ GTAGS
 docs/doxygen*
 docs/perlmod*
 
-
+# Project
+MonoKnight/bin/
+MonoKnight/obj/
+MonoKnight/bin/*
+MonoKnight/obj/*

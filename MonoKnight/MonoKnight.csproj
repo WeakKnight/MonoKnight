@@ -57,5 +57,11 @@
     </None>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\StbSharp\StbSharp\StbSharp.csproj">
+      <Project>{5A331DAD-B629-41E7-9131-70E538CF0B42}</Project>
+      <Name>StbSharp</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

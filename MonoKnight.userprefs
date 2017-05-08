@@ -1,15 +1,27 @@
 ﻿<Properties StartupConfiguration="{01C593A6-7592-406F-AF99-B220EFF508BC}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Texture.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="StbSharp/StbSharp/ImageReader.cs">
     <Files>
-      <File FileName="MonoKnight/Program.cs" Line="13" Column="6" />
-      <File FileName="MonoKnight/Window.cs" Line="80" Column="5" />
+      <File FileName="MonoKnight/Program.cs" Line="20" Column="38" />
+      <File FileName="MonoKnight/Window.cs" Line="1" Column="1" />
       <File FileName="MonoKnight/Properties/AssemblyInfo.cs" Line="1" Column="1" />
-      <File FileName="MonoKnight/Resources/sprite.frag" Line="9" Column="3" />
-      <File FileName="MonoKnight/Resources/sprite.vert" Line="4" Column="1" />
-      <File FileName="MonoKnight/Time.cs" Line="9" Column="38" />
-      <File FileName="MonoKnight/Shader.cs" Line="35" Column="4" />
-      <File FileName="MonoKnight/Texture.cs" Line="19" Column="12" />
+      <File FileName="MonoKnight/Texture.cs" Line="34" Column="78" />
+      <File FileName="../StbSharp/StbSharp/Stb.Image.cs" Line="1" Column="1" />
+      <File FileName="../StbSharp/StbSharp/ImageReader.cs" Line="7" Column="19" />
+      <File FileName="StbSharp/StbSharp/ImageReader.cs" Line="11" Column="11" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MonoKnight" expanded="True">
+            <Node name="MonoKnight" expanded="True" />
+            <Node name="StbSharp" expanded="True">
+              <Node name="References" expanded="True" />
+              <Node name="Packages" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

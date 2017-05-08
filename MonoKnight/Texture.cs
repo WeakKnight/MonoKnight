@@ -24,7 +24,7 @@ namespace MonoKnight
                           image.Width,
                           image.Height,
                           0,
-                          OpenTK.Graphics.OpenGL.PixelFormat.Bgra,
+				          OpenTK.Graphics.OpenGL.PixelFormat.Rgba,
                           PixelType.UnsignedByte,
                           image.Data);
                 GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);

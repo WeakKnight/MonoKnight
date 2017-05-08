@@ -1,0 +1,6 @@
+/Users/knight/MonoKnight/StbSharp/StbSharp/obj/Debug/.NETPortable,Version=v4.5,Profile=Profile111.AssemblyAttribute.cs
+/Users/knight/MonoKnight/StbSharp/StbSharp/bin/Debug/StbSharp.dll.mdb
+/Users/knight/MonoKnight/StbSharp/StbSharp/bin/Debug/StbSharp.dll
+/Users/knight/MonoKnight/StbSharp/StbSharp/obj/Debug/StbSharp.dll
+/Users/knight/MonoKnight/StbSharp/StbSharp/obj/Debug/StbSharp.dll.mdb
+/Users/knight/MonoKnight/StbSharp/StbSharp/bin/Debug/Sichem.Framework.dll

@@ -50,6 +50,10 @@
     <Compile Include="Time.cs" />
     <Compile Include="Shader.cs" />
     <Compile Include="Texture.cs" />
+    <Compile Include="Core\Object.cs" />
+    <Compile Include="Core\Entity.cs" />
+    <Compile Include="Core\Component.cs" />
+    <Compile Include="Core\Debug.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sprite.frag">
@@ -65,5 +69,8 @@
     <None Include="OpenTK.dll.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Core\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

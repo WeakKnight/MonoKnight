@@ -1,22 +1,25 @@
 ﻿<Properties StartupConfiguration="{01C593A6-7592-406F-AF99-B220EFF508BC}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/Debug.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/SystemScheduler.cs">
     <Files>
-      <File FileName="MonoKnight/Program.cs" Line="2" Column="14" />
-      <File FileName="MonoKnight/Window.cs" Line="124" Column="38" />
+      <File FileName="MonoKnight/Program.cs" Line="23" Column="14" />
+      <File FileName="MonoKnight/Window.cs" Line="31" Column="6" />
       <File FileName="MonoKnight/Properties/AssemblyInfo.cs" Line="1" Column="1" />
       <File FileName="MonoKnight/Texture.cs" Line="28" Column="50" />
       <File FileName="../StbSharp/StbSharp/Stb.Image.cs" Line="1" Column="1" />
       <File FileName="../StbSharp/StbSharp/ImageReader.cs" Line="7" Column="19" />
       <File FileName="MonoKnight/packages.config" Line="6" Column="12" />
-      <File FileName="MonoKnight/Core/Component.cs" Line="4" Column="31" />
-      <File FileName="MonoKnight/Core/Entity.cs" Line="5" Column="28" />
-      <File FileName="MonoKnight/Core/Object.cs" Line="21" Column="1" />
-      <File FileName="MonoKnight/Core/Debug.cs" Line="1" Column="1" />
+      <File FileName="MonoKnight/Core/Component.cs" Line="6" Column="22" />
+      <File FileName="MonoKnight/Core/Entity.cs" Line="10" Column="4" />
+      <File FileName="MonoKnight/Core/Object.cs" Line="11" Column="4" />
+      <File FileName="MonoKnight/Core/Debug.cs" Line="1" Column="14" />
+      <File FileName="MonoKnight/Core/SystemScheduler.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/knight/MonoKnight/MonoKnight/Program.cs" relfile="MonoKnight/Program.cs" line="17" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.MonoKnight PreferredExecutionTarget="MonoDevelop.Default" />

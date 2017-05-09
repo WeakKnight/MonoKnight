@@ -54,6 +54,7 @@
     <Compile Include="Core\Entity.cs" />
     <Compile Include="Core\Component.cs" />
     <Compile Include="Core\Debug.cs" />
+    <Compile Include="Core\SystemScheduler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sprite.frag">

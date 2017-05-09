@@ -28,7 +28,7 @@ namespace MonoKnight
             GL.Enable(EnableCap.Texture2D);
             CursorVisible = true;
 			GL.GenBuffers(2, VBO);
-			EBO = GL.GenBuffer();
+			//EBO = GL.GenBuffer();
 			GL.GenVertexArrays(2, VAO);
 			GL.BindVertexArray(VAO[0]);
 				GL.BindBuffer(BufferTarget.ArrayBuffer, VBO[0]);
@@ -58,13 +58,13 @@ namespace MonoKnight
 
 		private int[] VBO = new int[2];
 		private int[] VAO = new int[2];
-		private int EBO = 0;
+		//private int EBO = 0;
 		private Shader shader = null;
         private Texture texture = null;
         private OpenTK.Matrix4 model = new Matrix4();
         private OpenTK.Matrix4 view = new Matrix4();
         private OpenTK.Matrix4 project = new Matrix4();
-        private float rotate = 0;
+        //private float rotate = 0;
         private Camera camera = new Camera();
 		private readonly float[] vertice = 
 		{

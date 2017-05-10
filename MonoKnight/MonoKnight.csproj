@@ -55,6 +55,7 @@
     <Compile Include="Core\Shader.cs" />
     <Compile Include="Core\Texture.cs" />
     <Compile Include="Core\Camera.cs" />
+    <Compile Include="Core\Renderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sprite.frag">

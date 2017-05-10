@@ -1,18 +1,22 @@
 ﻿<Properties StartupConfiguration="{01C593A6-7592-406F-AF99-B220EFF508BC}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/SystemScheduler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/Transform.cs">
     <Files>
       <File FileName="MonoKnight/Program.cs" Line="23" Column="14" />
       <File FileName="MonoKnight/Window.cs" Line="31" Column="6" />
       <File FileName="MonoKnight/Properties/AssemblyInfo.cs" Line="1" Column="1" />
-      <File FileName="MonoKnight/Texture.cs" Line="28" Column="50" />
       <File FileName="../StbSharp/StbSharp/Stb.Image.cs" Line="1" Column="1" />
       <File FileName="../StbSharp/StbSharp/ImageReader.cs" Line="7" Column="19" />
       <File FileName="MonoKnight/packages.config" Line="6" Column="12" />
-      <File FileName="MonoKnight/Core/Component.cs" Line="6" Column="22" />
-      <File FileName="MonoKnight/Core/Entity.cs" Line="10" Column="4" />
+      <File FileName="MonoKnight/Core/Component.cs" Line="16" Column="10" />
+      <File FileName="MonoKnight/Core/Entity.cs" Line="28" Column="29" />
       <File FileName="MonoKnight/Core/Object.cs" Line="11" Column="4" />
       <File FileName="MonoKnight/Core/Debug.cs" Line="1" Column="14" />
-      <File FileName="MonoKnight/Core/SystemScheduler.cs" Line="1" Column="1" />
+      <File FileName="MonoKnight/Core/SystemScheduler.cs" Line="17" Column="105" />
+      <File FileName="MonoKnight/Core/Camera.cs" Line="1" Column="1" />
+      <File FileName="MonoKnight/Core/Transform.cs" Line="30" Column="1" />
+      <File FileName="MonoKnight/Core/Shader.cs" Line="1" Column="1" />
+      <File FileName="MonoKnight/Core/Texture.cs" Line="1" Column="1" />
+      <File FileName="MonoKnight/Core/Time.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

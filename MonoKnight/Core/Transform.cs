@@ -16,6 +16,7 @@ namespace MonoKnight
             scale = new Vector3(1.0f, 1.0f, 1.0f);
         }
         
+		//TODO
 		public Matrix4 localToWorldMatrix
         {
             get
@@ -24,6 +25,7 @@ namespace MonoKnight
             }
         }
 
+		//TODO
 		public Matrix4 worldToLocalMatrix
 		{
 			get

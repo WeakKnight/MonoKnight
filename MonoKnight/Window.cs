@@ -117,11 +117,11 @@ namespace MonoKnight
 		{
 			if (OpenTK.Input.Keyboard.GetState().IsKeyDown(Key.Right))
 			{
-				xpos += 0.1f;
+				camera.transform.position.X += 0.1f;
 			}
 			if(OpenTK.Input.Keyboard.GetState().IsKeyDown(Key.Left))
 			{
-				xpos -= 0.1f;
+				camera.transform.position.X -= 0.1f;
 			}
 			if (OpenTK.Input.Keyboard.GetState().IsKeyDown(Key.Up))
 			{
@@ -138,13 +138,14 @@ namespace MonoKnight
             GL.Viewport(0, 0, Width, Height);
             //rotate += 0.03f;
             Matrix4.CreateTranslation(xpos, 0.0f, 0.0f, out model);
-            //model = Matrix4.CreateFromAxisAngle(new Vector3(1.0f, 0.3f, 0.5f), 20.0f)* model;
+            //model = Matrix4.CreateFromAxisAngle(new Vector3(1.0f, 0.3f, 0.5f), 20.0f)* model
 
-			view = Matrix4.LookAt(camera.transform.position, new Vector3(xpos, 0.0f, 0.0f), camera.transform.up);
-			//view = Matrix4.CreateFromQuaternion(camera.transform.rotation);
-            //project = Matrix4.CreateOrthographic(Width/100.0f, Height/100.0f, 0.1f, 100.0f);
+			//view = Matrix4.LookAt(camera.transform.position, new Vector3(xpos, 0.0f, 0.0f), camera.transform.up);
+			view = camera.ViewMatrix;
+			//view = Matrix4.CreateFromQuaternion(camera.transform.rotation) * Matrix4.CreateTranslation(-1 * camera.transform.position);
 
-            project = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(75.0f), Width / (float)Height, 0.1f, 80.0f);
+            project = Matrix4.CreateOrthographic(Width/100.0f, Height/100.0f, 0.1f, 100.0f);
+            //project = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(75.0f), Width / (float)Height, 0.1f, 80.0f);
             GL.Enable(EnableCap.DepthTest);
             GL.ClearColor(new Color4(49.0f / 255.0f, 77.0f / 255.0f, 121.0f / 255.0f, 1.0f));
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);

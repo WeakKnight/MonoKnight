@@ -3,7 +3,7 @@ namespace MonoKnight
 {
 	public class Component:Object
 	{
-		public Component() :base()
+		public Component() 
 		{
 			
 		}

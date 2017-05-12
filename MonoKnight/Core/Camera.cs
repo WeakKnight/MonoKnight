@@ -9,9 +9,16 @@ namespace MonoKnight
 {
 	class Camera:GameObject
     {
-        public Camera()
+		public Camera()
         {
-            //transform = new Transform();
         }
+
+		public Matrix4 ViewMatrix
+		{
+			get 
+			{
+				return Matrix4.LookAt(transform.position, transform.position + transform.forward, transform.up);
+			}
+		}
     }
 }

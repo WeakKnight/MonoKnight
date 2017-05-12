@@ -13,6 +13,8 @@ namespace MonoKnight
 			
 		}
 
+		public Entity parent = null;
+
 		public int runOrder = 0;
 	}
 }

@@ -2,6 +2,7 @@
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Graphics;
+using OpenTK.Input;
 
 namespace MonoKnight
 {
@@ -21,6 +22,7 @@ namespace MonoKnight
 		GraphicsContextFlags.ForwardCompatible)
 		{
 			Title += ": OpenGL Version: " + GL.GetString(StringName.Version);
+			camera.transform.position = new Vector3(0.0f, 0.0f, -3.0f);
 		}
 
 		protected override void OnLoad(EventArgs e)
@@ -110,16 +112,39 @@ namespace MonoKnight
         -1.0f,  1.0f,  1.0f,  0.0f, 0.0f,
         -1.0f,  1.0f, -1.0f,  0.0f, 1.0f
         };
+		private float xpos = 0.0f;
 		private void Render()
 		{
+			if (OpenTK.Input.Keyboard.GetState().IsKeyDown(Key.Right))
+			{
+				xpos += 0.1f;
+			}
+			if(OpenTK.Input.Keyboard.GetState().IsKeyDown(Key.Left))
+			{
+				xpos -= 0.1f;
+			}
+			if (OpenTK.Input.Keyboard.GetState().IsKeyDown(Key.Up))
+			{
+				camera.transform.position.Y += 0.1f;
+			}
+			if(OpenTK.Input.Keyboard.GetState().IsKeyDown(Key.Down))
+			{
+				camera.transform.position.Y -= 0.1f;
+			}
+
+			//camera.transform.LookAt(new Vector3(xpos, 0.0f, 0.0f));
+			camera.transform.UpdateTransform();
+
             GL.Viewport(0, 0, Width, Height);
             //rotate += 0.03f;
-            Matrix4.CreateTranslation(0.0f, 0.0f, 0.0f, out model);
+            Matrix4.CreateTranslation(xpos, 0.0f, 0.0f, out model);
             //model = Matrix4.CreateFromAxisAngle(new Vector3(1.0f, 0.3f, 0.5f), 20.0f)* model;
-            camera.transform.position = new Vector3(0.0f, 0.0f, -3.0f);
-            view = camera.transform.localToWorldMatrix;
-            project = Matrix4.CreateOrthographic(Width/100.0f, Height/100.0f, 0.1f, 100.0f);
-            //project = Matrix4.CreatePerspectiveFieldOfView(1.0f, Width / (float)Height, 1.0f, 40.0f);
+
+			view = Matrix4.LookAt(camera.transform.position, new Vector3(xpos, 0.0f, 0.0f), camera.transform.up);
+			//view = Matrix4.CreateFromQuaternion(camera.transform.rotation);
+            //project = Matrix4.CreateOrthographic(Width/100.0f, Height/100.0f, 0.1f, 100.0f);
+
+            project = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(75.0f), Width / (float)Height, 0.1f, 80.0f);
             GL.Enable(EnableCap.DepthTest);
             GL.ClearColor(new Color4(49.0f / 255.0f, 77.0f / 255.0f, 121.0f / 255.0f, 1.0f));
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);

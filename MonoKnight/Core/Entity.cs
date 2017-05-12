@@ -49,6 +49,30 @@ namespace MonoKnight
 			return result;
 		}
 
+		public Component GetComponent(Type type)
+		{
+			foreach (var item in ComponentPool)
+			{
+				if (item.GetType() == type)
+				{
+					return item;
+				}
+			}
+			return null;
+		}
+
+		public Component GetComponent<T>() where T : Component, new()
+		{
+			foreach (var item in ComponentPool)
+			{
+				if (item.GetType() == typeof(T))
+				{
+					return item;
+				}
+			}
+			return null;
+		}
+
 		static void Destroy(Component component) 
 		{
 		}

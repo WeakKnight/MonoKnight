@@ -7,13 +7,11 @@ using OpenTK;
 
 namespace MonoKnight
 {
-    class Camera
+	class Camera:GameObject
     {
         public Camera()
         {
-            transform = new Transform();
+            //transform = new Transform();
         }
-    
-        public Transform transform;
     }
 }

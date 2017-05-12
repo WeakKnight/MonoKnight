@@ -14,9 +14,6 @@ namespace MonoKnight
 
         public static void Main()
 		{
-			var entity = new Entity();
-			var com = entity.AddComponent<Component>();
-			Object.Destroy(com);
 			if (System.PlatformID.Unix != System.Environment.OSVersion.Platform && System.PlatformID.MacOSX != System.Environment.OSVersion.Platform)
             {
                 const int SW_HIDE = 0;

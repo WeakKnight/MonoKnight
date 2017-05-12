@@ -82,9 +82,10 @@ namespace MonoKnight
 			}
 		}
 
+		//TODO
 		public void LookAt(Vector3 target) 
 		{
-			rotation = Matrix4.LookAt(position, target, up).ExtractRotation();
+			//rotation = Matrix4.LookAt(position, target, up).ExtractRotation();
 		}
 
 		public void Translate(Vector3 translation)

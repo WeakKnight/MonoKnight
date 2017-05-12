@@ -6,5 +6,10 @@ namespace MonoKnight
 		public Renderer()
 		{
 		}
+
+		public virtual void Render() 
+		{
+			
+		}
 	}
 }

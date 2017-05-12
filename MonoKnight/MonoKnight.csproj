@@ -57,6 +57,8 @@
     <Compile Include="Core\Camera.cs" />
     <Compile Include="Core\Renderer.cs" />
     <Compile Include="Core\GameObject.cs" />
+    <Compile Include="Core\Filter.cs" />
+    <Compile Include="Core\Material.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sprite.frag">

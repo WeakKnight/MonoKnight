@@ -4,7 +4,7 @@ namespace MonoKnight
 {
 	public class Entity:Object
 	{
-		public Entity():base()
+		public Entity()
 		{
 			
 		}

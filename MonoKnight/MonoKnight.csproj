@@ -60,6 +60,7 @@
     <Compile Include="Core\Filter.cs" />
     <Compile Include="Core\Material.cs" />
     <Compile Include="Core\TextureAtlas.cs" />
+    <Compile Include="Core\Prefab.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sprite.frag">

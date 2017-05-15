@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{01C593A6-7592-406F-AF99-B220EFF508BC}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/TextureAtlas.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/Shader.cs">
     <Files>
       <File FileName="MonoKnight/Core/Object.cs" Line="11" Column="4" />
       <File FileName="MonoKnight/Core/GameObject.cs" Line="4" Column="15" />
       <File FileName="MonoKnight/Core/Component.cs" Line="8" Column="4" />
-      <File FileName="MonoKnight/Core/Entity.cs" Line="52" Column="43" />
-      <File FileName="MonoKnight/Core/Transform.cs" Line="85" Column="25" />
+      <File FileName="MonoKnight/Core/Entity.cs" Line="9" Column="1" />
+      <File FileName="MonoKnight/Core/Transform.cs" Line="109" Column="55" />
       <File FileName="MonoKnight/Core/Camera.cs" Line="17" Column="4" />
       <File FileName="MonoKnight/Program.cs" Line="17" Column="3" />
       <File FileName="MonoKnight/Window.cs" Line="135" Column="6" />
@@ -17,6 +17,9 @@
       <File FileName="MonoKnight/Core/Filter.cs" Line="11" Column="1" />
       <File FileName="MonoKnight/Core/Material.cs" Line="10" Column="2" />
       <File FileName="MonoKnight/Core/TextureAtlas.cs" Line="1" Column="1" />
+      <File FileName="MonoKnight/Core/Prefab.cs" Line="5" Column="3" />
+      <File FileName="MonoKnight/Core/SystemScheduler.cs" Line="1" Column="1" />
+      <File FileName="MonoKnight/Core/Texture.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

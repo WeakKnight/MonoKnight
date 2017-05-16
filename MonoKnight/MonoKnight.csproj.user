@@ -3,5 +3,6 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <StartAction>Project</StartAction>
     <ExternalConsole>false</ExternalConsole>
+    <TargetRuntimeId>Mono 5.0.0.100</TargetRuntimeId>
   </PropertyGroup>
 </Project>

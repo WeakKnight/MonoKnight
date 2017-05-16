@@ -87,7 +87,7 @@ namespace MonoKnight
 		//TODO correct look at
 		public void LookAt(Vector3 target) 
 		{
-			rotation = Matrix4.LookAt(position, target, up).Inverted().ExtractRotation() * rotation;
+			rotation = rotation * Matrix4.LookAt(position, target, up).Inverted().ExtractRotation();
 			UpdateTransform();
 		}
 

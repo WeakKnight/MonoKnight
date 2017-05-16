@@ -20,7 +20,7 @@ namespace MonoKnight
                 var handle = GetConsoleWindow();
                 ShowWindow(handle, SW_HIDE);
             }
-
+			new Model().LoadFromFile(@"Resources/Blonde Elexis - nude.obj");
             new Window().Run(60);
 		}
 	}

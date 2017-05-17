@@ -19,6 +19,22 @@ namespace MonoKnight
 			Importer.SetConfig(new NormalSmoothingAngleConfig(66.0f));
 		}
 
+		public void Init() 
+		{
+			foreach (var mesh in _meshes)
+			{
+				mesh.Init();
+			}
+		}
+
+		public void Draw()
+		{
+			foreach (var mesh in _meshes)
+			{
+				mesh.Draw();
+			}
+		}
+
 		public void LoadFromFile(string path)
 		{
 			//using (System.IO.Stream stream = File.Open(path, FileMode.Open))
@@ -27,7 +43,6 @@ namespace MonoKnight
 				//Scene scene = Importer.ImportFileFromStream(stream);
 				Scene scene = Importer.ImportFile(fileName);
 				ProcessNode(scene.RootNode, scene);
-				int a = 2;
 			}
 		}
 
@@ -91,22 +106,22 @@ namespace MonoKnight
 				}
 			}
 
-			if (mesh.MaterialIndex >= 0)
-			{
-				Assimp.Material material = scene.Materials[mesh.MaterialIndex];
+			//if (mesh.MaterialIndex >= 0)
+			//{
+			//	Assimp.Material material = scene.Materials[mesh.MaterialIndex];
 
-				for (int i = 0; i < material.GetMaterialTextures(TextureType.Diffuse).Length; i++)
-				{
-					var texSlot = material.GetMaterialTextures(TextureType.Diffuse)[i];
-					Texture texture = new Texture();
-					texture.LoadFromPath(texSlot.FilePath);
-					TextureInfo texInfo = new TextureInfo();
-					texInfo.texture = texture;
-					texInfo.type = "diffuse";
-					textures.Add(texInfo);
-				}
+			//	for (int i = 0; i < material.GetMaterialTextures(TextureType.Diffuse).Length; i++)
+			//	{
+			//		var texSlot = material.GetMaterialTextures(TextureType.Diffuse)[i];
+			//		Texture texture = new Texture();
+			//		texture.LoadFromPath(texSlot.FilePath);
+			//		TextureInfo texInfo = new TextureInfo();
+			//		texInfo.texture = texture;
+			//		texInfo.type = "diffuse";
+			//		textures.Add(texInfo);
+			//	}
 
-			}
+			//}
 			return new Mesh(vertices, indices, textures);
 		}
 

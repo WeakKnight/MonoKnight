@@ -40,6 +40,10 @@ namespace MonoKnight
                 GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
                 GL.EnableVertexAttribArray(1);
             GL.BindVertexArray(0);
+
+			testModel = new Model();
+			testModel.LoadFromFile(@"Resources/Blonde Elexis - nude.obj");
+			testModel.Init();
 			//
 			shader = new Shader(@"Resources/sprite.vert", @"Resources/sprite.frag");
             //
@@ -57,7 +61,7 @@ namespace MonoKnight
 			Time.DeltaTime = e.Time;
 			Render();
 		}
-
+		private Model testModel = null;
 		private int[] VBO = new int[2];
 		private int[] VAO = new int[2];
 		//private int EBO = 0;
@@ -162,6 +166,8 @@ namespace MonoKnight
                 GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
 				//GL.DrawElements(BeginMode.Triangles, 36, DrawElementsType.UnsignedInt, 0);
 			GL.BindVertexArray(0);
+
+			testModel.Draw();
 
 			SwapBuffers();
 		}

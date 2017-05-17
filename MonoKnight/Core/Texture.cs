@@ -24,7 +24,7 @@ namespace MonoKnight
 		{
 			ImageReader loader = new ImageReader();
 			texPath = texPath.Replace(@"\\", @"/");
-
+			Tex = 1;
             using (System.IO.Stream stream = File.Open(texPath, FileMode.Open))
             {
                 StbSharp.Image image = loader.Read(stream, Stb.STBI_rgb_alpha);

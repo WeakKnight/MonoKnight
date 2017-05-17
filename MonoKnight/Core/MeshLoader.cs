@@ -64,7 +64,7 @@ namespace MonoKnight
 		{
 			List<Vertex> vertices = new List<Vertex>();
 			List<int> indices = new List<int>();
-			List<TextureInfo> textures = new List<TextureInfo>();
+			List<Texture> textures = new List<Texture>();
 
 			for (int i = 0; i < mesh.VertexCount; i++)
 			{
@@ -106,22 +106,27 @@ namespace MonoKnight
 				}
 			}
 
-			//if (mesh.MaterialIndex >= 0)
-			//{
-			//	Assimp.Material material = scene.Materials[mesh.MaterialIndex];
+			if (mesh.MaterialIndex >= 0)
+			{
+				Assimp.Material material = scene.Materials[mesh.MaterialIndex];
 
-			//	for (int i = 0; i < material.GetMaterialTextures(TextureType.Diffuse).Length; i++)
-			//	{
-			//		var texSlot = material.GetMaterialTextures(TextureType.Diffuse)[i];
-			//		Texture texture = new Texture();
-			//		texture.LoadFromPath(texSlot.FilePath);
-			//		TextureInfo texInfo = new TextureInfo();
-			//		texInfo.texture = texture;
-			//		texInfo.type = "diffuse";
-			//		textures.Add(texInfo);
-			//	}
+				for (int i = 0; i < material.GetMaterialTextures(TextureType.Diffuse).Length; i++)
+				{
+					var texSlot = material.GetMaterialTextures(TextureType.Diffuse)[i];
+					Texture texture = new Texture();
+					texture.LoadFromPath(texSlot.FilePath);
+					textures.Add(texture);
+				}
 
-			//}
+				//for (int i = 0; i<material.GetMaterialTextures(TextureType.Lightmap).Length; i++)
+				//{
+				//	var texSlot = material.GetMaterialTextures(TextureType.Diffuse)[i];
+				//	Texture texture = new Texture();
+				//	texture.LoadFromPath(texSlot.FilePath);
+				//	textures.Add(texture);
+				//}
+
+			}
 			return new Mesh(vertices, indices, textures);
 		}
 

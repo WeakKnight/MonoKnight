@@ -29,27 +29,31 @@ namespace MonoKnight
 
 		protected override void OnLoad(EventArgs e)
 		{
-            GL.Enable(EnableCap.Texture2D);
+            //GL.Enable(EnableCap.Texture2D);
             CursorVisible = true;
-			GL.GenBuffers(2, VBO);
-			//EBO = GL.GenBuffer();
-			GL.GenVertexArrays(2, VAO);
-			GL.BindVertexArray(VAO[0]);
-				GL.BindBuffer(BufferTarget.ArrayBuffer, VBO[0]);
-				GL.BufferData(BufferTarget.ArrayBuffer, sizeof(float) * vertice.Length, vertice, BufferUsageHint.DynamicDraw);
-				GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
-				GL.EnableVertexAttribArray(0);
-                GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
-                GL.EnableVertexAttribArray(1);
-            GL.BindVertexArray(0);
+			var meshFilter = go.AddComponent<MeshFilter>();
+			var meshRenderer = go.AddComponent<MeshRenderer>();
+			meshFilter.LoadFromFile(@"Resources/Blonde Elexis - nude.obj");
+			meshRenderer.Init();
+			//GL.GenBuffers(2, VBO);
+			////EBO = GL.GenBuffer();
+			//GL.GenVertexArrays(2, VAO);
+			//GL.BindVertexArray(VAO[0]);
+			//	GL.BindBuffer(BufferTarget.ArrayBuffer, VBO[0]);
+			//	GL.BufferData(BufferTarget.ArrayBuffer, sizeof(float) * vertice.Length, vertice, BufferUsageHint.DynamicDraw);
+			//	GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float), 0);
+			//	GL.EnableVertexAttribArray(0);
+   //             GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float), 3 * sizeof(float));
+   //             GL.EnableVertexAttribArray(1);
+   //         GL.BindVertexArray(0);
 
-			//testModel = new Model();
-			//testModel.LoadFromFile(@"Resources/Blonde Elexis - nude.obj");
-			//testModel.Init();
-			//
-			shader = new Shader(@"Resources/sprite.vert", @"Resources/sprite.frag");
-            //
-            texture = new Texture(@"Resources/wall.jpg");
+			////testModel = new Model();
+			////testModel.LoadFromFile(@"Resources/Blonde Elexis - nude.obj");
+			////testModel.Init();
+			////
+			//shader = new Shader(@"Resources/sprite.vert", @"Resources/sprite.frag");
+   //         //
+   //         texture = new Texture(@"Resources/wall.jpg");
         }
 
 		public static int W = 0;
@@ -77,7 +81,8 @@ namespace MonoKnight
         private OpenTK.Matrix4 model = new Matrix4();
         private OpenTK.Matrix4 view = new Matrix4();
         private OpenTK.Matrix4 project = new Matrix4();
-        //private float rotate = 0;
+		//private float rotate = 0;
+		private GameObject go = new GameObject();
         private Camera camera = new Camera();
 		private readonly float[] vertice = 
 		{
@@ -147,32 +152,33 @@ namespace MonoKnight
 			camera.transform.UpdateTransform();
 
             GL.Viewport(0, 0, Width, Height);
+			go.AddComponent<MeshRenderer>().Render();
             //rotate += 0.03f;
-            Matrix4.CreateTranslation(xpos, 0.0f, 0.0f, out model);
-            //model = Matrix4.CreateFromAxisAngle(new Vector3(1.0f, 0.3f, 0.5f), 20.0f)* model
+   //         Matrix4.CreateTranslation(xpos, 0.0f, 0.0f, out model);
+   //         //model = Matrix4.CreateFromAxisAngle(new Vector3(1.0f, 0.3f, 0.5f), 20.0f)* model
 
-			//view = Matrix4.LookAt(camera.transform.position, new Vector3(xpos, 0.0f, 0.0f), camera.transform.up);
-			view = camera.ViewMatrix;
-			//view = Matrix4.CreateFromQuaternion(camera.transform.rotation) * Matrix4.CreateTranslation(-1 * camera.transform.position);
+			////view = Matrix4.LookAt(camera.transform.position, new Vector3(xpos, 0.0f, 0.0f), camera.transform.up);
+			//view = camera.ViewMatrix;
+			////view = Matrix4.CreateFromQuaternion(camera.transform.rotation) * Matrix4.CreateTranslation(-1 * camera.transform.position);
 
-            project = Matrix4.CreateOrthographic(Width/100.0f, Height/100.0f, 0.1f, 100.0f);
-            //project = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(75.0f), Width / (float)Height, 0.1f, 80.0f);
-            GL.Enable(EnableCap.DepthTest);
-            GL.ClearColor(new Color4(49.0f / 255.0f, 77.0f / 255.0f, 121.0f / 255.0f, 1.0f));
-			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+   //         project = Matrix4.CreateOrthographic(Width/100.0f, Height/100.0f, 0.1f, 100.0f);
+   //         //project = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(75.0f), Width / (float)Height, 0.1f, 80.0f);
+   //         GL.Enable(EnableCap.DepthTest);
+   //         GL.ClearColor(new Color4(49.0f / 255.0f, 77.0f / 255.0f, 121.0f / 255.0f, 1.0f));
+			//GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-            int myModelUniform = shader.GetUniformLocation(@"model");
-            GL.UniformMatrix4(myModelUniform, false, ref model);
-            int myViewUniform = shader.GetUniformLocation(@"view");
-            GL.UniformMatrix4(myViewUniform, false, ref view);
-            int myProjectUniform = shader.GetUniformLocation(@"project");
-            GL.UniformMatrix4(myProjectUniform, false, ref project);
-            texture.Bind();
-            shader.Use();
-            GL.BindVertexArray(VAO[0]);
-                GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
-				//GL.DrawElements(BeginMode.Triangles, 36, DrawElementsType.UnsignedInt, 0);
-			GL.BindVertexArray(0);
+   //         int myModelUniform = shader.GetUniformLocation(@"model");
+   //         GL.UniformMatrix4(myModelUniform, false, ref model);
+   //         int myViewUniform = shader.GetUniformLocation(@"view");
+   //         GL.UniformMatrix4(myViewUniform, false, ref view);
+   //         int myProjectUniform = shader.GetUniformLocation(@"project");
+   //         GL.UniformMatrix4(myProjectUniform, false, ref project);
+   //         texture.Bind();
+   //         shader.Use();
+   //         GL.BindVertexArray(VAO[0]);
+   //             GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
+			//	//GL.DrawElements(BeginMode.Triangles, 36, DrawElementsType.UnsignedInt, 0);
+			//GL.BindVertexArray(0);
 
 			SwapBuffers();
 		}

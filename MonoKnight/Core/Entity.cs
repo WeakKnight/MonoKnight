@@ -14,6 +14,7 @@ namespace MonoKnight
 			Component component = Activator.CreateInstance(type) as Component;
 			component.parent = this;
 			componentContainer.Add(component);
+			ComponentPool.GetInstance().Add(component);
 			return component;
 		}
 
@@ -22,6 +23,7 @@ namespace MonoKnight
 			T component = new T();
 			component.parent = this;
 			componentContainer.Add(component);
+			ComponentPool.GetInstance().Add(component);
 			return component;
 		}
 

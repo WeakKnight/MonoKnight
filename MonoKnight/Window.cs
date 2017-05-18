@@ -22,6 +22,8 @@ namespace MonoKnight
 		GraphicsContextFlags.ForwardCompatible)
 		{
 			Title += ": OpenGL Version: " + GL.GetString(StringName.Version);
+			W = Width;
+			H = Height;
 			camera.transform.position = new Vector3(0.0f, 0.0f, -3.0f);
 		}
 
@@ -41,17 +43,22 @@ namespace MonoKnight
                 GL.EnableVertexAttribArray(1);
             GL.BindVertexArray(0);
 
-			testModel = new Model();
-			testModel.LoadFromFile(@"Resources/Blonde Elexis - nude.obj");
-			testModel.Init();
+			//testModel = new Model();
+			//testModel.LoadFromFile(@"Resources/Blonde Elexis - nude.obj");
+			//testModel.Init();
 			//
 			shader = new Shader(@"Resources/sprite.vert", @"Resources/sprite.frag");
             //
             texture = new Texture(@"Resources/wall.jpg");
         }
 
+		public static int W = 0;
+		public static int H = 0;
+
 		protected override void OnResize(EventArgs e)
 		{
+			W = Width;
+			H = Height;
             //GL.Viewport(0, 0, this.ClientSize.Width, this.ClientSize.Height);
 			Render();
 		}
@@ -61,7 +68,7 @@ namespace MonoKnight
 			Time.DeltaTime = e.Time;
 			Render();
 		}
-		private Model testModel = null;
+
 		private int[] VBO = new int[2];
 		private int[] VAO = new int[2];
 		//private int EBO = 0;
@@ -166,8 +173,6 @@ namespace MonoKnight
                 GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
 				//GL.DrawElements(BeginMode.Triangles, 36, DrawElementsType.UnsignedInt, 0);
 			GL.BindVertexArray(0);
-
-			testModel.Draw();
 
 			SwapBuffers();
 		}

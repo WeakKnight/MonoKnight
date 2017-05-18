@@ -12,21 +12,23 @@ namespace MonoKnight
 		public Component AddComponent(Type type)  
 		{
 			Component component = Activator.CreateInstance(type) as Component;
-			ComponentPool.Add(component);
+			component.parent = this;
+			componentContainer.Add(component);
 			return component;
 		}
 
 		public T AddComponent<T>() where T:Component, new()
 		{
 			T component = new T();
-			ComponentPool.Add(component);
+			component.parent = this;
+			componentContainer.Add(component);
 			return component;
 		}
 
 		public Component[] GetComponents(Type type)
 		{
 			Component[] result = { };
-			foreach (var item in ComponentPool)
+			foreach (var item in componentContainer)
 			{
 				if (item.GetType() == type)
 				{
@@ -39,7 +41,7 @@ namespace MonoKnight
 		public Component[] GetComponents<T>() where T:Component, new()
 		{
 			Component[] result = { };
-			foreach (var item in ComponentPool)
+			foreach (var item in componentContainer)
 			{
 				if (item.GetType() == typeof(T))
 				{
@@ -51,7 +53,7 @@ namespace MonoKnight
 
 		public Component GetComponent(Type type)
 		{
-			foreach (var item in ComponentPool)
+			foreach (var item in componentContainer)
 			{
 				if (item.GetType() == type)
 				{
@@ -63,7 +65,7 @@ namespace MonoKnight
 
 		public Component GetComponent<T>() where T : Component, new()
 		{
-			foreach (var item in ComponentPool)
+			foreach (var item in componentContainer)
 			{
 				if (item.GetType() == typeof(T))
 				{
@@ -77,6 +79,6 @@ namespace MonoKnight
 		{
 		}
 
-		private List<Component> ComponentPool = new List<Component>();
+		private List<Component> componentContainer = new List<Component>();
 	}
 }

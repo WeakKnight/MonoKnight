@@ -69,7 +69,8 @@
     <Compile Include="Core\Prefab.cs" />
     <Compile Include="Core\Mesh.cs" />
     <Compile Include="Core\MeshRenderer.cs" />
-    <Compile Include="Core\MeshLoader.cs" />
+    <Compile Include="Core\MeshFilter.cs" />
+    <Compile Include="Core\ComponentPool.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

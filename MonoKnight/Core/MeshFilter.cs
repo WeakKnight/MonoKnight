@@ -8,31 +8,15 @@ using System.Reflection;
 
 namespace MonoKnight
 {
-	public class Model
+	public class MeshFilter : Component
 	{
 		static AssimpContext Importer = new AssimpContext();
 
-		List<Mesh> _meshes = new List<Mesh>();
+		public List<Mesh> _meshes = new List<Mesh>();
 
-		public Model()
+		public MeshFilter()
 		{
 			Importer.SetConfig(new NormalSmoothingAngleConfig(66.0f));
-		}
-
-		public void Init() 
-		{
-			foreach (var mesh in _meshes)
-			{
-				mesh.Init();
-			}
-		}
-
-		public void Draw()
-		{
-			foreach (var mesh in _meshes)
-			{
-				mesh.Draw();
-			}
 		}
 
 		public void LoadFromFile(string path)

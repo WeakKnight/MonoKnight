@@ -36,7 +36,7 @@ namespace MonoKnight
 
 		public void SetTag(string tag) 
 		{
-			if (tag != null)
+			if (this.tag != null)
 			{
 				if (tagDictionary.ContainsKey(tag))
 				{

@@ -23,9 +23,18 @@ namespace MonoKnight
 			meshFilter = GetComponent<MeshFilter>() as MeshFilter;
 
 			int count = meshFilter._meshes.Count;
-			GL.CreateVertexArrays(count, VAOs);
-			GL.CreateBuffers(count, VBOs);
-			GL.CreateBuffers(count, EBOs);
+
+			var tvaos = new int[count];
+			GL.GenVertexArrays(count, tvaos);
+			VAOs = tvaos;
+
+			var tvbos = new int[count];
+			GL.GenBuffers(count, tvbos);
+			VBOs = tvbos;
+
+			var tebos = new int[count];
+			GL.GenBuffers(count, tebos);
+			EBOs = tebos;
 
 			for (int index = 0; index < count; index++)
 			{

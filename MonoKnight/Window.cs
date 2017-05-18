@@ -152,7 +152,11 @@ namespace MonoKnight
 			camera.transform.UpdateTransform();
 
             GL.Viewport(0, 0, Width, Height);
-			go.AddComponent<MeshRenderer>().Render();
+         	GL.Enable(EnableCap.DepthTest);
+         	GL.ClearColor(new Color4(49.0f / 255.0f, 77.0f / 255.0f, 121.0f / 255.0f, 1.0f));
+			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+			var mr = go.GetComponent<MeshRenderer>() as MeshRenderer;
+			mr.Render();
             //rotate += 0.03f;
    //         Matrix4.CreateTranslation(xpos, 0.0f, 0.0f, out model);
    //         //model = Matrix4.CreateFromAxisAngle(new Vector3(1.0f, 0.3f, 0.5f), 20.0f)* model

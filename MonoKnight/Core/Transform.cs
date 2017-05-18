@@ -107,6 +107,21 @@ namespace MonoKnight
 		public Vector3 position;
 		public Vector3 scale;
 
+		public Transform root
+		{
+			get
+			{
+				if (parentTransform != null)
+				{
+					return parentTransform.root;
+				}
+				else
+				{
+					return this;
+				}
+			}
+		}
+
 		private Vector3 _up = new Vector3(0.0f, 1.0f, 0.0f);
 		private Vector3 _right = new Vector3(1.0f, 0.0f, 0.0f);
 		private Vector3 _forward = new Vector3(0.0f, 0.0f, 1.0f);

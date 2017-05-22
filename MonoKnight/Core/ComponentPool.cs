@@ -15,9 +15,15 @@ namespace MonoKnight
 			{
 				MeshRendererPool.Add(com as MeshRenderer);
 			}
+			else if (type.IsSubclassOf(typeof(Script)))
+			{
+				ScriptPool.Add(com as Script);
+			}
 		}
 
 		public List<MeshRenderer> MeshRendererPool = new List<MeshRenderer>();
+
+		public List<Script> ScriptPool = new List<Script>();
 
 		static public ComponentPool GetInstance()
 		{

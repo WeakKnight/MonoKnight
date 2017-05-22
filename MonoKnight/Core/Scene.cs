@@ -35,9 +35,20 @@ namespace MonoKnight
 			transform.parentTransform = rootTransform;
 		}
 
+		public void Start()
+		{
+			foreach (var script in ComponentPool.GetInstance().ScriptPool)
+			{
+				script.Start();
+			}
+		}
+
 		public void Update()
 		{
-				
+			foreach (var script in ComponentPool.GetInstance().ScriptPool)
+			{
+				script.Update();
+			}
 		}
 
 		public void Render()

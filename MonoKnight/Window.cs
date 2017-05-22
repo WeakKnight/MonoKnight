@@ -36,6 +36,7 @@ namespace MonoKnight
 			var meshRenderer = go.AddComponent<MeshRenderer>();
 			meshFilter.LoadFromFile(@"Resources/Blonde Elexis - nude.obj");
 			meshRenderer.Init();
+			camera.AddComponent<BasicControl>();
 
 			_scene.AddItem(go);
 			_scene.AddItem(camera);
@@ -66,10 +67,12 @@ namespace MonoKnight
 		}
 		//private float rotate = 0;
 		private GameObject go = new GameObject();
+		private GameObject go1 = new GameObject();
         private Camera camera = new Camera();
 
 		private void Render()
 		{
+			_scene.Update();
 			_scene.UpdateTransform();
 			_scene.Render();
 			//if (OpenTK.Input.Keyboard.GetState().IsKeyDown(Key.Right))

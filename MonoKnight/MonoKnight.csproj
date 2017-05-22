@@ -69,6 +69,8 @@
     <Compile Include="Core\MeshFilter.cs" />
     <Compile Include="Core\ComponentPool.cs" />
     <Compile Include="Core\Scene.cs" />
+    <Compile Include="Core\Script.cs" />
+    <Compile Include="Core\BasicControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

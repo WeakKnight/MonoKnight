@@ -62,7 +62,8 @@ namespace MonoKnight
 
 		public void UpdateLocal() 
 		{
-			_localMatrix = Matrix4.CreateScale(scale) * Matrix4.CreateFromQuaternion(rotation) * Matrix4.CreateTranslation(position);
+			var righthandPos = new Vector3(-1.0f * position.X, position.Y, position.Z);
+			_localMatrix = Matrix4.CreateScale(scale) * Matrix4.CreateFromQuaternion(rotation) * Matrix4.CreateTranslation(righthandPos);
 		}
 
 		public void UpdateWorld()
@@ -179,7 +180,7 @@ namespace MonoKnight
 
 		private Vector3 _up = new Vector3(0.0f, 1.0f, 0.0f);
 		//TODO Left or right handed coordinate
-		private Vector3 _right = new Vector3(-1.0f, 0.0f, 0.0f);
+		private Vector3 _right = new Vector3(1.0f, 0.0f, 0.0f);
 		private Vector3 _forward = new Vector3(0.0f, 0.0f, 1.0f);
 
 		private Transform _parent = null;

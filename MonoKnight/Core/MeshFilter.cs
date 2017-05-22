@@ -25,12 +25,12 @@ namespace MonoKnight
 			{
 				String fileName = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), path);
 				//Scene scene = Importer.ImportFileFromStream(stream);
-				Scene scene = Importer.ImportFile(fileName);
+				Assimp.Scene scene = Importer.ImportFile(fileName);
 				ProcessNode(scene.RootNode, scene);
 			}
 		}
 
-		private void ProcessNode(Node node, Scene scene)
+		private void ProcessNode(Node node, Assimp.Scene scene)
 		{
 			foreach (int index in node.MeshIndices)
 			{
@@ -44,7 +44,7 @@ namespace MonoKnight
 			}
 		}
 
-		private MonoKnight.Mesh ProcessMesh(Assimp.Mesh mesh, Scene scene)
+		private MonoKnight.Mesh ProcessMesh(Assimp.Mesh mesh, Assimp.Scene scene)
 		{
 			List<Vertex> vertices = new List<Vertex>();
 			List<int> indices = new List<int>();

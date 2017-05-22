@@ -9,9 +9,9 @@ namespace MonoKnight
 		{
 		}
 
-		public void Add(Component com)
+		public void Add(Component com, Type type)
 		{
-			if (com.GetType().IsAssignableFrom(typeof(MeshRenderer)))
+			if (type.IsAssignableFrom(typeof(MeshRenderer)))
 			{
 				MeshRendererPool.Add(com as MeshRenderer);
 			}
@@ -23,7 +23,8 @@ namespace MonoKnight
 		{
 			if (_instance == null)
 			{
-				return new ComponentPool();
+				_instance = new ComponentPool();
+				return _instance;
 			}
 			else
 			{

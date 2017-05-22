@@ -71,6 +71,7 @@
     <Compile Include="Core\Scene.cs" />
     <Compile Include="Core\Script.cs" />
     <Compile Include="Scripts\BasicControl.cs" />
+    <Compile Include="Scripts\RotateBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

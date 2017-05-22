@@ -37,6 +37,18 @@ namespace MonoKnight
 			meshFilter.LoadFromFile(@"Resources/Blonde Elexis - nude.obj");
 			meshRenderer.Init();
 			go.AddComponent<BasicControl>();
+			//go.AddComponent<RotateBehavior>();
+
+			var meshFilter1 = go1.AddComponent<MeshFilter>();
+			var meshRenderer1 = go1.AddComponent<MeshRenderer>();
+			meshFilter1.LoadFromFile(@"Resources/Blonde Elexis - nude.obj");
+			meshRenderer1.Init();
+
+			//go1.AddComponent<BasicControl>();
+			//go1.AddComponent<RotateBehavior>();
+			go1.transform.position = new Vector3(3.0f, 1.0f, 1.0f);
+			go1.transform.parentTransform = go.transform;
+			//(go1.GetComponent < RotateBehavior >() as RotateBehavior).rotateAxis = 1;
 
 			_scene.AddItem(go);
 			_scene.AddItem(camera);
@@ -52,57 +64,28 @@ namespace MonoKnight
 		{
 			W = Width;
 			H = Height;
-            //GL.Viewport(0, 0, this.ClientSize.Width, this.ClientSize.Height);
 			Render();
 		}
 
 		protected override void OnRenderFrame(FrameEventArgs e)
 		{
 			Render();
-			_scene.Render();
 		}
 
 		protected override void OnUpdateFrame(FrameEventArgs e)
 		{
-			Time.DeltaTime = e.Time;
+			Time.DeltaTime = (float)e.Time;
 			_scene.Update();
+			_scene.UpdateTransform();
 		}
-		//private float rotate = 0;
+
 		private GameObject go = new GameObject();
 		private GameObject go1 = new GameObject();
         private Camera camera = new Camera();
 
 		private void Render()
 		{
-			_scene.Update();
-			_scene.UpdateTransform();
 			_scene.Render();
-			//if (OpenTK.Input.Keyboard.GetState().IsKeyDown(Key.Right))
-			//{
-			//	camera.transform.position.X += 0.1f;
-			//}
-			//if(OpenTK.Input.Keyboard.GetState().IsKeyDown(Key.Left))
-			//{
-			//	camera.transform.position.X -= 0.1f;
-			//}
-			//if (OpenTK.Input.Keyboard.GetState().IsKeyDown(Key.Up))
-			//{
-			//	camera.transform.position.Y += 0.1f;
-			//}
-			//if(OpenTK.Input.Keyboard.GetState().IsKeyDown(Key.Down))
-			//{
-			//	camera.transform.position.Y -= 0.1f;
-			//}
-
-			//camera.transform.UpdateTransform();
-
-   //         GL.Viewport(0, 0, Width, Height);
-   //      	GL.Enable(EnableCap.DepthTest);
-   //      	GL.ClearColor(new Color4(49.0f / 255.0f, 77.0f / 255.0f, 121.0f / 255.0f, 1.0f));
-			//GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-			//var mr = go.GetComponent<MeshRenderer>() as MeshRenderer;
-			//mr.Render();
-
 			SwapBuffers();
 		}
 	}

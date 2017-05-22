@@ -127,7 +127,7 @@ namespace MonoKnight
 		{
 			get
 			{
-				return _forward;
+				return (Matrix3.CreateFromQuaternion(rotation) * _forward).Normalized();
 			}
 		}
 
@@ -135,7 +135,7 @@ namespace MonoKnight
 		{
 			get
 			{
-				return _up;
+				return (Matrix3.CreateFromQuaternion(rotation) * _up).Normalized();
 			}
 		}
 
@@ -143,27 +143,19 @@ namespace MonoKnight
 		{
 			get
 			{
-				return _right;
+				return (Matrix3.CreateFromQuaternion(rotation) * _right).Normalized();
 			}
 		}
 
-		//TODO correct look at
+		////TODO correct look at
 		public void LookAt(Vector3 target) 
 		{
 			rotation = rotation * Matrix4.LookAt(position, target, up).Inverted().ExtractRotation();
-			UpdateTransform();
 		}
 
 		public void Translate(Vector3 translation)
 		{
 			position += translation;
-		}
-
-		public void UpdateTransform() 
-		{
-			_forward =  (Matrix3.CreateFromQuaternion(rotation) * new Vector3(0.0f, 0.0f, 1.0f)).Normalized();
-			_right = (Matrix3.CreateFromQuaternion(rotation) * new Vector3(1.0f, 0.0f, 0.0f)).Normalized();
-			_up = (Matrix3.CreateFromQuaternion(rotation) * new Vector3(0.0f, 1.0f, 0.0f)).Normalized();
 		}
 
 		public Quaternion rotation;
@@ -186,6 +178,7 @@ namespace MonoKnight
 		}
 
 		private Vector3 _up = new Vector3(0.0f, 1.0f, 0.0f);
+		//TODO Left or right handed coordinate
 		private Vector3 _right = new Vector3(-1.0f, 0.0f, 0.0f);
 		private Vector3 _forward = new Vector3(0.0f, 0.0f, 1.0f);
 

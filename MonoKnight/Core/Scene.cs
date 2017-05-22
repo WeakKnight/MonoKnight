@@ -21,7 +21,7 @@ namespace MonoKnight
 			transform.UpdateWorld();
 			foreach (var child in transform._children)
 			{
-				child.UpdateWorld();
+				UpdateTransformInternal(child);
 			}
 		}
 

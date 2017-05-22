@@ -1,10 +1,10 @@
 ﻿<Properties StartupConfiguration="{01C593A6-7592-406F-AF99-B220EFF508BC}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Window.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Scripts/RotateBehavior.cs">
     <Files>
-      <File FileName="MonoKnight/Core/Transform.cs" Line="108" Column="34" />
-      <File FileName="MonoKnight/Core/Camera.cs" Line="34" Column="1" />
+      <File FileName="MonoKnight/Core/Transform.cs" Line="189" Column="41" />
+      <File FileName="MonoKnight/Core/Camera.cs" Line="21" Column="87" />
       <File FileName="MonoKnight/Program.cs" Line="28" Column="1" />
-      <File FileName="MonoKnight/Window.cs" Line="39" Column="6" />
+      <File FileName="MonoKnight/Window.cs" Line="68" Column="20" />
       <File FileName="MonoKnight/Core/Filter.cs" Line="11" Column="1" />
       <File FileName="MonoKnight/Core/Material.cs" Line="10" Column="2" />
       <File FileName="MonoKnight/Core/Mesh.cs" Line="17" Column="27" />
@@ -30,7 +30,8 @@
       <File FileName="MonoKnight/Core/Debug.cs" Line="1" Column="1" />
       <File FileName="MonoKnight/Core/Scene.cs" Line="66" Column="3" />
       <File FileName="MonoKnight/Core/Script.cs" Line="2" Column="1" />
-      <File FileName="MonoKnight/Scripts/BasicControl.cs" Line="1" Column="1" />
+      <File FileName="MonoKnight/Scripts/BasicControl.cs" Line="18" Column="5" />
+      <File FileName="MonoKnight/Scripts/RotateBehavior.cs" Line="10" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -39,8 +40,9 @@
             <Node name="MonoKnight" expanded="True">
               <Node name="References" expanded="True" />
               <Node name="Core" expanded="True" />
-              <Node name="Scripts" expanded="True" />
-              <Node name="Window.cs" selected="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="RotateBehavior.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

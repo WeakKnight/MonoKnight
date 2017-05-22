@@ -6,6 +6,7 @@ namespace MonoKnight
 		public Time()
 		{
 		}
-		static public double DeltaTime = 0;
+
+		static public float DeltaTime = 0;
 	}
 }

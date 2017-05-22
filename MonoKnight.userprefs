@@ -1,22 +1,22 @@
 ﻿<Properties StartupConfiguration="{01C593A6-7592-406F-AF99-B220EFF508BC}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/BasicControl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Window.cs">
     <Files>
       <File FileName="MonoKnight/Core/Transform.cs" Line="108" Column="34" />
       <File FileName="MonoKnight/Core/Camera.cs" Line="34" Column="1" />
       <File FileName="MonoKnight/Program.cs" Line="28" Column="1" />
-      <File FileName="MonoKnight/Window.cs" Line="69" Column="45" />
+      <File FileName="MonoKnight/Window.cs" Line="39" Column="6" />
       <File FileName="MonoKnight/Core/Filter.cs" Line="11" Column="1" />
       <File FileName="MonoKnight/Core/Material.cs" Line="10" Column="2" />
       <File FileName="MonoKnight/Core/Mesh.cs" Line="17" Column="27" />
       <File FileName="MonoKnight/Core/MeshRenderer.cs" Line="82" Column="15" />
       <File FileName="MonoKnight/Core/MeshFilter.cs" Line="47" Column="76" />
-      <File FileName="MonoKnight/Core/Entity.cs" Line="27" Column="21" />
+      <File FileName="MonoKnight/Core/Entity.cs" Line="27" Column="1" />
       <File FileName="MonoKnight/Core/Time.cs" Line="1" Column="1" />
       <File FileName="MonoKnight/Core/TextureAtlas.cs" Line="1" Column="1" />
       <File FileName="MonoKnight/Core/SystemScheduler.cs" Line="5" Column="1" />
       <File FileName="MonoKnight/Core/Shader.cs" Line="20" Column="24" />
       <File FileName="MonoKnight/Core/Prefab.cs" Line="5" Column="3" />
-      <File FileName="MonoKnight/Core/Texture.cs" Line="53" Column="47" />
+      <File FileName="MonoKnight/Core/Texture.cs" Line="47" Column="5" />
       <File FileName="MonoKnight/Core/Component.cs" Line="18" Column="25" />
       <File FileName="MonoKnight/Core/GameObject.cs" Line="1" Column="1" />
       <File FileName="MonoKnight/Core/Renderer.cs" Line="1" Column="1" />
@@ -26,11 +26,11 @@
       <File FileName="MonoKnight/Resources/mesh.vert" Line="17" Column="1" />
       <File FileName="MonoKnight/Resources/sprite.vert" Line="5" Column="1" />
       <File FileName="MonoKnight/Resources/sprite.frag" Line="9" Column="5" />
-      <File FileName="MonoKnight/Core/ComponentPool.cs" Line="20" Column="35" />
+      <File FileName="MonoKnight/Core/ComponentPool.cs" Line="19" Column="2" />
       <File FileName="MonoKnight/Core/Debug.cs" Line="1" Column="1" />
-      <File FileName="MonoKnight/Core/Scene.cs" Line="42" Column="20" />
-      <File FileName="MonoKnight/Core/Script.cs" Line="9" Column="4" />
-      <File FileName="MonoKnight/Core/BasicControl.cs" Line="9" Column="3" />
+      <File FileName="MonoKnight/Core/Scene.cs" Line="66" Column="3" />
+      <File FileName="MonoKnight/Core/Script.cs" Line="2" Column="1" />
+      <File FileName="MonoKnight/Scripts/BasicControl.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -38,9 +38,9 @@
           <Node name="MonoKnight" expanded="True">
             <Node name="MonoKnight" expanded="True">
               <Node name="References" expanded="True" />
-              <Node name="Core" expanded="True">
-                <Node name="BasicControl.cs" selected="True" />
-              </Node>
+              <Node name="Core" expanded="True" />
+              <Node name="Scripts" expanded="True" />
+              <Node name="Window.cs" selected="True" />
             </Node>
           </Node>
         </State>

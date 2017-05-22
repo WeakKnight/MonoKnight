@@ -36,10 +36,12 @@ namespace MonoKnight
 			var meshRenderer = go.AddComponent<MeshRenderer>();
 			meshFilter.LoadFromFile(@"Resources/Blonde Elexis - nude.obj");
 			meshRenderer.Init();
-			camera.AddComponent<BasicControl>();
+			go.AddComponent<BasicControl>();
 
 			_scene.AddItem(go);
 			_scene.AddItem(camera);
+
+			_scene.Start();
 
         }
 

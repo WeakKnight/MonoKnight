@@ -70,7 +70,7 @@
     <Compile Include="Core\ComponentPool.cs" />
     <Compile Include="Core\Scene.cs" />
     <Compile Include="Core\Script.cs" />
-    <Compile Include="Core\BasicControl.cs" />
+    <Compile Include="Scripts\BasicControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -85,6 +85,7 @@
   <ItemGroup />
   <ItemGroup>
     <Folder Include="Core\" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\chalet.jpg">

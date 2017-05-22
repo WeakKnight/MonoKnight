@@ -44,7 +44,7 @@ namespace MonoKnight
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
                 GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
-                GL.BindTexture(TextureTarget.Texture2D, 0);
+				GL.BindTexture(TextureTarget.Texture2D, 0);
             }
 		}
 

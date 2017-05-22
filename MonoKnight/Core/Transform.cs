@@ -186,7 +186,7 @@ namespace MonoKnight
 		}
 
 		private Vector3 _up = new Vector3(0.0f, 1.0f, 0.0f);
-		private Vector3 _right = new Vector3(1.0f, 0.0f, 0.0f);
+		private Vector3 _right = new Vector3(-1.0f, 0.0f, 0.0f);
 		private Vector3 _forward = new Vector3(0.0f, 0.0f, 1.0f);
 
 		private Transform _parent = null;

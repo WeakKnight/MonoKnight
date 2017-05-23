@@ -24,11 +24,14 @@ namespace MonoKnight
 			//using (System.IO.Stream stream = File.Open(path, FileMode.Open))
 			{
 				String fileName = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), path);
+				modelDirPath = Path.GetDirectoryName(fileName);
 				//Scene scene = Importer.ImportFileFromStream(stream);
-				Assimp.Scene scene = Importer.ImportFile(fileName);
+				Assimp.Scene scene = Importer.ImportFile(fileName, PostProcessSteps.FlipUVs | PostProcessSteps.Triangulate);
 				ProcessNode(scene.RootNode, scene);
 			}
 		}
+
+		private string modelDirPath = @"";
 
 		private void ProcessNode(Node node, Assimp.Scene scene)
 		{
@@ -98,7 +101,7 @@ namespace MonoKnight
 				{
 					var texSlot = material.GetMaterialTextures(TextureType.Diffuse)[i];
 					Texture texture = new Texture();
-					texture.LoadFromPath(texSlot.FilePath);
+					texture.LoadFromPath(Path.Combine(modelDirPath, texSlot.FilePath));
 					textures.Add(texture);
 				}
 

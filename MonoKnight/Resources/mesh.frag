@@ -6,5 +6,5 @@ uniform sampler2D diffuseTex;
 
 void main()
 {
-    color = texture(diffuseTex, vec2(TexCoord.x, 1.0 - TexCoord.y));
+    color = texture(diffuseTex, TexCoord);
 } 

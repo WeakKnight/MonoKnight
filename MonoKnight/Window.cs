@@ -34,7 +34,7 @@ namespace MonoKnight
             CursorVisible = true;
 			var meshFilter = go.AddComponent<MeshFilter>();
 			var meshRenderer = go.AddComponent<MeshRenderer>();
-			meshFilter.LoadFromFile(@"Resources/chalet.obj");
+			meshFilter.LoadFromFile(@"Resources/nanomodel/nanosuit.obj");
 			meshRenderer.Init();
 			go.AddComponent<BasicControl>();
 			//go.AddComponent<RotateBehavior>();
@@ -44,9 +44,9 @@ namespace MonoKnight
 			meshFilter1.LoadFromFile(@"Resources/Blonde Elexis - nude.obj");
 			meshRenderer1.Init();
 
-			go1.AddComponent<RotateBehavior>();
+			//go1.AddComponent<RotateBehavior>();
 			go1.transform.position = new Vector3(3.0f, 1.0f, 1.0f);
-			//go1.transform.parentTransform = go.transform;
+			go1.transform.parentTransform = go.transform;
 
 			var meshFilter2 = go2.AddComponent<MeshFilter>();
 			var meshRenderer2 = go2.AddComponent<MeshRenderer>();
@@ -55,7 +55,7 @@ namespace MonoKnight
 
 			go2.AddComponent<RotateBehavior>();
 			go2.transform.position = new Vector3(3.0f, 1.0f, 1.0f);
-			go2.transform.parentTransform = go1.transform;
+			//go2.transform.parentTransform = go1.transform;
 
 			//_scene.AddItem(go1);
 			_scene.AddItem(go);
@@ -84,7 +84,7 @@ namespace MonoKnight
 		{
 			Time.DeltaTime = (float)e.Time;
 			_scene.Update();
-			_scene.UpdateTransform();
+			//_scene.UpdateTransform();
 		}
 
 		private GameObject go = new GameObject();

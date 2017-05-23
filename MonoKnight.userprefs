@@ -1,37 +1,16 @@
 ﻿<Properties StartupConfiguration="{01C593A6-7592-406F-AF99-B220EFF508BC}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Scripts/RotateBehavior.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/MeshFilter.cs">
     <Files>
-      <File FileName="MonoKnight/Core/Transform.cs" Line="189" Column="41" />
-      <File FileName="MonoKnight/Core/Camera.cs" Line="21" Column="87" />
+      <File FileName="MonoKnight/Core/Scene.cs" Line="71" Column="19" />
+      <File FileName="MonoKnight/Window.cs" Line="37" Column="65" />
       <File FileName="MonoKnight/Program.cs" Line="28" Column="1" />
-      <File FileName="MonoKnight/Window.cs" Line="68" Column="20" />
-      <File FileName="MonoKnight/Core/Filter.cs" Line="11" Column="1" />
-      <File FileName="MonoKnight/Core/Material.cs" Line="10" Column="2" />
+      <File FileName="MonoKnight/Core/MeshRenderer.cs" Line="15" Column="26" />
+      <File FileName="MonoKnight/Core/Transform.cs" Line="125" Column="4" />
+      <File FileName="MonoKnight/Core/Texture.cs" Line="28" Column="1" />
+      <File FileName="MonoKnight/Core/MeshFilter.cs" Line="31" Column="5" />
       <File FileName="MonoKnight/Core/Mesh.cs" Line="17" Column="27" />
-      <File FileName="MonoKnight/Core/MeshRenderer.cs" Line="82" Column="15" />
-      <File FileName="MonoKnight/Core/MeshFilter.cs" Line="47" Column="76" />
-      <File FileName="MonoKnight/Core/Entity.cs" Line="27" Column="1" />
-      <File FileName="MonoKnight/Core/Time.cs" Line="1" Column="1" />
-      <File FileName="MonoKnight/Core/TextureAtlas.cs" Line="1" Column="1" />
-      <File FileName="MonoKnight/Core/SystemScheduler.cs" Line="5" Column="1" />
-      <File FileName="MonoKnight/Core/Shader.cs" Line="20" Column="24" />
-      <File FileName="MonoKnight/Core/Prefab.cs" Line="5" Column="3" />
-      <File FileName="MonoKnight/Core/Texture.cs" Line="47" Column="5" />
-      <File FileName="MonoKnight/Core/Component.cs" Line="18" Column="25" />
-      <File FileName="MonoKnight/Core/GameObject.cs" Line="1" Column="1" />
-      <File FileName="MonoKnight/Core/Renderer.cs" Line="1" Column="1" />
-      <File FileName="MonoKnight/Core/Object.cs" Line="39" Column="25" />
-      <File FileName="MonoKnight/Properties/AssemblyInfo.cs" Line="1" Column="1" />
-      <File FileName="MonoKnight/Resources/mesh.frag" Line="9" Column="43" />
-      <File FileName="MonoKnight/Resources/mesh.vert" Line="17" Column="1" />
-      <File FileName="MonoKnight/Resources/sprite.vert" Line="5" Column="1" />
-      <File FileName="MonoKnight/Resources/sprite.frag" Line="9" Column="5" />
-      <File FileName="MonoKnight/Core/ComponentPool.cs" Line="19" Column="2" />
-      <File FileName="MonoKnight/Core/Debug.cs" Line="1" Column="1" />
-      <File FileName="MonoKnight/Core/Scene.cs" Line="66" Column="3" />
-      <File FileName="MonoKnight/Core/Script.cs" Line="2" Column="1" />
-      <File FileName="MonoKnight/Scripts/BasicControl.cs" Line="18" Column="5" />
-      <File FileName="MonoKnight/Scripts/RotateBehavior.cs" Line="10" Column="9" />
+      <File FileName="MonoKnight/Resources/mesh.frag" Line="10" Column="3" />
+      <File FileName="MonoKnight/Core/Material.cs" Line="8" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -39,10 +18,14 @@
           <Node name="MonoKnight" expanded="True">
             <Node name="MonoKnight" expanded="True">
               <Node name="References" expanded="True" />
-              <Node name="Core" expanded="True" />
-              <Node name="Scripts" expanded="True">
-                <Node name="RotateBehavior.cs" selected="True" />
+              <Node name="Packages" expanded="True" />
+              <Node name="Core" expanded="True">
+                <Node name="MeshFilter.cs" selected="True" />
               </Node>
+              <Node name="Resources" expanded="True">
+                <Node name="nanomodel" expanded="True" />
+              </Node>
+              <Node name="Scripts" expanded="True" />
             </Node>
           </Node>
         </State>

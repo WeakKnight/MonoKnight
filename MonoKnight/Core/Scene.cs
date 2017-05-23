@@ -49,6 +49,8 @@ namespace MonoKnight
 			{
 				script.Update();
 			}
+
+			UpdateTransform();
 		}
 
 		public void Render()
@@ -72,5 +74,7 @@ namespace MonoKnight
 		}
 
 		Transform rootTransform = new Transform();
+
+		//Color4 ambientLightColor = Color4.White;
 	}
 }

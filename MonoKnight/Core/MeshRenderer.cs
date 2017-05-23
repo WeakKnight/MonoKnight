@@ -16,7 +16,7 @@ namespace MonoKnight
 
 		private MeshFilter meshFilter = null;
 		private Shader shader = new Shader(@"Resources/mesh.vert", @"Resources/mesh.frag");
-		private Texture defaultTex = null;
+		//private Texture defaultTex = null;
 
 		public void Init() 
 		{
@@ -100,11 +100,11 @@ namespace MonoKnight
 				int myProjectUniform = shader.GetUniformLocation(@"project");
 				GL.UniformMatrix4(myProjectUniform, false, ref project);
 
-				if (meshFilter._meshes[index]._textures.Count == 0)
-				{
-					defaultTex = new Texture(@"Resources/chalet.jpg");
-					meshFilter._meshes[index]._textures.Add(defaultTex);
-				}
+				//if (meshFilter._meshes[index]._textures.Count == 0)
+				//{
+				//	defaultTex = new Texture(@"Resources/chalet.jpg");
+				//	meshFilter._meshes[index]._textures.Add(defaultTex);
+				//}
 
 				int myDiffuseUniform = shader.GetUniformLocation(@"diffuseTex");
 				GL.Uniform1(myDiffuseUniform, 0);

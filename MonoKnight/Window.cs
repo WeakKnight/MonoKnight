@@ -24,7 +24,7 @@ namespace MonoKnight
 			Title += ": OpenGL Version: " + GL.GetString(StringName.Version);
 			W = Width;
 			H = Height;
-			camera.transform.position = new Vector3(0.0f, 0.0f, -3.0f);
+			camera.transform.position = new Vector3(0.0f, 0.0f, -10.0f);
 		}
 
 		public Scene _scene = new Scene();
@@ -34,7 +34,7 @@ namespace MonoKnight
             CursorVisible = true;
 			var meshFilter = go.AddComponent<MeshFilter>();
 			var meshRenderer = go.AddComponent<MeshRenderer>();
-			meshFilter.LoadFromFile(@"Resources/Blonde Elexis - nude.obj");
+			meshFilter.LoadFromFile(@"Resources/chalet.obj");
 			meshRenderer.Init();
 			go.AddComponent<BasicControl>();
 			//go.AddComponent<RotateBehavior>();
@@ -46,7 +46,7 @@ namespace MonoKnight
 
 			go1.AddComponent<RotateBehavior>();
 			go1.transform.position = new Vector3(3.0f, 1.0f, 1.0f);
-			go1.transform.parentTransform = go.transform;
+			//go1.transform.parentTransform = go.transform;
 
 			var meshFilter2 = go2.AddComponent<MeshFilter>();
 			var meshRenderer2 = go2.AddComponent<MeshRenderer>();
@@ -57,6 +57,7 @@ namespace MonoKnight
 			go2.transform.position = new Vector3(3.0f, 1.0f, 1.0f);
 			go2.transform.parentTransform = go1.transform;
 
+			//_scene.AddItem(go1);
 			_scene.AddItem(go);
 			_scene.AddItem(camera);
 

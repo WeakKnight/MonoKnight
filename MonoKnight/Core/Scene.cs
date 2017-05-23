@@ -60,7 +60,14 @@ namespace MonoKnight
 
 			foreach (var renderer in ComponentPool.GetInstance().MeshRendererPool)
 			{
-				renderer.Render();
+				if (renderer.transform.root != rootTransform)
+				{
+					continue;
+				}
+				else
+				{
+					renderer.Render();
+				}
 			}
 		}
 

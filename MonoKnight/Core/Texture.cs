@@ -28,6 +28,8 @@ namespace MonoKnight
             using (System.IO.Stream stream = File.Open(texPath, FileMode.Open))
             {
                 StbSharp.Image image = loader.Read(stream, Stb.STBI_rgb_alpha);
+				Width = image.Width;
+				Height = image.Height;
 				Tex = GL.GenTexture();
                 GL.BindTexture(TextureTarget.Texture2D, Tex);
                 GL.TexImage2D(TextureTarget.Texture2D,
@@ -52,6 +54,9 @@ namespace MonoKnight
 		{
 			GL.BindTexture(TextureTarget.Texture2D, Tex);
 		}
+
+		public int Width = 0;
+		public int Height = 0;
 
 		private int Tex = 0;
 	}

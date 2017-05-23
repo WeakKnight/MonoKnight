@@ -70,8 +70,10 @@ namespace MonoKnight
 					GL.BufferData(BufferTarget.ArrayBuffer, sizeof(float) * Vertices.Length, Vertices, BufferUsageHint.DynamicDraw);
 					GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, length* sizeof(float), 0);
 					GL.EnableVertexAttribArray(0);
-	                GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, length* sizeof(float), 3 * sizeof(float));
-	                GL.EnableVertexAttribArray(1);
+					GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, length* sizeof(float), 3);
+					GL.EnableVertexAttribArray(1);
+	                GL.VertexAttribPointer(2, 2, VertexAttribPointerType.Float, false, length* sizeof(float), 6 * sizeof(float));
+	                GL.EnableVertexAttribArray(2);
 					//
 					GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBOs[index]);
 					GL.BufferData(BufferTarget.ElementArrayBuffer, sizeof(int) * Indices.Length, Indices, BufferUsageHint.DynamicDraw);
@@ -104,6 +106,10 @@ namespace MonoKnight
 					meshFilter._meshes[index]._textures.Add(defaultTex);
 				}
 
+				int myDiffuseUniform = shader.GetUniformLocation(@"diffuseTex");
+				GL.Uniform1(myDiffuseUniform, 0);
+
+				GL.ActiveTexture(TextureUnit.Texture0);
 				meshFilter._meshes[index]._textures[0].Bind();
 
 				shader.Use();

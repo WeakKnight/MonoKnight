@@ -102,7 +102,7 @@ namespace MonoKnight
 		{
 			_scene.Render();
 			go.GetComponent<MeshRenderer>().Render();
-			//go1.GetComponent<MeshRenderer>().Render();
+			go1.GetComponent<MeshRenderer>().Render();
 			SwapBuffers();
 		}
 	}

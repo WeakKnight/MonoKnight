@@ -1,7 +1,7 @@
 ﻿using System;
 namespace MonoKnight
 {
-	public class Material:Component
+	public class Material:Resource
 	{
 		public Material()
 		{

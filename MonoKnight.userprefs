@@ -1,15 +1,17 @@
 ﻿<Properties StartupConfiguration="{01C593A6-7592-406F-AF99-B220EFF508BC}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/Entity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/Material.cs">
     <Files>
-      <File FileName="MonoKnight/Core/Scene.cs" Line="75" Column="4" />
+      <File FileName="MonoKnight/Core/Scene.cs" Line="74" Column="5" />
       <File FileName="MonoKnight/Core/Object.cs" Line="53" Column="30" />
       <File FileName="MonoKnight/Scripts/BasicControl.cs" Line="19" Column="1" />
       <File FileName="MonoKnight/Core/ComponentPool.cs" Line="26" Column="1" />
       <File FileName="MonoKnight/Core/Component.cs" Line="13" Column="17" />
-      <File FileName="MonoKnight/Core/Entity.cs" Line="84" Column="63" />
+      <File FileName="MonoKnight/Core/Entity.cs" Line="89" Column="4" />
       <File FileName="MonoKnight/Core/Script.cs" Line="7" Column="18" />
-      <File FileName="MonoKnight/Core/Prefab.cs" Line="5" Column="3" />
+      <File FileName="MonoKnight/Core/Prefab.cs" Line="7" Column="4" />
       <File FileName="MonoKnight/Core/Filter.cs" Line="11" Column="1" />
+      <File FileName="MonoKnight/Core/Texture.cs" Line="11" Column="33" />
+      <File FileName="MonoKnight/Core/Material.cs" Line="5" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,7 +21,7 @@
               <Node name="References" expanded="True" />
               <Node name="Packages" expanded="True" />
               <Node name="Core" expanded="True">
-                <Node name="Entity.cs" selected="True" />
+                <Node name="Material.cs" selected="True" />
               </Node>
               <Node name="Scripts" expanded="True" />
             </Node>
@@ -30,9 +32,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/knight/MonoKnight/MonoKnight/Core/Entity.cs" relfile="MonoKnight/Core/Entity.cs" line="87" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.MonoKnight PreferredExecutionTarget="MonoDevelop.Default" />

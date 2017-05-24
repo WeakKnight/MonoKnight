@@ -1,7 +1,7 @@
 ﻿using System;
 namespace MonoKnight
 {
-	public class Prefab:Object
+	public class Prefab:Resource
 	{
 		public Prefab()
 		{

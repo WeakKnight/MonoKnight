@@ -6,7 +6,7 @@ namespace MonoKnight
 	{
 		public Transform transform;
 
-		public Entity() : base()
+		public Entity()
 		{
 			transform = AddComponent<Transform>();
 		}
@@ -81,13 +81,11 @@ namespace MonoKnight
 
 		public void RemoveAllComponent()
 		{
-			for (int i = 0; i < componentContainer.Count; i++)
+			componentContainer.RemoveAll(delegate(Component com) 
 			{
-				var com = componentContainer[i];
-				componentContainer.Remove(com);
 				ComponentPool.GetInstance().RemoveComponent(com);
-				com = null;
-			}
+				return true;
+			});
 		}
 
 		private List<Component> componentContainer = new List<Component>();

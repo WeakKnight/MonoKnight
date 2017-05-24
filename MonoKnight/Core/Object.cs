@@ -11,6 +11,8 @@ namespace MonoKnight
 			_id = _count;
 		}
 
+		private bool willDestroy = false;
+
 		public long GetInstanceID() 
 		{
 			return _id;
@@ -25,7 +27,14 @@ namespace MonoKnight
 
 		public static void Destroy(Object obj) 
 		{
-			DestroyStack.Push(obj);
+			if (obj != null)
+			{
+				if (!obj.willDestroy)
+				{
+					obj.willDestroy = true;
+					DestroySet.Add(obj);
+				}
+			}
 		}
 
 		public static void ForceDestroy(Object obj)
@@ -52,7 +61,8 @@ namespace MonoKnight
 			obj = null;
 		}
 
-		public static Stack DestroyStack = new Stack();
+		public static HashSet<Object> DestroySet = new HashSet<Object>();
+		//public static Stack DestroyStack = new Stack();
 		//public static List<Object> DestroyList = new List<Object>();
 
 		public void SetTag(string tag) 

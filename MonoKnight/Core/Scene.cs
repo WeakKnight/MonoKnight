@@ -67,11 +67,11 @@ namespace MonoKnight
 
 		public void OnDestroy()
 		{
-			while (Object.DestroyStack.Count != 0)
+			Object.DestroySet.RemoveWhere(delegate(Object obj) 
 			{
-				var obj = Object.DestroyStack.Pop() as Object;
 				Object.ForceDestroy(obj);
-			}
+				return true;
+			});
 		}
 
 		private void RenderInternal(Transform transform)

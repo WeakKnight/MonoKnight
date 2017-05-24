@@ -1,36 +1,15 @@
 ﻿<Properties StartupConfiguration="{01C593A6-7592-406F-AF99-B220EFF508BC}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/Object.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/Entity.cs">
     <Files>
-      <File FileName="MonoKnight/Core/Scene.cs" Line="74" Column="5" />
-      <File FileName="MonoKnight/Window.cs" Line="54" Column="42" />
-      <File FileName="MonoKnight/Program.cs" Line="28" Column="1" />
-      <File FileName="MonoKnight/Core/Transform.cs" Line="127" Column="15" />
-      <File FileName="MonoKnight/Core/Texture.cs" Line="12" Column="3" />
-      <File FileName="MonoKnight/Core/MeshFilter.cs" Line="13" Column="2" />
-      <File FileName="MonoKnight/Core/Mesh.cs" Line="87" Column="4" />
-      <File FileName="MonoKnight/Resources/mesh.frag" Line="10" Column="3" />
-      <File FileName="MonoKnight/Core/Material.cs" Line="8" Column="4" />
-      <File FileName="MonoKnight/Core/SystemScheduler.cs" Line="5" Column="1" />
-      <File FileName="MonoKnight/Core/Time.cs" Line="9" Column="1" />
-      <File FileName="MonoKnight/Core/TextureAtlas.cs" Line="1" Column="1" />
-      <File FileName="MonoKnight/Core/Entity.cs" Line="23" Column="40" />
-      <File FileName="MonoKnight/Core/MeshRenderer.cs" Line="24" Column="5" />
-      <File FileName="MonoKnight/Core/Model.cs" Line="15" Column="27" />
-      <File FileName="MonoKnight/Core/ResourceManager.cs" Line="39" Column="5" />
-      <File FileName="MonoKnight/Core/ComponentPool.cs" Line="26" Column="51" />
-      <File FileName="MonoKnight/Core/ModelLoader.cs" Line="12" Column="3" />
-      <File FileName="MonoKnight/Core/Resource.cs" Line="5" Column="3" />
-      <File FileName="MonoKnight/Core/Renderer.cs" Line="1" Column="1" />
-      <File FileName="MonoKnight/Core/Prefab.cs" Line="5" Column="3" />
-      <File FileName="MonoKnight/Core/Object.cs" Line="39" Column="22" />
-      <File FileName="MonoKnight/Core/Filter.cs" Line="11" Column="1" />
-      <File FileName="MonoKnight/Core/Debug.cs" Line="1" Column="1" />
+      <File FileName="MonoKnight/Core/Scene.cs" Line="75" Column="4" />
+      <File FileName="MonoKnight/Core/Object.cs" Line="53" Column="30" />
+      <File FileName="MonoKnight/Scripts/BasicControl.cs" Line="19" Column="1" />
+      <File FileName="MonoKnight/Core/ComponentPool.cs" Line="26" Column="1" />
       <File FileName="MonoKnight/Core/Component.cs" Line="13" Column="17" />
-      <File FileName="MonoKnight/Core/Camera.cs" Line="18" Column="4" />
-      <File FileName="MonoKnight/Core/Script.cs" Line="2" Column="1" />
-      <File FileName="MonoKnight/OpenTK.dll.config" Line="1" Column="1" />
-      <File FileName="MonoKnight/Scripts/RotateBehavior.cs" Line="5" Column="15" />
-      <File FileName="MonoKnight/Scripts/BasicControl.cs" Line="34" Column="1" />
+      <File FileName="MonoKnight/Core/Entity.cs" Line="84" Column="63" />
+      <File FileName="MonoKnight/Core/Script.cs" Line="7" Column="18" />
+      <File FileName="MonoKnight/Core/Prefab.cs" Line="5" Column="3" />
+      <File FileName="MonoKnight/Core/Filter.cs" Line="11" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -39,7 +18,9 @@
             <Node name="MonoKnight" expanded="True">
               <Node name="References" expanded="True" />
               <Node name="Packages" expanded="True" />
-              <Node name="Core" expanded="True" />
+              <Node name="Core" expanded="True">
+                <Node name="Entity.cs" selected="True" />
+              </Node>
               <Node name="Scripts" expanded="True" />
             </Node>
           </Node>
@@ -49,7 +30,9 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/knight/MonoKnight/MonoKnight/Core/Entity.cs" relfile="MonoKnight/Core/Entity.cs" line="87" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.MonoKnight PreferredExecutionTarget="MonoDevelop.Default" />

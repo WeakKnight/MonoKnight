@@ -64,7 +64,6 @@
     <Compile Include="Core\Texture.cs" />
     <Compile Include="Core\Camera.cs" />
     <Compile Include="Core\Renderer.cs" />
-    <Compile Include="Core\GameObject.cs" />
     <Compile Include="Core\Filter.cs" />
     <Compile Include="Core\Material.cs" />
     <Compile Include="Core\TextureAtlas.cs" />

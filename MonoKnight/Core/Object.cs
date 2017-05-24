@@ -36,7 +36,7 @@ namespace MonoKnight
 			}
 			else if (obj.GetType().IsAssignableFrom(typeof(Entity)))
 			{
-				Debug.Log("GameObject Destroy");
+				Debug.Log("Entity Destroy");
 				if ((obj as Entity).transform.parent != null)
 				{
 					(obj as Entity).transform.parent.RemoveChild((obj as Entity).transform);

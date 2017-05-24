@@ -32,8 +32,6 @@ namespace MonoKnight
 			}
 		}
 
-		public string name = "";
-
 		public void SetTag(string tag) 
 		{
 			if (this.tag != null)

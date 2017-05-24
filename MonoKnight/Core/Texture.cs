@@ -8,7 +8,7 @@ using System.IO;
 
 namespace MonoKnight
 {
-	public class Texture
+	public class Texture : Resource
 	{
 		public Texture()
 		{
@@ -25,6 +25,7 @@ namespace MonoKnight
 			ImageReader loader = new ImageReader();
 			texPath = texPath.Replace(@"\\", @"/");
 			texPath = texPath.Replace(@"\", @"/");
+			path = texPath;
             using (System.IO.Stream stream = File.Open(texPath, FileMode.Open))
             {
                 StbSharp.Image image = loader.Read(stream, Stb.STBI_rgb_alpha);
@@ -57,6 +58,7 @@ namespace MonoKnight
 
 		public int Width = 0;
 		public int Height = 0;
+		public string path = @"";
 
 		private int Tex = 0;
 	}

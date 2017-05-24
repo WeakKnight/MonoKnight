@@ -60,16 +60,30 @@ namespace MonoKnight
          	GL.ClearColor(new Color4(49.0f / 255.0f, 77.0f / 255.0f, 121.0f / 255.0f, 1.0f));
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-			foreach (var renderer in ComponentPool.GetInstance().MeshRendererPool)
+			RenderInternal(rootTransform);
+			//foreach (var renderer in ComponentPool.GetInstance().MeshRendererPool)
+			//{
+			//	if (renderer.transform.root != rootTransform)
+			//	{
+			//		continue;
+			//	}
+			//	else
+			//	{
+			//		renderer.Render();
+			//	}
+			//}
+		}
+
+		private void RenderInternal(Transform transform)
+		{
+			foreach (var childTransform in transform._children)
 			{
-				if (renderer.transform.root != rootTransform)
-				{
-					continue;
-				}
-				else
+				var renderer = childTransform.parent.GetComponent<MeshRenderer>() as MeshRenderer;
+				if (renderer != null)
 				{
 					renderer.Render();
 				}
+				RenderInternal(childTransform);
 			}
 		}
 

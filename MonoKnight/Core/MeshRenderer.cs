@@ -16,13 +16,12 @@ namespace MonoKnight
 
 		private MeshFilter meshFilter = null;
 		private Shader shader = new Shader(@"Resources/mesh.vert", @"Resources/mesh.frag");
-		//private Texture defaultTex = null;
 
 		public void Init() 
 		{
 			meshFilter = GetComponent<MeshFilter>() as MeshFilter;
 
-			int count = meshFilter._meshes.Count;
+			int count = meshFilter.model.meshes.Count;
 
 			var tvaos = new int[count];
 			GL.GenVertexArrays(count, tvaos);
@@ -38,7 +37,7 @@ namespace MonoKnight
 
 			for (int index = 0; index < count; index++)
 			{
-				Mesh mesh = meshFilter._meshes[index];
+				Mesh mesh = meshFilter.model.meshes[index];
 				int length = 8;
 				float[] Vertices = null;
 				int[] Indices = null;
@@ -57,13 +56,7 @@ namespace MonoKnight
 					Vertices[i * length + 7] = mesh._vertices[i].texCoord.Y;
 				}
 
-				Indices = new int[mesh._indices.Count];
-
-				for (int i = 0; i<mesh._indices.Count; i++)
-				{
-					Indices[i] = mesh._indices[i];
-				}
-
+				Indices = mesh._indices.ToArray();
 
 				GL.BindVertexArray(VAOs[index]);
 					GL.BindBuffer(BufferTarget.ArrayBuffer, VBOs[index]);
@@ -83,7 +76,7 @@ namespace MonoKnight
 
 		public void Render()
 		{
-			int count = meshFilter._meshes.Count;
+			int count = meshFilter.model.meshes.Count;
 			Camera camera = Object.FindObject("camera")[0] as Camera;
 			Matrix4 project = camera.ProjectMatrix;
 			Matrix4 view = camera.ViewMatrix;
@@ -100,22 +93,15 @@ namespace MonoKnight
 				int myProjectUniform = shader.GetUniformLocation(@"project");
 				GL.UniformMatrix4(myProjectUniform, false, ref project);
 
-				//if (meshFilter._meshes[index]._textures.Count == 0)
-				//{
-				//	defaultTex = new Texture(@"Resources/chalet.jpg");
-				//	meshFilter._meshes[index]._textures.Add(defaultTex);
-				//}
-
 				int myDiffuseUniform = shader.GetUniformLocation(@"diffuseTex");
 				GL.Uniform1(myDiffuseUniform, 0);
 
 				GL.ActiveTexture(TextureUnit.Texture0);
-				meshFilter._meshes[index]._textures[0].Bind();
+				meshFilter.model.meshes[index]._textures[0].Bind();
 
 				shader.Use();
-				//GL.CullFace(CullFaceMode.FrontAndBack);
 				GL.BindVertexArray(VAOs[index]);
-				GL.DrawElements(BeginMode.Triangles, meshFilter._meshes[index]._indices.Count, DrawElementsType.UnsignedInt, 0);
+					GL.DrawElements(BeginMode.Triangles, meshFilter.model.meshes[index]._indices.Count, DrawElementsType.UnsignedInt, 0);
 				GL.BindVertexArray(0);
 			}
 		}

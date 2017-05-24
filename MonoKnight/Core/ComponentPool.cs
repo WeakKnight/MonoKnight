@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MonoKnight
 {
-	public class ComponentPool
+	public class ComponentPool:Object
 	{
 		public ComponentPool()
 		{

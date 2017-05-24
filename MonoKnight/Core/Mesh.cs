@@ -20,7 +20,7 @@ namespace MonoKnight
 		public string type;	
 	}
 
-	public class Mesh
+	public class Mesh:Object
 	{
 		public Mesh(List<Vertex> vertices, List<int> indices, List<Texture> textures)
 		{

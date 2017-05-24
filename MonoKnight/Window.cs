@@ -51,8 +51,8 @@ namespace MonoKnight
 
 			//go1.AddComponent<RotateBehavior>();
 			go1.SetTag("go1");
-			go1.transform.position = new Vector3(3.0f, 1.0f, 1.0f);
-			go1.transform.parentTransform = go.transform;
+			go1.transform.position = new Vector3(6.0f, 1.0f, 1.0f);
+			//go1.transform.parent = go.transform;
 
 			var meshFilter2 = go2.AddComponent<MeshFilter>();
 			var meshRenderer2 = go2.AddComponent<MeshRenderer>();
@@ -61,9 +61,10 @@ namespace MonoKnight
 
 			go2.AddComponent<RotateBehavior>();
 			go2.transform.position = new Vector3(3.0f, 1.0f, 1.0f);
-			go2.transform.parentTransform = go1.transform;
+			//go2.transform.parent = go1.transform;
 
-			//_scene.AddItem(go1);
+			_scene.AddItem(go1);
+			_scene.AddItem(go2);
 			_scene.AddItem(go);
 			_scene.AddItem(camera);
 
@@ -90,12 +91,13 @@ namespace MonoKnight
 		{
 			Time.DeltaTime = (float)e.Time;
 			_scene.Update();
+			_scene.OnDestroy();
 			//_scene.UpdateTransform();
 		}
 
-		private GameObject go = new GameObject();
-		private GameObject go1 = new GameObject();
-		private GameObject go2 = new GameObject();
+		private Entity go = new Entity();
+		private Entity go1 = new Entity();
+		private Entity go2 = new Entity();
         private Camera camera = new Camera();
 
 		private void Render()

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Collections;
 namespace MonoKnight
 {
 	public class Object
@@ -16,7 +16,19 @@ namespace MonoKnight
 			return _id;
 		}
 
+		//public static void Destroy(Entity obj)
+		//{
+		//	obj.transform.parentTransform = null;
+		//	obj.RemoveAllComponent();
+		//	obj = null;
+		//}
+
 		public static void Destroy(Object obj) 
+		{
+			DestroyStack.Push(obj);
+		}
+
+		public static void ForceDestroy(Object obj)
 		{
 			if (obj.GetType().IsAssignableFrom(typeof(Component)))
 			{
@@ -24,13 +36,24 @@ namespace MonoKnight
 			}
 			else if (obj.GetType().IsAssignableFrom(typeof(Entity)))
 			{
-				Debug.Log("Entity Destroy");
+				Debug.Log("GameObject Destroy");
+				if ((obj as Entity).transform.parent != null)
+				{
+					(obj as Entity).transform.parent.RemoveChild((obj as Entity).transform);
+				}
+				(obj as Entity).RemoveAllComponent();
+				obj = null;
 			}
 			else 
 			{
 				Debug.Log("Object Destroy");
 			}
+
+			obj = null;
 		}
+
+		public static Stack DestroyStack = new Stack();
+		//public static List<Object> DestroyList = new List<Object>();
 
 		public void SetTag(string tag) 
 		{

@@ -85,7 +85,7 @@ namespace MonoKnight
 			}
 		}
 
-		public Transform parentTransform 
+		public Transform parent
 		{
 			get 
 			{
@@ -122,6 +122,11 @@ namespace MonoKnight
 		public Transform GetChild(int index) 
 		{
 			return _children[index];
+		}
+
+		public void RemoveChild(Transform transform)
+		{
+			_children.Remove(transform);
 		}
 
 		public Vector3 forward 
@@ -167,9 +172,9 @@ namespace MonoKnight
 		{
 			get
 			{
-				if (parentTransform != null)
+				if (parent != null)
 				{
-					return parentTransform.root;
+					return parent.root;
 				}
 				else
 				{

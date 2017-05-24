@@ -13,7 +13,7 @@ namespace MonoKnight
 
 		public void UpdateTransform()
 		{
-			UpdateTransformInternal(rootTransform);
+			UpdateTransformInternal(root);
 		}
 
 		private void UpdateTransformInternal(Transform transform)
@@ -25,28 +25,30 @@ namespace MonoKnight
 			}
 		}
 
-		public void AddItem(GameObject go)
+		public void AddItem(Entity go)
 		{
 			AddItem(go.GetComponent<Transform>() as Transform);
 		}
 
 		public void AddItem(Transform transform)
 		{
-			transform.parentTransform = rootTransform;
+			transform.parent = root;
 		}
 
 		public void Start()
 		{
-			foreach (var script in ComponentPool.GetInstance().ScriptPool)
+			for (int i = 0; i<ComponentPool.GetInstance().ScriptPool.Count; i++)
 			{
+				var script = ComponentPool.GetInstance().ScriptPool[i];
 				script.Start();
 			}
 		}
 
 		public void Update()
 		{
-			foreach (var script in ComponentPool.GetInstance().ScriptPool)
+			for (int i = 0; i < ComponentPool.GetInstance().ScriptPool.Count; i++)
 			{
+				var script = ComponentPool.GetInstance().ScriptPool[i];
 				script.Update();
 			}
 
@@ -60,14 +62,23 @@ namespace MonoKnight
          	GL.ClearColor(new Color4(49.0f / 255.0f, 77.0f / 255.0f, 121.0f / 255.0f, 1.0f));
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-			RenderInternal(rootTransform);
+			RenderInternal(root);
+		}
+
+		public void OnDestroy()
+		{
+			while (Object.DestroyStack.Count != 0)
+			{
+				var obj = Object.DestroyStack.Pop() as Object;
+				Object.ForceDestroy(obj);
+			}
 		}
 
 		private void RenderInternal(Transform transform)
 		{
 			foreach (var childTransform in transform._children)
 			{
-				var renderer = childTransform.parent.GetComponent<MeshRenderer>() as MeshRenderer;
+				var renderer = childTransform.entity.GetComponent<MeshRenderer>() as MeshRenderer;
 				if (renderer != null)
 				{
 					renderer.Render();
@@ -76,6 +87,6 @@ namespace MonoKnight
 			}
 		}
 
-		Transform rootTransform = new Transform();
+		Transform root = new Transform();
 	}
 }

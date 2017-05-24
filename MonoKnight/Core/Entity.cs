@@ -4,15 +4,17 @@ namespace MonoKnight
 {
 	public class Entity:Object
 	{
-		public Entity()
+		public Transform transform;
+
+		public Entity() : base()
 		{
-			
+			transform = AddComponent<Transform>();
 		}
 
 		public Component AddComponent(Type type)  
 		{
 			Component component = Activator.CreateInstance(type) as Component;
-			component.parent = this;
+			component.entity = this;
 			componentContainer.Add(component);
 			ComponentPool.GetInstance().Add(component, type);
 			return component;
@@ -21,7 +23,7 @@ namespace MonoKnight
 		public T AddComponent<T>() where T:Component, new()
 		{
 			T component = new T();
-			component.parent = this;
+			component.entity = this;
 			componentContainer.Add(component);
 			ComponentPool.GetInstance().Add(component, typeof(T));
 			return component;
@@ -77,8 +79,15 @@ namespace MonoKnight
 			return null;
 		}
 
-		static void Destroy(Component component) 
+		public void RemoveAllComponent()
 		{
+			for (int i = 0; i < componentContainer.Count; i++)
+			{
+				var com = componentContainer[i];
+				componentContainer.Remove(com);
+				ComponentPool.GetInstance().RemoveComponent(com);
+				com = null;
+			}
 		}
 
 		private List<Component> componentContainer = new List<Component>();

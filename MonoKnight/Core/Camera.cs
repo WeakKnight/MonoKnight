@@ -7,7 +7,7 @@ using OpenTK;
 
 namespace MonoKnight
 {
-	class Camera:GameObject
+	class Camera:Entity
     {
 		public Camera()
         {

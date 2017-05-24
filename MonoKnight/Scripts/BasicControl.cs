@@ -58,6 +58,11 @@ namespace MonoKnight
 			{
 				transform.scale -= Vector3.One * 0.1f;
 			}
+			//
+			if (OpenTK.Input.Keyboard.GetState().IsKeyDown(Key.B))
+			{
+				Object.Destroy(entity);
+			}
 		}
 	}
 }

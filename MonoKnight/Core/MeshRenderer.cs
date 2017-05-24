@@ -14,7 +14,7 @@ namespace MonoKnight
 
 		public void Init() 
 		{
-			meshFilter = GetComponent<MeshFilter>() as MeshFilter;
+			meshFilter = GetComponent<MeshFilter>();
 
 			int count = meshFilter.model.meshes.Count;
 			for (int index = 0; index<count; index++)

@@ -21,6 +21,19 @@ namespace MonoKnight
 			}
 		}
 
+		public void RemoveComponent(Component com)
+		{
+			if (com.GetType().IsSubclassOf(typeof(Script)))
+			{
+				ScriptPool.Remove(com as Script);
+			}
+			else if (com.GetType().IsAssignableFrom(typeof(MeshRenderer)))
+			{
+				MeshRendererPool.Remove(com as MeshRenderer);	
+			}
+			com = null;
+		}
+
 		public List<MeshRenderer> MeshRendererPool = new List<MeshRenderer>();
 
 		public List<Script> ScriptPool = new List<Script>();

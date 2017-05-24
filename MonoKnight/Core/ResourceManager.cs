@@ -23,11 +23,13 @@ namespace MonoKnight
 			_resourceDic[path] = texture;
 			return texture;
 		}
-
+		//TODO CG Shader Material
 		public Material LoadMaterial(string path)
 		{
 			return null;
 		}
+		//TODO use Material
+		public Shader meshShader = new Shader(@"Resources/mesh.vert", @"Resources/mesh.frag");
 
 		public T LoadResource<T>(string path) where T : Resource
 		{

@@ -77,7 +77,7 @@ namespace MonoKnight
 			if (_parent != null)
 			{
 				_parent.UpdateWorld();
-				Matrix4.Mult(ref _parent._worldMatrix, ref _localMatrix,  out _worldMatrix);
+				Matrix4.Mult(ref _localMatrix, ref _parent._worldMatrix, out _worldMatrix);
 			}
 			else
 			{

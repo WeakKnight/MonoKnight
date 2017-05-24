@@ -39,17 +39,18 @@ namespace MonoKnight
 			meshFilter.model = model1;
 			//meshFilter.LoadFromFile(@"Resources/Blonde Elexis - nude.obj");
 			meshRenderer.Init();
-			//go.AddComponent<BasicControl>();
+			go.AddComponent<BasicControl>();
 			//go.AddComponent<RotateBehavior>();
 
 			var meshFilter1 = go1.AddComponent<MeshFilter>();
 			var meshRenderer1 = go1.AddComponent<MeshRenderer>();
-			go1.AddComponent<BasicControl>();
+			//go1.AddComponent<BasicControl>();
 			//meshFilter1.LoadFromFile(@"Resources/nanomodel/nanosuit.obj");
 			meshFilter1.model = model2;
 			meshRenderer1.Init();
 
 			//go1.AddComponent<RotateBehavior>();
+			go1.SetTag("go1");
 			go1.transform.position = new Vector3(3.0f, 1.0f, 1.0f);
 			//go1.transform.parentTransform = go.transform;
 
@@ -100,6 +101,8 @@ namespace MonoKnight
 		private void Render()
 		{
 			_scene.Render();
+			go.GetComponent<MeshRenderer>().Render();
+			//go1.GetComponent<MeshRenderer>().Render();
 			SwapBuffers();
 		}
 	}

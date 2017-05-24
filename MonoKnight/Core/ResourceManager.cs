@@ -24,6 +24,11 @@ namespace MonoKnight
 			return texture;
 		}
 
+		public Material LoadMaterial(string path)
+		{
+			return null;
+		}
+
 		public T LoadResource<T>(string path) where T : Resource
 		{
 			if (_resourceDic.ContainsKey(path))

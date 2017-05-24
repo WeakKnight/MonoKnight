@@ -69,7 +69,7 @@ namespace MonoKnight
 	                GL.EnableVertexAttribArray(2);
 					//
 					GL.BindBuffer(BufferTarget.ElementArrayBuffer, EBOs[index]);
-					GL.BufferData(BufferTarget.ElementArrayBuffer, sizeof(int) * Indices.Length, Indices, BufferUsageHint.DynamicDraw);
+				GL.BufferData(BufferTarget.ElementArrayBuffer, sizeof(int) * Indices.Length, Indices, BufferUsageHint.DynamicDraw);
 				GL.BindVertexArray(0);	
 			}
 		}
@@ -103,6 +103,9 @@ namespace MonoKnight
 				GL.BindVertexArray(VAOs[index]);
 					GL.DrawElements(BeginMode.Triangles, meshFilter.model.meshes[index]._indices.Count, DrawElementsType.UnsignedInt, 0);
 				GL.BindVertexArray(0);
+
+				GL.ActiveTexture(TextureUnit.Texture0);
+				GL.BindTexture(TextureTarget.Texture2D, 0);
 			}
 		}
 	}

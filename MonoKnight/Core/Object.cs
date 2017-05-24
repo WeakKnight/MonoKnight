@@ -34,7 +34,7 @@ namespace MonoKnight
 
 		public void SetTag(string tag) 
 		{
-			if (this.tag != null)
+			if (this._tag != null)
 			{
 				if (tagDictionary.ContainsKey(tag))
 				{
@@ -53,6 +53,12 @@ namespace MonoKnight
 					tagDictionary[tag].Add(this);
 				}
 			}
+			_tag = tag;
+		}
+
+		public string GetTag()
+		{
+			return _tag;
 		}
 
 		public static Object[] FindObject(string tag) 
@@ -61,7 +67,7 @@ namespace MonoKnight
 		}
 
 		private static Dictionary<string, List<Object>> tagDictionary = new Dictionary<string, List<Object>>();
-		private string tag = null;
+		private string _tag = null;
 
 		private static long _count = 0;
 		private long _id = 0;

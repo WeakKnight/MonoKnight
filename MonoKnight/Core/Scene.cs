@@ -76,12 +76,17 @@ namespace MonoKnight
 
 		private void RenderInternal(Transform transform)
 		{
+			return;
 			foreach (var childTransform in transform._children)
 			{
 				var renderer = childTransform.parent.GetComponent<MeshRenderer>() as MeshRenderer;
 				if (renderer != null)
 				{
-					renderer.Render();
+					var tag = renderer.parent.GetTag();
+					if (tag == null)
+					{
+						renderer.Render();
+					}
 				}
 				RenderInternal(childTransform);
 			}

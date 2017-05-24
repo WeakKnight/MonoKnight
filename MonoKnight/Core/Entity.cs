@@ -65,13 +65,13 @@ namespace MonoKnight
 			return null;
 		}
 
-		public Component GetComponent<T>() where T : Component, new()
+		public T GetComponent<T>() where T : Component, new()
 		{
 			foreach (var item in componentContainer)
 			{
 				if (item.GetType() == typeof(T))
 				{
-					return item;
+					return item as T;
 				}
 			}
 			return null;

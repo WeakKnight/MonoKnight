@@ -63,6 +63,11 @@ namespace MonoKnight
 			{
 				Object.Destroy(entity);
 			}
+
+			if (OpenTK.Input.Keyboard.GetState().IsKeyDown(Key.N))
+			{
+				entity.RemoveComponent(this);
+			}
 		}
 	}
 }

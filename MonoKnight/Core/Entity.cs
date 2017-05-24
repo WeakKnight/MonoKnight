@@ -79,6 +79,22 @@ namespace MonoKnight
 			return null;
 		}
 
+		public void RemoveComponent(Component com)
+		{
+			componentContainer.RemoveAll(delegate(Component target)
+			{
+				if (com == target)
+				{
+					ComponentPool.GetInstance().RemoveComponent(target);
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			});
+		}
+
 		public void RemoveAllComponent()
 		{
 			componentContainer.RemoveAll(delegate(Component com) 

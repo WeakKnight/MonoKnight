@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{01C593A6-7592-406F-AF99-B220EFF508BC}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/Material.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Window.cs">
     <Files>
       <File FileName="MonoKnight/Core/Scene.cs" Line="74" Column="5" />
       <File FileName="MonoKnight/Core/Object.cs" Line="53" Column="30" />
@@ -12,6 +12,7 @@
       <File FileName="MonoKnight/Core/Filter.cs" Line="11" Column="1" />
       <File FileName="MonoKnight/Core/Texture.cs" Line="11" Column="33" />
       <File FileName="MonoKnight/Core/Material.cs" Line="5" Column="3" />
+      <File FileName="MonoKnight/Window.cs" Line="34" Column="12" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,10 +21,9 @@
             <Node name="MonoKnight" expanded="True">
               <Node name="References" expanded="True" />
               <Node name="Packages" expanded="True" />
-              <Node name="Core" expanded="True">
-                <Node name="Material.cs" selected="True" />
-              </Node>
+              <Node name="Core" expanded="True" />
               <Node name="Scripts" expanded="True" />
+              <Node name="Window.cs" selected="True" />
             </Node>
           </Node>
         </State>

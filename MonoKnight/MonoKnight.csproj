@@ -50,6 +50,9 @@
     <Reference Include="OpenTK">
       <HintPath>..\packages\OpenTK.3.0.0-pre\lib\net20\OpenTK.dll</HintPath>
     </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\packages\protobuf-net.2.2.0\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +88,7 @@
     <Compile Include="Core\WindowManager.cs" />
     <Compile Include="Core\WindowConfiguration.cs" />
     <Compile Include="Core\DataMember.cs" />
+    <Compile Include="Core\Serializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -26,6 +26,10 @@ namespace MonoKnight
 			W = Width;
 			H = Height;
 			camera.transform.position = new Vector3(0.0f, 0.0f, -10.0f);
+			//Debug.Log(camera.transform.position.ToString());
+			//Debug.Log(camera.transform.worldToLocalMatrix.ToString());
+			//var test = Deserializer.Deserialize<Vector3>(camera.transform.position.ToString());
+			//var a = 2;
 		}
 
 		public Scene _scene = new Scene();
@@ -66,6 +70,7 @@ namespace MonoKnight
 			go2.transform.position = new Vector3(3.0f, 1.0f, 1.0f);
 			//go2.transform.parent = go1.transform;
 
+			var pre = Prefab.Create(go2);
 			_scene.AddItem(go1);
 			_scene.AddItem(go2);
 			_scene.AddItem(go);

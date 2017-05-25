@@ -20,7 +20,7 @@ namespace MonoKnight
                 var handle = GetConsoleWindow();
                 ShowWindow(handle, SW_HIDE);
             }
-
+			var app = new Application();
             new Window().Run(60);
 		}
 	}

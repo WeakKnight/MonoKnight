@@ -76,15 +76,12 @@ namespace MonoKnight
 
 		private void RenderInternal(Transform transform)
 		{
-			foreach (var childTransform in transform._children)
-			{
-				var renderer = childTransform.entity.GetComponent<MeshRenderer>() as MeshRenderer;
-				if (renderer != null)
+			ComponentPool.GetInstance().MeshRendererPool.ForEach(
+				delegate (MeshRenderer renderer)
 				{
 					renderer.Render();
 				}
-				RenderInternal(childTransform);
-			}
+			);
 		}
 
 		Transform root = new Transform();

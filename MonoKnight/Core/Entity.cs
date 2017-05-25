@@ -29,6 +29,11 @@ namespace MonoKnight
 			return component;
 		}
 
+		public Component[] GetAllComponents()
+		{
+			return componentContainer.ToArray();
+		}
+
 		public Component[] GetComponents(Type type)
 		{
 			Component[] result = { };

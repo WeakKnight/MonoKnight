@@ -11,15 +11,16 @@ namespace MonoKnight
 		public Window() :
 		base
 		(
-		800, // initial width
-		600, // initial height
-		GraphicsMode.Default,
-		"dreamstatecoding",  // initial title
-		GameWindowFlags.Default,
-		DisplayDevice.Default,
-		4, // OpenGL major version
-		0, // OpenGL minor version
-		GraphicsContextFlags.ForwardCompatible)
+			800, // initial width
+			600, // initial height
+			GraphicsMode.Default,
+			"MonoKnight",  // initial title
+			GameWindowFlags.Default,
+			DisplayDevice.Default,
+			4, // OpenGL major version
+			0, // OpenGL minor version
+			GraphicsContextFlags.ForwardCompatible
+		)
 		{
 			Title += ": OpenGL Version: " + GL.GetString(StringName.Version);
 			W = Width;
@@ -34,6 +35,8 @@ namespace MonoKnight
             CursorVisible = true;
 			var model1 = ResourceManager.GetInstance().LoadResource<Model>(@"Resources/nanomodel/nanosuit.obj");
 			var model2 = ResourceManager.GetInstance().LoadResource<Model>(@"Resources/Blonde Elexis - nude.obj");
+			var model3 = ResourceManager.GetInstance().LoadResource<Model>(@"Resources/animodel/boblampclean.md5mesh");
+
 			var meshFilter = go.AddComponent<MeshFilter>();
 			var meshRenderer = go.AddComponent<MeshRenderer>();
 			meshFilter.model = model1;

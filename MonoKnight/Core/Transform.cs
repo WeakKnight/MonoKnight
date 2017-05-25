@@ -18,19 +18,12 @@ namespace MonoKnight
 			scale = Vector3.One;
         }
         
-		//public event TransformChangedEventHandler Changed;
-
-		//private void onChanged(EventArgs e)
-		//{
-		//	if (Changed != null)
-		//	{
-		//		//Changed(this, e);
-		//		foreach (var item in _children)
-		//		{
-		//			item.Changed(item, e);
-		//		}
-		//	}
-		//}
+		[DataMember]
+		public Quaternion rotation;
+		[DataMember]
+		public Vector3 position;
+		[DataMember]
+		public Vector3 scale;
 
 		public Matrix4 localMatrix
 		{
@@ -39,6 +32,22 @@ namespace MonoKnight
 				return _localMatrix;
 			}
 		}
+
+		//public void Test()
+		//{
+		//	var fields = typeof(Transform).GetFields();
+		//	foreach (var field in fields)
+		//	{ 
+		//		var attrs = Attribute.GetCustomAttributes(field);
+		//		foreach (var attr in attrs)
+		//		{
+		//			if (attr is DataMember)
+		//			{
+						
+		//			}
+		//		}
+		//	}
+		//}
 
 		//TODO
 		public Matrix4 localToWorldMatrix
@@ -163,10 +172,6 @@ namespace MonoKnight
 		{
 			position += translation;
 		}
-
-		public Quaternion rotation;
-		public Vector3 position;
-		public Vector3 scale;
 
 		public Transform root
 		{

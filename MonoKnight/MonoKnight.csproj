@@ -80,6 +80,11 @@
     <Compile Include="Core\ResourceManager.cs" />
     <Compile Include="Core\ModelLoader.cs" />
     <Compile Include="Core\Resource.cs" />
+    <Compile Include="Core\Application.cs" />
+    <Compile Include="Core\DesktopWindow.cs" />
+    <Compile Include="Core\WindowManager.cs" />
+    <Compile Include="Core\WindowConfiguration.cs" />
+    <Compile Include="Core\DataMember.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -257,6 +262,27 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\nanomodel\nanosuit.obj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\animodel\guard1_body.tga">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\animodel\guard1_face.tga">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\animodel\guard1_helmet.tga">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\animodel\boblampclean.md5anim">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\animodel\boblampclean.md5mesh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\animodel\iron_grill.tga">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\animodel\round_grill.tga">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

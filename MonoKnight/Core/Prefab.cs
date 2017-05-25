@@ -6,5 +6,11 @@ namespace MonoKnight
 		public Prefab()
 		{
 		}
+
+		static public Prefab Create(Entity entity)
+		{
+			var prefab = new Prefab();
+			return prefab;
+		}
 	}
 }

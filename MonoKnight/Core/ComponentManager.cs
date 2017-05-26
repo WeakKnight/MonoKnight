@@ -37,10 +37,18 @@ namespace MonoKnight
 					componentPool[type] = list;
 				}
 			}
+			//life cycle, add to wake list to awake
+			AddingList.Add(com);
 		}
 
 		public void RemoveComponent(Component com)
 		{
+			if (com == null)
+			{
+				Debug.Assert(true);
+				return;
+			}
+
 			if (com.GetType().IsSubclassOf(typeof(Script)))
 			{
 				if (componentPool.ContainsKey(typeof(Script)))
@@ -75,6 +83,8 @@ namespace MonoKnight
 		}
 
 		static private ComponentManager _instance = null;
+
+		public HashSet<Component> AddingList = new HashSet<Component>();
 
 		private class ComponentComparer : IComparer<Type>
 		{

@@ -89,6 +89,7 @@ namespace MonoKnight
 
 			_scene.Start();
 
+			_scene.OnDestroy();
         }
 
 		public static int W = 0;
@@ -109,6 +110,8 @@ namespace MonoKnight
 		protected override void OnUpdateFrame(FrameEventArgs e)
 		{
 			Time.DeltaTime = (float)e.Time;
+			_scene.Awake();
+			_scene.Start();
 			_scene.Update();
 			_scene.OnDestroy();
 			//_scene.UpdateTransform();

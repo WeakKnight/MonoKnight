@@ -6,6 +6,12 @@ using System.Text.RegularExpressions;
 
 namespace MonoKnight
 {
+	[ProtoContract]
+	public class SceneInfo
+	{
+		[ProtoMember(1)]
+		public List<GameObjectInfo> ItemList = new List<GameObjectInfo>();
+	}
 
 	[ProtoContract]
 	public class GameObjectInfo
@@ -91,6 +97,17 @@ namespace MonoKnight
 
 			return default(object);
 		}
+
+		//static public SceneInfo SerializeScene(Scene scene)
+		//{
+		//	SceneInfo result = new SceneInfo();
+		//	scene.
+		//	result.ItemList.Add
+		//}
+
+		//static public Scene DeserializeScene(SceneInfo sceneInfo)
+		//{
+		//}
 
 		static public GameObjectInfo SerializeEntity(Entity entity)
 		{

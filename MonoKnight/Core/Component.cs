@@ -7,8 +7,16 @@ namespace MonoKnight
 		{
 		}
 
+		protected bool isAwake = false;
+
 		public virtual void Awake()
-		{ 
+		{
+			isAwake = true;
+		}
+
+		public virtual void Start()
+		{
+			
 		}
 
 		protected Component AddComponent(Type type)

@@ -10,7 +10,7 @@ namespace MonoKnight
 			
 		}
 
-		public virtual void Start()
+		public override void Start()
 		{
 			
 		}

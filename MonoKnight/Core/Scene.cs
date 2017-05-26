@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using OpenTK.Graphics.OpenGL;
 using OpenTK;
 using OpenTK.Graphics;
@@ -13,7 +14,10 @@ namespace MonoKnight
 
 		public void UpdateTransform()
 		{
-			UpdateTransformInternal(root);
+			foreach (var entity in ItemList)
+			{	
+				UpdateTransformInternal(entity.transform);
+			}
 		}
 
 		private void UpdateTransformInternal(Transform transform)
@@ -25,43 +29,31 @@ namespace MonoKnight
 			}
 		}
 
-		public void AddItem(Entity go)
+		public void AddItem(Entity entity)
 		{
-			AddItem(go.GetComponent<Transform>() as Transform);
+			ItemList.Add(entity);
 		}
 
 		public void AddItem(Transform transform)
 		{
-			transform.parent = root;
+			ItemList.Add(transform.entity);
 		}
 
 		public void Awake()
 		{
-			foreach (var comListPair in ComponentManager.GetInstance().componentPool)
+			foreach (var com in ComponentManager.GetInstance().AddingList)
 			{
-				foreach (var com in comListPair.Value)
-				{
-					com.Awake();
-				}
+				com.Awake();
 			}
 		}
 
 		public void Start()
 		{
-			if (ComponentManager.GetInstance().componentPool.ContainsKey(typeof(Script)))
+			ComponentManager.GetInstance().AddingList.RemoveWhere(delegate(Component com)
 			{
-				ComponentManager.GetInstance().componentPool[typeof(Script)].ForEach(
-					delegate (Component script)
-					{
-						(script as Script).Start();
-					}
-				);
-			}
-			//for (int i = 0; i<ComponentManager.GetInstance().ScriptPool.Count; i++)
-			//{
-			//	var script = ComponentManager.GetInstance().ScriptPool[i];
-			//	script.Start();
-			//}
+				com.Start();
+				return true;
+			});
 		}
 
 		public void Update()
@@ -91,7 +83,10 @@ namespace MonoKnight
          	GL.ClearColor(new Color4(49.0f / 255.0f, 77.0f / 255.0f, 121.0f / 255.0f, 1.0f));
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-			RenderInternal(root);
+			foreach (var entity in ItemList)
+			{
+				RenderInternal(entity.transform);
+			}
 		}
 
 		public void OnDestroy()
@@ -130,6 +125,7 @@ namespace MonoKnight
 			//}
 		}
 
-		Transform root = new Transform();
+		public List<Entity> ItemList = new List<Entity>();
+		//Transform root = new Transform();
 	}
 }

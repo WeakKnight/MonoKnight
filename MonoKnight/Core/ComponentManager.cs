@@ -37,16 +37,6 @@ namespace MonoKnight
 					componentPool[type] = list;
 				}
 			}
-
-			//
-			//if (type.IsAssignableFrom(typeof(MeshRenderer)))
-			//{
-			//	MeshRendererPool.Add(com as MeshRenderer);
-			//}
-			//else if (type.IsSubclassOf(typeof(Script)))
-			//{
-			//	ScriptPool.Add(com as Script);
-			//}
 		}
 
 		public void RemoveComponent(Component com)
@@ -65,21 +55,9 @@ namespace MonoKnight
 					componentPool[com.GetType()].Remove(com);
 				}
 			}
-			//
-			//if (com.GetType().IsSubclassOf(typeof(Script)))
-			//{
-			//	ScriptPool.Remove(com as Script);
-			//}
-			//else if (com.GetType().IsAssignableFrom(typeof(MeshRenderer)))
-			//{
-			//	MeshRendererPool.Remove(com as MeshRenderer);	
-			//}
+
 			com = null;
 		}
-
-		//public List<MeshRenderer> MeshRendererPool = new List<MeshRenderer>();
-
-		//public List<Script> ScriptPool = new List<Script>();
 
 		public SortedDictionary<Type, List<Component>> componentPool = new SortedDictionary<Type, List<Component>>(new ComponentComparer());
 
@@ -108,6 +86,4 @@ namespace MonoKnight
 			}
 		}
 	}
-
-
 }

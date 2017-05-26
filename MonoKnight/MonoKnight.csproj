@@ -60,14 +60,12 @@
     <Compile Include="Core\Entity.cs" />
     <Compile Include="Core\Component.cs" />
     <Compile Include="Core\Debug.cs" />
-    <Compile Include="Core\SystemScheduler.cs" />
     <Compile Include="Core\Time.cs" />
     <Compile Include="Core\Transform.cs" />
     <Compile Include="Core\Shader.cs" />
     <Compile Include="Core\Texture.cs" />
     <Compile Include="Core\Camera.cs" />
     <Compile Include="Core\Renderer.cs" />
-    <Compile Include="Core\Filter.cs" />
     <Compile Include="Core\Material.cs" />
     <Compile Include="Core\TextureAtlas.cs" />
     <Compile Include="Core\Prefab.cs" />

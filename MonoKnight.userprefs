@@ -1,12 +1,18 @@
 ﻿<Properties StartupConfiguration="{01C593A6-7592-406F-AF99-B220EFF508BC}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/Transform.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/Mesh.cs">
     <Files>
       <File FileName="MonoKnight/Core/MeshFilter.cs" Line="27" Column="3" />
-      <File FileName="MonoKnight/Window.cs" Line="79" Column="13" />
-      <File FileName="MonoKnight/Core/Serializer.cs" Line="187" Column="63" />
+      <File FileName="MonoKnight/Window.cs" Line="62" Column="55" />
+      <File FileName="MonoKnight/Core/Serializer.cs" Line="38" Column="32" />
       <File FileName="MonoKnight/Core/Entity.cs" Line="21" Column="30" />
-      <File FileName="MonoKnight/Core/Scene.cs" Line="116" Column="5" />
-      <File FileName="MonoKnight/Core/Transform.cs" Line="29" Column="4" />
+      <File FileName="MonoKnight/Core/Scene.cs" Line="120" Column="36" />
+      <File FileName="MonoKnight/Core/Transform.cs" Line="191" Column="3" />
+      <File FileName="MonoKnight/Core/Model.cs" Line="6" Column="26" />
+      <File FileName="MonoKnight/Core/MeshRenderer.cs" Line="40" Column="14" />
+      <File FileName="MonoKnight/Core/Camera.cs" Line="12" Column="3" />
+      <File FileName="MonoKnight/Core/ComponentManager.cs" Line="88" Column="3" />
+      <File FileName="MonoKnight/Core/Renderer.cs" Line="1" Column="1" />
+      <File FileName="MonoKnight/Core/Mesh.cs" Line="80" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

@@ -79,7 +79,20 @@ namespace MonoKnight
 
 		public void Render(Transform transform)
 		{
-			Camera camera = Object.FindObject("camera")[0] as Camera;
+			Camera camera = null;
+			if (ComponentManager.GetInstance().componentPool.ContainsKey(typeof(Camera)))
+			{
+				if (ComponentManager.GetInstance().componentPool[typeof(Camera)][0] != null)
+				{
+					camera = ComponentManager.GetInstance().componentPool[typeof(Camera)][0] as Camera;
+				}
+			}
+
+			if (camera == null)
+			{
+				return;
+			}
+
 			Matrix4 project = camera.ProjectMatrix;
 			Matrix4 view = camera.ViewMatrix;
 			Matrix4 model = transform.localToWorldMatrix;

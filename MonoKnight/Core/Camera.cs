@@ -7,13 +7,9 @@ using OpenTK;
 
 namespace MonoKnight
 {
-	class Camera:Entity
+	[ComponentOrder(20)]
+	class Camera:Component
     {
-		public Camera():base(0.0f, 0.0f, 0.0f)
-        {
-			SetTag("camera");
-        }
-
 		public Matrix4 ViewMatrix
 		{
 			get 

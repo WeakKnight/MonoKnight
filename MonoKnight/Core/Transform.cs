@@ -102,6 +102,7 @@ namespace MonoKnight
 			}
 			set
 			{
+				
 				if (_parent == value)
 				{
 					return;

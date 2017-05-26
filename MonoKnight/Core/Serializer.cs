@@ -2,16 +2,23 @@
 using OpenTK;
 using ProtoBuf;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace MonoKnight
 {
+
+	[ProtoContract]
+	public class GameObjectInfo
+	{
+		[ProtoMember(1)]
+		public List<ComponentInfo> ComInfoList = new List<ComponentInfo>();
+		[ProtoMember(2)]
+		public List<GameObjectInfo> ChildrenList = new List<GameObjectInfo>();
+	}
+
 	[ProtoContract]
 	public class ComponentInfo
 	{
-		public ComponentInfo()
-		{
-		}
-
 		[ProtoMember(1)]
 		public string Name = "";
 
@@ -28,7 +35,7 @@ namespace MonoKnight
 		public string ValueString = "";	
 	}
 
-	public class Serializer
+	public static class Serializer
 	{
 		static public T DeserializeValue<T>(string str)
 		{
@@ -85,7 +92,47 @@ namespace MonoKnight
 			return default(object);
 		}
 
-		static private ComponentInfo SerializeComponent(Component com)
+		static public GameObjectInfo SerializeEntity(Entity entity)
+		{
+			var result = new GameObjectInfo();
+
+			foreach (var com in entity.GetAllComponents())
+			{
+				result.ComInfoList.Add(SerializeComponent(com));
+			}
+
+			if (entity.transform != null)
+			{
+				foreach (var childTransform in entity.transform._children)
+				{
+					var child = childTransform.entity;
+					result.ChildrenList.Add(SerializeEntity(child));
+				}
+			}
+
+			return result;
+		}
+
+		static public Entity DeserializeEntity(GameObjectInfo entityInfo)
+		{
+			var result = new Entity();
+
+			foreach (var comInfo in entityInfo.ComInfoList)
+			{
+				var com = DeserializeComponent(comInfo);
+				result.AddComponent(com);
+			}
+
+			foreach (var childInfo in entityInfo.ChildrenList)
+			{
+				var child = DeserializeEntity(childInfo);
+				child.GetComponent<Transform>().parent = result.GetComponent<Transform>();
+			}
+
+			return result;
+		}
+
+		static public ComponentInfo SerializeComponent(Component com)
 		{
 			var comInfo = new ComponentInfo();
 
@@ -101,7 +148,8 @@ namespace MonoKnight
 					if (atrr is DataMember)
 					{
 						var memberInfo = new MemberInfo();
-						memberInfo.TypeName = field.FieldType.ToString();
+						var assemblyQualifiedName = field.FieldType.AssemblyQualifiedName.ToString();
+						memberInfo.TypeName = assemblyQualifiedName;//field.FieldType.ToString()+","+assemblyQualifiedName;
 						memberInfo.ValueString = field.GetValue(com).ToString();
 						comInfo.Props[field.Name] = memberInfo;
 					}
@@ -110,7 +158,7 @@ namespace MonoKnight
 			return comInfo;
 		}
 
-		static private Component DeserializeComponent(ComponentInfo cominfo)
+		static public Component DeserializeComponent(ComponentInfo cominfo)
 		{
 			Type type = Type.GetType(cominfo.Name);
 			Component component = Activator.CreateInstance(type) as Component;
@@ -123,10 +171,16 @@ namespace MonoKnight
 			return component;
 		}
 
+		static private string TrimString(string str)
+		{
+			var result = Regex.Replace(str, @"\:|\(+|\)+|V+|W+|\s+", "");
+			return result;
+		}
+
 		static private Matrix4 DeserializeMatrix4(string str)
 		{
 			//V: (0, 0, 0), W: 1
-			str = str.Trim(new char[] { '(', ')', ' ' });
+			str = TrimString(str);
 			string[] nums = str.Split(',');
 			return new Matrix4(
 				float.Parse(nums[0]), float.Parse(nums[1]), float.Parse(nums[2]), float.Parse(nums[3]),
@@ -139,7 +193,7 @@ namespace MonoKnight
 		static private Quaternion DeserializeQuaternion(string str)
 		{
 			//V: (0, 0, 0), W: 1
-			str = str.Trim(new char[] { '(', ')', ' ', 'V', 'W', ':' });
+			str = TrimString(str);
 			string[] nums = str.Split(',');
 			return new Quaternion(float.Parse(nums[0]), float.Parse(nums[1]), float.Parse(nums[2]), float.Parse(nums[3]));
 		}
@@ -147,7 +201,7 @@ namespace MonoKnight
 		static private Vector3 DeserializeVector3(string str)
 		{
 			//(0, 0, -10)
-			str = str.Trim(new char[] { '(', ')', ' ' });
+			str = TrimString(str);
 			string[] nums = str.Split(',');
 			return new Vector3(float.Parse(nums[0]), float.Parse(nums[1]), float.Parse(nums[2]));
 		}
@@ -155,7 +209,7 @@ namespace MonoKnight
 		static private Vector4 DeserializeVector4(string str)
 		{
 			//(0, 0, -10)
-			str = str.Trim(new char[] { '(', ')', ' ' });
+			str = TrimString(str);
 			string[] nums = str.Split(',');
 			return new Vector4(float.Parse(nums[0]), float.Parse(nums[1]), float.Parse(nums[2]), float.Parse(nums[3]));
 		}
@@ -163,7 +217,7 @@ namespace MonoKnight
 		static private Vector2 DeserializeVector2(string str)
 		{
 			//(0, 0, -10)
-			str = str.Trim(new char[] { '(', ')', ' ' });
+			str = TrimString(str);
 			string[] nums = str.Split(',');
 			return new Vector2(float.Parse(nums[0]), float.Parse(nums[1]));
 		}

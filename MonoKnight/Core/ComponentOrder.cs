@@ -13,8 +13,6 @@ namespace MonoKnight
 			}
 		}
 
-		public int NamedInt { get; set; }
-
 		public ComponentOrder(int runningOrder)
 		{
             this.runningOrder = runningOrder;

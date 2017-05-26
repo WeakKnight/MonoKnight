@@ -103,23 +103,31 @@ namespace MonoKnight
 			});
 		}
 
+		//TODO Root Changed Listener
 		private void RenderInternal(Transform transform)
 		{
-			if (ComponentManager.GetInstance().componentPool.ContainsKey(typeof(MeshRenderer)))
+			if (transform.entity != null)
 			{
-				ComponentManager.GetInstance().componentPool[typeof(MeshRenderer)].ForEach(
-					delegate (Component renderer)
-					{
-						(renderer as MeshRenderer).Render();
-					}
-				);
+				var renderer = transform.entity.GetComponent<MeshRenderer>();
+				if (renderer != null)
+				{
+					renderer.Render();
+				}
 			}
-			//ComponentManager.GetInstance().MeshRendererPool.ForEach(
-			//	delegate (MeshRenderer renderer)
-			//	{
-			//		renderer.Render();
-			//	}
-			//);
+
+			foreach (var childTransform in transform._children)
+			{
+				RenderInternal(childTransform);	
+			}
+			//if (ComponentManager.GetInstance().componentPool.ContainsKey(typeof(MeshRenderer)))
+			//{
+			//	ComponentManager.GetInstance().componentPool[typeof(MeshRenderer)].ForEach(
+			//		delegate (Component renderer)
+			//		{
+			//			(renderer as MeshRenderer).Render();
+			//		}
+			//	);
+			//}
 		}
 
 		Transform root = new Transform();

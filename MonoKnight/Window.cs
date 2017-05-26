@@ -46,6 +46,7 @@ namespace MonoKnight
 			meshFilter.modelPath = @"Resources/nanomodel/nanosuit.obj";
 			//meshFilter.LoadFromFile(@"Resources/Blonde Elexis - nude.obj");
 			go.AddComponent<BasicControl>();
+			go.transform.position = new Vector3(2.0f, 1.0f, 1.0f);
 			//go.AddComponent<RotateBehavior>();
 
 			var meshFilter1 = go1.AddComponent<MeshFilter>();
@@ -57,7 +58,7 @@ namespace MonoKnight
 			//go1.AddComponent<RotateBehavior>();
 			go1.SetTag("go1");
 			go1.transform.position = new Vector3(6.0f, 1.0f, 1.0f);
-			//go1.transform.parent = go.transform;
+			go1.transform.parent = go.transform;
 
 			var meshFilter2 = go2.AddComponent<MeshFilter>();
 			var meshRenderer2 = go2.AddComponent<MeshRenderer>();
@@ -65,12 +66,16 @@ namespace MonoKnight
 
 			go2.AddComponent<RotateBehavior>();
 			go2.transform.position = new Vector3(3.0f, 1.0f, 1.0f);
-			//go2.transform.parent = go1.transform;
+			go2.transform.parent = go1.transform;
 
-			var pre = Prefab.Create(go2);
-			_scene.AddItem(go1);
-			_scene.AddItem(go2);
-			_scene.AddItem(go);
+			var goInfo = Serializer.SerializeEntity(go);
+			var goo = Serializer.DeserializeEntity(goInfo);
+			//var pre = Prefab.Create(go2);
+
+			_scene.AddItem(goo);
+			//_scene.AddItem(go1);
+			//_scene.AddItem(go2);
+			//_scene.AddItem(go);
 			_scene.AddItem(camera);
 
 			_scene.Awake();
@@ -102,9 +107,9 @@ namespace MonoKnight
 			//_scene.UpdateTransform();
 		}
 
-		private Entity go = new Entity();
-		private Entity go1 = new Entity();
-		private Entity go2 = new Entity();
+		private Entity go = new Entity(0.0f, 0.0f, 0.0f);
+		private Entity go1 = new Entity(0.0f, 0.0f, 0.0f);
+		private Entity go2 = new Entity(0.0f, 0.0f, 0.0f);
         private Camera camera = new Camera();
 
 		private void Render()

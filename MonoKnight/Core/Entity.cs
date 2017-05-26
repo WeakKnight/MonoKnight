@@ -4,11 +4,22 @@ namespace MonoKnight
 {
 	public class Entity:Object
 	{
-		public Transform transform;
+		public Transform transform
+		{
+			get 
+			{
+				return GetComponent<Transform>();
+			}
+		}
 
 		public Entity()
 		{
-			transform = AddComponent<Transform>();
+		}
+
+		public Entity(float x, float y, float z)
+		{
+			AddComponent<Transform>();
+			transform.position = new OpenTK.Vector3(x, y, z);
 		}
 
 		public Component AddComponent(Type type)  
@@ -18,6 +29,13 @@ namespace MonoKnight
 			componentContainer.Add(component);
 			ComponentManager.GetInstance().Add(component, type);
 			return component;
+		}
+
+		public void AddComponent(Component component)
+		{
+			component.entity = this;
+			componentContainer.Add(component);
+			ComponentManager.GetInstance().Add(component, component.GetType());
 		}
 
 		public T AddComponent<T>() where T:Component, new()

@@ -9,7 +9,7 @@ namespace MonoKnight
 {
 	class Camera:Entity
     {
-		public Camera()
+		public Camera():base(0.0f, 0.0f, 0.0f)
         {
 			SetTag("camera");
         }

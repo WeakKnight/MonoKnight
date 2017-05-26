@@ -8,7 +8,9 @@ namespace MonoKnight
 		{
 		}
 
+		[DataMember]
 		public int rotateAxis = 0;// 0 is y , 1 is x
+		[DataMember]
 		public float rotateSpeed = 10.0f;
 
 		public override void Update()

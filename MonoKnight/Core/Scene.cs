@@ -35,22 +35,51 @@ namespace MonoKnight
 			transform.parent = root;
 		}
 
+		public void Awake()
+		{
+			foreach (var comListPair in ComponentManager.GetInstance().componentPool)
+			{
+				foreach (var com in comListPair.Value)
+				{
+					com.Awake();
+				}
+			}
+		}
+
 		public void Start()
 		{
-			for (int i = 0; i<ComponentPool.GetInstance().ScriptPool.Count; i++)
+			if (ComponentManager.GetInstance().componentPool.ContainsKey(typeof(Script)))
 			{
-				var script = ComponentPool.GetInstance().ScriptPool[i];
-				script.Start();
+				ComponentManager.GetInstance().componentPool[typeof(Script)].ForEach(
+					delegate (Component script)
+					{
+						(script as Script).Start();
+					}
+				);
 			}
+			//for (int i = 0; i<ComponentManager.GetInstance().ScriptPool.Count; i++)
+			//{
+			//	var script = ComponentManager.GetInstance().ScriptPool[i];
+			//	script.Start();
+			//}
 		}
 
 		public void Update()
 		{
-			for (int i = 0; i < ComponentPool.GetInstance().ScriptPool.Count; i++)
+			if (ComponentManager.GetInstance().componentPool.ContainsKey(typeof(Script)))
 			{
-				var script = ComponentPool.GetInstance().ScriptPool[i];
-				script.Update();
+				ComponentManager.GetInstance().componentPool[typeof(Script)].ForEach(
+					delegate (Component script)
+					{
+						(script as Script).Update();
+					}
+				);
 			}
+			//for (int i = 0; i < ComponentManager.GetInstance().ScriptPool.Count; i++)
+			//{
+			//	var script = ComponentManager.GetInstance().ScriptPool[i];
+			//	script.Update();
+			//}
 
 			UpdateTransform();
 		}
@@ -76,12 +105,21 @@ namespace MonoKnight
 
 		private void RenderInternal(Transform transform)
 		{
-			ComponentPool.GetInstance().MeshRendererPool.ForEach(
-				delegate (MeshRenderer renderer)
-				{
-					renderer.Render();
-				}
-			);
+			if (ComponentManager.GetInstance().componentPool.ContainsKey(typeof(MeshRenderer)))
+			{
+				ComponentManager.GetInstance().componentPool[typeof(MeshRenderer)].ForEach(
+					delegate (Component renderer)
+					{
+						(renderer as MeshRenderer).Render();
+					}
+				);
+			}
+			//ComponentManager.GetInstance().MeshRendererPool.ForEach(
+			//	delegate (MeshRenderer renderer)
+			//	{
+			//		renderer.Render();
+			//	}
+			//);
 		}
 
 		Transform root = new Transform();

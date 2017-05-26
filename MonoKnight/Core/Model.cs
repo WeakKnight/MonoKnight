@@ -10,7 +10,7 @@ namespace MonoKnight
 			path = a_path;
 			meshes = a_meshes;
 		}
-
+		
 		public string path = null;
 		public List<Mesh> meshes = null;
 	}

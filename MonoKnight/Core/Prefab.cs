@@ -4,29 +4,6 @@ using ProtoBuf;
 
 namespace MonoKnight
 {
-	[ProtoContract]
-	public class ComponentInfo
-	{
-		public ComponentInfo()
-		{
-		}
-
-		[ProtoMember(1)]
-		public string Name = "";
-
-		[ProtoMember(2)]
-		public Dictionary<string, MemberInfo> Props = new Dictionary<string, MemberInfo>();
-	}
-
-	[ProtoContract]
-	public class MemberInfo
-	{
-		[ProtoMember(1)]
-		public string TypeName = "";
-		[ProtoMember(2)]
-		public string ValueString = "";
-	}
-
 	public class Prefab:Resource
 	{
 		public Prefab()

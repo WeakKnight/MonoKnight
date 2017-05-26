@@ -4,6 +4,7 @@ using OpenTK.Graphics.OpenGL;
 
 namespace MonoKnight
 {
+	[ComponentOrder(50)]
 	public class MeshRenderer : Component
 	{
 		public MeshRenderer()
@@ -12,7 +13,13 @@ namespace MonoKnight
 	
 		private MeshFilter meshFilter = null;
 
-		public void Init() 
+		public override void Awake()
+		{
+			base.Awake();
+			Init();
+		}
+
+		private void Init() 
 		{
 			meshFilter = GetComponent<MeshFilter>();
 

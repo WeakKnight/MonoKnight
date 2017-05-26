@@ -74,7 +74,7 @@
     <Compile Include="Core\Mesh.cs" />
     <Compile Include="Core\MeshRenderer.cs" />
     <Compile Include="Core\MeshFilter.cs" />
-    <Compile Include="Core\ComponentPool.cs" />
+    <Compile Include="Core\ComponentManager.cs" />
     <Compile Include="Core\Scene.cs" />
     <Compile Include="Core\Script.cs" />
     <Compile Include="Scripts\BasicControl.cs" />
@@ -89,6 +89,7 @@
     <Compile Include="Core\WindowConfiguration.cs" />
     <Compile Include="Core\DataMember.cs" />
     <Compile Include="Core\Serializer.cs" />
+    <Compile Include="Core\ComponentOrder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

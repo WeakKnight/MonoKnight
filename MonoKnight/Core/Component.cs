@@ -5,7 +5,10 @@ namespace MonoKnight
 	{
 		public Component() 
 		{
-			
+		}
+
+		public virtual void Awake()
+		{ 
 		}
 
 		protected Component AddComponent(Type type)

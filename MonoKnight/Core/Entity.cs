@@ -16,7 +16,7 @@ namespace MonoKnight
 			Component component = Activator.CreateInstance(type) as Component;
 			component.entity = this;
 			componentContainer.Add(component);
-			ComponentPool.GetInstance().Add(component, type);
+			ComponentManager.GetInstance().Add(component, type);
 			return component;
 		}
 
@@ -25,7 +25,7 @@ namespace MonoKnight
 			T component = new T();
 			component.entity = this;
 			componentContainer.Add(component);
-			ComponentPool.GetInstance().Add(component, typeof(T));
+			ComponentManager.GetInstance().Add(component, typeof(T));
 			return component;
 		}
 
@@ -90,7 +90,7 @@ namespace MonoKnight
 			{
 				if (com == target)
 				{
-					ComponentPool.GetInstance().RemoveComponent(target);
+					ComponentManager.GetInstance().RemoveComponent(target);
 					return true;
 				}
 				else
@@ -104,7 +104,7 @@ namespace MonoKnight
 		{
 			componentContainer.RemoveAll(delegate(Component com) 
 			{
-				ComponentPool.GetInstance().RemoveComponent(com);
+				ComponentManager.GetInstance().RemoveComponent(com);
 				return true;
 			});
 		}

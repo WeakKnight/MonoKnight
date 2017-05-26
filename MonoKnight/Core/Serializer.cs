@@ -1,37 +1,126 @@
 ﻿using System;
 using OpenTK;
+using ProtoBuf;
+using System.Collections.Generic;
 
 namespace MonoKnight
 {
+	[ProtoContract]
+	public class ComponentInfo
+	{
+		public ComponentInfo()
+		{
+		}
+
+		[ProtoMember(1)]
+		public string Name = "";
+
+		[ProtoMember(2)]
+		public Dictionary<string, MemberInfo> Props = new Dictionary<string, MemberInfo>();
+	}
+
+	[ProtoContract]
+	public class MemberInfo
+	{
+		[ProtoMember(1)]
+		public string TypeName = "";
+		[ProtoMember(2)]
+		public string ValueString = "";	
+	}
+
 	public class Serializer
 	{
-		static public T Deserialize<T>(string str)
+		static public T DeserializeValue<T>(string str)
 		{
-			if (typeof(T) == typeof(Vector3))
+			return (T)DeserializeValue(typeof(T), str);
+		}
+
+		static public object DeserializeValue(Type type, string str)
+		{
+			if (type == typeof(Vector3))
 			{
-				return (T)(object)DeserializeVector3(str);
+				return (object)DeserializeVector3(str);
 			}
 
-			if (typeof(T) == typeof(Vector4))
+			if (type == typeof(Vector4))
 			{
-				return (T)(object)DeserializeVector4(str);
+				return (object)DeserializeVector4(str);
 			}
 
-			if (typeof(T) == typeof(Vector2))
+			if (type == typeof(Vector2))
 			{
-				return (T)(object)DeserializeVector2(str);
+				return (object)DeserializeVector2(str);
 			}
 
-			if (typeof(T) == typeof(Quaternion))
+			if (type == typeof(Quaternion))
 			{
-				return (T)(object)DeserializeQuaternion(str);
+				return (object)DeserializeQuaternion(str);
 			}
 
-			if (typeof(T) == typeof(Matrix4))
+			if (type == typeof(Matrix4))
 			{
-				return (T)(object)DeserializeMatrix4(str);
+				return (object)DeserializeMatrix4(str);
 			}
-			return default(T);
+
+			if (type == typeof(float))
+			{
+				return (object)float.Parse(str);
+			}
+
+			if (type == typeof(double))
+			{
+				return (object)double.Parse(str);
+			}
+
+			if (type == typeof(int))
+			{
+				return (object)int.Parse(str);
+			}
+
+			if (type == typeof(string))
+			{
+				return (object)str;
+			}
+
+			return default(object);
+		}
+
+		static private ComponentInfo SerializeComponent(Component com)
+		{
+			var comInfo = new ComponentInfo();
+
+			var type = com.GetType();
+			comInfo.Name = type.ToString();
+
+			var fields = type.GetFields();
+			foreach (var field in fields)
+			{
+				var atrrs = Attribute.GetCustomAttributes(field);
+				foreach (var atrr in atrrs)
+				{
+					if (atrr is DataMember)
+					{
+						var memberInfo = new MemberInfo();
+						memberInfo.TypeName = field.FieldType.ToString();
+						memberInfo.ValueString = field.GetValue(com).ToString();
+						comInfo.Props[field.Name] = memberInfo;
+					}
+				}
+			}
+			return comInfo;
+		}
+
+		static private Component DeserializeComponent(ComponentInfo cominfo)
+		{
+			Type type = Type.GetType(cominfo.Name);
+			Component component = Activator.CreateInstance(type) as Component;
+			foreach (var pair in cominfo.Props)
+			{
+				var field = type.GetField(pair.Key);
+				var valueType = Type.GetType(pair.Value.TypeName);
+				field.SetValue(component, DeserializeValue(valueType, pair.Value.ValueString));
+			}
+			return component;
 		}
 
 		static private Matrix4 DeserializeMatrix4(string str)

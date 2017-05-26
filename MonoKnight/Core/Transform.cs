@@ -8,7 +8,7 @@ using OpenTK;
 namespace MonoKnight
 {
 	//public delegate void TransformChangedEventHandler(object sender, EventArgs e);
-
+	[ComponentOrder(0)]
 	public class Transform : Component
     {
         public Transform()

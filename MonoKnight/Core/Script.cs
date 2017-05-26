@@ -2,6 +2,7 @@
 
 namespace MonoKnight
 {
+	[ComponentOrder(30)]
 	public class Script:Component
 	{
 		public Script()

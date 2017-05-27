@@ -14,27 +14,23 @@ namespace MonoKnight
 	public class Window : GameWindow
 	{
 		
-		public Window() :
+		public Window(WindowConfiguration config) :
 		base
 		(
-			800, // initial width
-			600, // initial height
+			config.DefaultWidth, 
+			config.DefaultHeight, 
 			GraphicsMode.Default,
-			"MonoKnight",  // initial title
+			config.DefaultTitle,  
 			GameWindowFlags.Default,
 			DisplayDevice.Default,
-			4, // OpenGL major version
-			0, // OpenGL minor version
+			4, 
+			0,
 			GraphicsContextFlags.ForwardCompatible
 		)
 		{
-			Title += ": OpenGL Version: " + GL.GetString(StringName.Version);
 			W = Width;
 			H = Height;
-			//camera.transform.position = new Vector3(0.0f, 0.0f, -10.0f);
 		}
-
-		//public Scene _scene;
 
 		public WindowDelegate LoadDelegate;
 		public WindowDelegate UpdateDelegate;
@@ -48,16 +44,6 @@ namespace MonoKnight
 			{
 				LoadDelegate();
 			}
-			//SceneInfo sceneInfo;
-			//using (var file = File.OpenRead("Resources/main.scene")) {
-   // 			sceneInfo = ProtoBuf.Serializer.Deserialize<SceneInfo>(file);
-			//}
-
-			//var scene = Serializer.DeserializeScene(sceneInfo);
-			//_scene = scene;
-			//_scene.Awake();
-			//_scene.Start();
-			//_scene.OnDestroy();
         }
 
 		public static int W = 0;
@@ -72,7 +58,6 @@ namespace MonoKnight
 				RenderDelegate();
 			}
             SwapBuffers();
-			//Render();
 		}
 
 		protected override void OnRenderFrame(FrameEventArgs e)
@@ -82,7 +67,6 @@ namespace MonoKnight
 				RenderDelegate();
 			}
             SwapBuffers();
-			//Render();
 		}
 
 		protected override void OnUpdateFrame(FrameEventArgs e)
@@ -93,17 +77,6 @@ namespace MonoKnight
 			{
                 UpdateDelegate();
 			}
-			//_scene.Awake();
-			//_scene.Start();
-			//_scene.Update();
-			//_scene.OnDestroy();
-			//_scene.UpdateTransform();
 		}
-
-		//private void Render()
-		//{
-		//	_scene.Render();
-		//	SwapBuffers();
-		//}
 	}
 }

@@ -18,13 +18,6 @@ namespace MonoKnight
 			return _id;
 		}
 
-		//public static void Destroy(Entity obj)
-		//{
-		//	obj.transform.parentTransform = null;
-		//	obj.RemoveAllComponent();
-		//	obj = null;
-		//}
-
 		public static void Destroy(Object obj) 
 		{
 			if (obj != null)
@@ -66,8 +59,6 @@ namespace MonoKnight
 		}
 
 		public static HashSet<Object> DestroySet = new HashSet<Object>();
-		//public static Stack DestroyStack = new Stack();
-		//public static List<Object> DestroyList = new List<Object>();
 
 		public void SetTag(string tag) 
 		{

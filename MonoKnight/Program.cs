@@ -21,7 +21,7 @@ namespace MonoKnight
                 ShowWindow(handle, SW_HIDE);
             }
 
-			var window = new Window();
+			var window = new Window(new WindowConfiguration());
 			var game = new Game(new GameConfiguration());
 			window.LoadDelegate = game.Start;
 			window.RenderDelegate = game.Render;

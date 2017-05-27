@@ -31,7 +31,7 @@ namespace MonoKnight
 			camera.transform.position = new Vector3(0.0f, 0.0f, -10.0f);
 		}
 
-		public Scene _scene = new Scene();
+		public Scene _scene = null;
 
 		protected override void OnLoad(EventArgs e)
 		{
@@ -71,22 +71,35 @@ namespace MonoKnight
 			//using (var file = File.Create("person.bin")) {
 			//	ProtoBuf.Serializer.Serialize(file, goInfo);
 			//}
-			GameObjectInfo deInfo;
-			using (var file = File.OpenRead("person.bin")) {
-    			deInfo = ProtoBuf.Serializer.Deserialize<GameObjectInfo>(file);
+			//GameObjectInfo deInfo;
+			//using (var file = File.OpenRead("person.bin")) {
+   // 			deInfo = ProtoBuf.Serializer.Deserialize<GameObjectInfo>(file);
+			//}
+			//var goo = Serializer.DeserializeEntity(deInfo);
+			////var pre = Prefab.Create(go2);
+			//camera.AddComponent<Camera>();
+
+			//var testEntity = new Entity();
+			//testEntity.AddComponent<TestAwake>();
+
+			//_scene.AddItem(goo);
+			////_scene.AddItem(go1);
+			////_scene.AddItem(go2);
+			////_scene.AddItem(go);
+			//_scene.AddItem(camera);
+
+			SceneInfo sceneInfo;
+			//sceneInfo = Serializer.SerializeScene(_scene);
+			//using (var file = File.Create("scene.bin")) 
+			//{
+			//	ProtoBuf.Serializer.Serialize(file, sceneInfo);			
+			//}
+			using (var file = File.OpenRead("scene.bin")) {
+    			sceneInfo = ProtoBuf.Serializer.Deserialize<SceneInfo>(file);
 			}
-			var goo = Serializer.DeserializeEntity(deInfo);
-			//var pre = Prefab.Create(go2);
-			camera.AddComponent<Camera>();
 
-			var testEntity = new Entity();
-			testEntity.AddComponent<TestAwake>();
-
-			_scene.AddItem(goo);
-			//_scene.AddItem(go1);
-			//_scene.AddItem(go2);
-			//_scene.AddItem(go);
-			_scene.AddItem(camera);
+			var scene = Serializer.DeserializeScene(sceneInfo);
+			_scene = scene;
 
 			_scene.Awake();
 

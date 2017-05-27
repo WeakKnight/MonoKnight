@@ -6,10 +6,6 @@ namespace MonoKnight
 {
 	public class Prefab:Resource
 	{
-		public Prefab()
-		{
-		}
-
 		public List<ComponentInfo> componentInfos= new List<ComponentInfo>();
 
 		static public Prefab Create(Entity entity)

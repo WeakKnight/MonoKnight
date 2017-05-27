@@ -83,13 +83,13 @@
     <Compile Include="Core\ModelLoader.cs" />
     <Compile Include="Core\Resource.cs" />
     <Compile Include="Core\Application.cs" />
-    <Compile Include="Core\DesktopWindow.cs" />
     <Compile Include="Core\WindowManager.cs" />
     <Compile Include="Core\WindowConfiguration.cs" />
     <Compile Include="Core\DataMember.cs" />
     <Compile Include="Core\Serializer.cs" />
     <Compile Include="Core\ComponentOrder.cs" />
     <Compile Include="Scripts\TestAwake.cs" />
+    <Compile Include="Core\DesktopWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

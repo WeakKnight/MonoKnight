@@ -60,6 +60,6 @@ namespace MonoKnight
 		public int Height = 0;
 		public string path = @"";
 
-		private int Tex = 0;
+		protected int Tex = 0;
 	}
 }

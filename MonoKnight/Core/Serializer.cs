@@ -52,47 +52,47 @@ namespace MonoKnight
 		{
 			if (type == typeof(Vector3))
 			{
-				return (object)DeserializeVector3(str);
+				return DeserializeVector3(str);
 			}
 
 			if (type == typeof(Vector4))
 			{
-				return (object)DeserializeVector4(str);
+				return DeserializeVector4(str);
 			}
 
 			if (type == typeof(Vector2))
 			{
-				return (object)DeserializeVector2(str);
+				return DeserializeVector2(str);
 			}
 
 			if (type == typeof(Quaternion))
 			{
-				return (object)DeserializeQuaternion(str);
+				return DeserializeQuaternion(str);
 			}
 
 			if (type == typeof(Matrix4))
 			{
-				return (object)DeserializeMatrix4(str);
+				return DeserializeMatrix4(str);
 			}
 
 			if (type == typeof(float))
 			{
-				return (object)float.Parse(str);
+				return float.Parse(str);
 			}
 
 			if (type == typeof(double))
 			{
-				return (object)double.Parse(str);
+				return double.Parse(str);
 			}
 
 			if (type == typeof(int))
 			{
-				return (object)int.Parse(str);
+				return int.Parse(str);
 			}
 
 			if (type == typeof(string))
 			{
-				return (object)str;
+				return str;
 			}
 
 			return default(object);
@@ -199,13 +199,13 @@ namespace MonoKnight
 			return component;
 		}
 
-		static private string TrimString(string str)
+		static string TrimString(string str)
 		{
-			var result = Regex.Replace(str, @"\:|\(+|\)+|V+|W+|\s+", "");
+			var result = Regex.Replace(str, @"\:+|\(+|\)+|V+|W+|\s+", "");
 			return result;
 		}
 
-		static private Matrix4 DeserializeMatrix4(string str)
+		static Matrix4 DeserializeMatrix4(string str)
 		{
 			//V: (0, 0, 0), W: 1
 			str = TrimString(str);
@@ -218,7 +218,7 @@ namespace MonoKnight
 			);
 		}
 
-		static private Quaternion DeserializeQuaternion(string str)
+		static Quaternion DeserializeQuaternion(string str)
 		{
 			//V: (0, 0, 0), W: 1
 			str = TrimString(str);
@@ -226,7 +226,7 @@ namespace MonoKnight
 			return new Quaternion(float.Parse(nums[0]), float.Parse(nums[1]), float.Parse(nums[2]), float.Parse(nums[3]));
 		}
 
-		static private Vector3 DeserializeVector3(string str)
+		static Vector3 DeserializeVector3(string str)
 		{
 			//(0, 0, -10)
 			str = TrimString(str);
@@ -234,7 +234,7 @@ namespace MonoKnight
 			return new Vector3(float.Parse(nums[0]), float.Parse(nums[1]), float.Parse(nums[2]));
 		}
 
-		static private Vector4 DeserializeVector4(string str)
+		static Vector4 DeserializeVector4(string str)
 		{
 			//(0, 0, -10)
 			str = TrimString(str);
@@ -242,7 +242,7 @@ namespace MonoKnight
 			return new Vector4(float.Parse(nums[0]), float.Parse(nums[1]), float.Parse(nums[2]), float.Parse(nums[3]));
 		}
 
-		static private Vector2 DeserializeVector2(string str)
+		static Vector2 DeserializeVector2(string str)
 		{
 			//(0, 0, -10)
 			str = TrimString(str);

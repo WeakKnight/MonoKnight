@@ -34,8 +34,8 @@ namespace MonoKnight
 			return GL.GetUniformLocation(Program, name);
 		}
 
-		private int Vertex = 0;
-		private int Fragment = 0;
-		private int Program = 0;
+		protected int Vertex = 0;
+		protected int Fragment = 0;
+		protected int Program = 0;
 	}
 }

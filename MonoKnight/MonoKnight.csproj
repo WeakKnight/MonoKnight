@@ -89,6 +89,7 @@
     <Compile Include="Core\DataMember.cs" />
     <Compile Include="Core\Serializer.cs" />
     <Compile Include="Core\ComponentOrder.cs" />
+    <Compile Include="Scripts\TestAwake.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

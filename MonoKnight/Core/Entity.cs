@@ -31,20 +31,16 @@ namespace MonoKnight
 			return component;
 		}
 
+		public T AddComponent<T>() where T:Component, new()
+		{
+			return AddComponent(typeof(T)) as T;
+		}
+
 		public void AddComponent(Component component)
 		{
 			component.entity = this;
 			componentContainer.Add(component);
 			ComponentManager.GetInstance().Add(component, component.GetType());
-		}
-
-		public T AddComponent<T>() where T:Component, new()
-		{
-			T component = new T();
-			component.entity = this;
-			componentContainer.Add(component);
-			ComponentManager.GetInstance().Add(component, typeof(T));
-			return component;
 		}
 
 		public Component[] GetAllComponents()
@@ -67,15 +63,7 @@ namespace MonoKnight
 
 		public Component[] GetComponents<T>() where T:Component, new()
 		{
-			Component[] result = { };
-			foreach (var item in componentContainer)
-			{
-				if (item.GetType() == typeof(T))
-				{
-					result[result.Length] = item;
-				}
-			}
-			return result;
+			return GetComponents(typeof(T));
 		}
 
 		public Component GetComponent(Type type)
@@ -92,14 +80,7 @@ namespace MonoKnight
 
 		public T GetComponent<T>() where T : Component, new()
 		{
-			foreach (var item in componentContainer)
-			{
-				if (item.GetType() == typeof(T))
-				{
-					return item as T;
-				}
-			}
-			return null;
+			return GetComponent(typeof(T)) as T;
 		}
 
 		public void RemoveComponent(Component com)

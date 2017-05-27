@@ -32,10 +32,31 @@ namespace MonoKnight
 		public void AddItem(Entity entity)
 		{
 			ItemList.Add(entity);
+			InternalAddItem(entity);
+		}
+
+		public void InternalAddItem(Entity entity)
+		{
+			foreach (var com in entity.GetAllComponents())
+			{
+				ComponentManager.GetInstance().AddingList.Add(com);
+			}
+			if (entity.transform != null)
+			{
+				foreach (var childTransform in entity.transform._children)
+				{
+					InternalAddItem(childTransform.entity);
+				}
+			}
 		}
 
 		public void AddItem(Transform transform)
 		{
+			if (transform.entity == null)
+			{
+				Debug.Assert(true);
+				return;
+			}
 			ItemList.Add(transform.entity);
 		}
 
@@ -63,15 +84,13 @@ namespace MonoKnight
 				ComponentManager.GetInstance().componentPool[typeof(Script)].ForEach(
 					delegate (Component script)
 					{
-						(script as Script).Update();
+						if (script.isAwake)
+						{ 
+							(script as Script).Update();
+						}
 					}
 				);
 			}
-			//for (int i = 0; i < ComponentManager.GetInstance().ScriptPool.Count; i++)
-			//{
-			//	var script = ComponentManager.GetInstance().ScriptPool[i];
-			//	script.Update();
-			//}
 
 			UpdateTransform();
 		}
@@ -114,6 +133,8 @@ namespace MonoKnight
 			{
 				RenderInternal(childTransform);	
 			}
+
+			//TODO Root Changed Listener
 			//if (ComponentManager.GetInstance().componentPool.ContainsKey(typeof(MeshRenderer)))
 			//{
 			//	ComponentManager.GetInstance().componentPool[typeof(MeshRenderer)].ForEach(

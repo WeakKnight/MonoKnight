@@ -79,6 +79,9 @@ namespace MonoKnight
 			//var pre = Prefab.Create(go2);
 			camera.AddComponent<Camera>();
 
+			var testEntity = new Entity();
+			testEntity.AddComponent<TestAwake>();
+
 			_scene.AddItem(goo);
 			//_scene.AddItem(go1);
 			//_scene.AddItem(go2);

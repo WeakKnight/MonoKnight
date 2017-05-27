@@ -1,13 +1,14 @@
 ﻿using System;
 namespace MonoKnight
 {
+	[ComponentOrder(0)]
 	public class Component:Object
 	{
 		public Component() 
 		{
 		}
 
-		protected bool isAwake = false;
+		public bool isAwake = false;
 
 		public virtual void Awake()
 		{

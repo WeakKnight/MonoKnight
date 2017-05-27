@@ -38,7 +38,7 @@ namespace MonoKnight
 				}
 			}
 			//life cycle, add to wake list to awake
-			AddingList.Add(com);
+			//AddingList.Add(com);
 		}
 
 		public void RemoveComponent(Component com)

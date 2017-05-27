@@ -17,7 +17,7 @@ namespace MonoKnight
 
 		public virtual void Update()
 		{
-			
+
 		}
 	}
 }

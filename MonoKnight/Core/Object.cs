@@ -39,8 +39,12 @@ namespace MonoKnight
 
 		public static void ForceDestroy(Object obj)
 		{
-			if (obj.GetType().IsAssignableFrom(typeof(Component)))
+			if (obj.GetType().IsSubclassOf(typeof(Component)))
 			{
+				if ((obj as Component).entity != null)
+				{
+					(obj as Component).entity.RemoveComponent(obj as Component);
+				}
 				Debug.Log("Component Destroy");
 			}
 			else if (obj.GetType().IsAssignableFrom(typeof(Entity)))

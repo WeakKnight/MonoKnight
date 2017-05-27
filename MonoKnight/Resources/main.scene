@@ -1,0 +1,71 @@
+
+ä
+û
+MonoKnight.Transform~
+rotationr
+\OpenTK.Quaternion, OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4V: (0, 0, 0), W: 1r
+positionf
+YOpenTK.Vector3, OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4	(2, 1, 1)o
+scalef
+YOpenTK.Vector3, OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4	(1, 1, 1)
+¥
+MonoKnight.MeshFilter‹
+	modelPath~
+ZSystem.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089 Resources/nanomodel/nanosuit.obj
+
+MonoKnight.MeshRenderer
+
+MonoKnight.BasicControl…
+û
+MonoKnight.Transform~
+rotationr
+\OpenTK.Quaternion, OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4V: (0, 0, 0), W: 1r
+positionf
+YOpenTK.Vector3, OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4	(6, 1, 1)o
+scalef
+YOpenTK.Vector3, OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4	(1, 1, 1)
+¨
+MonoKnight.MeshFilterŽ
+	modelPath€
+ZSystem.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"Resources/Blonde Elexis - nude.obj
+
+MonoKnight.MeshRenderer
+ú
+MonoKnight.RotateBehaviorl
+
+rotateAxis^
+YSystem.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e0890o
+rotateSpeed`
+ZSystem.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e08910Á
+û
+MonoKnight.Transform~
+rotationr
+\OpenTK.Quaternion, OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4V: (0, 0, 0), W: 1r
+positionf
+YOpenTK.Vector3, OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4	(3, 1, 1)o
+scalef
+YOpenTK.Vector3, OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4	(1, 1, 1)
+¨
+MonoKnight.MeshFilterŽ
+	modelPath€
+ZSystem.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"Resources/Blonde Elexis - nude.obj
+
+MonoKnight.MeshRenderer
+ú
+MonoKnight.RotateBehaviorl
+
+rotateAxis^
+YSystem.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e0890o
+rotateSpeed`
+ZSystem.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e08910
+•
+ý
+MonoKnight.Transform~
+rotationr
+\OpenTK.Quaternion, OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4V: (0, 0, 0), W: 1t
+positionh
+YOpenTK.Vector3, OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4(0, 0, -10)o
+scalef
+YOpenTK.Vector3, OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4	(1, 1, 1)
+
+MonoKnight.Camera

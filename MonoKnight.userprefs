@@ -1,30 +1,37 @@
 ﻿<Properties StartupConfiguration="{01C593A6-7592-406F-AF99-B220EFF508BC}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/Serializer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/Script.cs">
     <Files>
       <File FileName="MonoKnight/Core/MeshFilter.cs" Line="34" Column="1" />
-      <File FileName="MonoKnight/Window.cs" Line="98" Column="27" />
-      <File FileName="MonoKnight/Core/Serializer.cs" Line="97" Column="4" />
-      <File FileName="MonoKnight/Core/Entity.cs" Line="84" Column="4" />
-      <File FileName="MonoKnight/Core/Scene.cs" Line="93" Column="5" />
+      <File FileName="MonoKnight/Core/Serializer.cs" Line="204" Column="54" />
+      <File FileName="MonoKnight/Core/Entity.cs" Line="86" Column="15" />
+      <File FileName="MonoKnight/Core/Scene.cs" Line="11" Column="17" />
       <File FileName="MonoKnight/Core/Transform.cs" Line="191" Column="3" />
       <File FileName="MonoKnight/Core/Model.cs" Line="6" Column="26" />
       <File FileName="MonoKnight/Core/MeshRenderer.cs" Line="40" Column="14" />
       <File FileName="MonoKnight/Core/Camera.cs" Line="10" Column="22" />
-      <File FileName="MonoKnight/Core/ComponentManager.cs" Line="41" Column="6" />
+      <File FileName="MonoKnight/Core/ComponentManager.cs" Line="44" Column="15" />
       <File FileName="MonoKnight/Core/Renderer.cs" Line="1" Column="1" />
       <File FileName="MonoKnight/Core/Mesh.cs" Line="94" Column="5" />
-      <File FileName="MonoKnight/Core/Script.cs" Line="21" Column="1" />
-      <File FileName="MonoKnight/Core/Object.cs" Line="64" Column="3" />
+      <File FileName="MonoKnight/Core/Object.cs" Line="40" Column="22" />
       <File FileName="MonoKnight/Core/Component.cs" Line="11" Column="31" />
       <File FileName="MonoKnight/Core/Debug.cs" Line="11" Column="47" />
       <File FileName="MonoKnight/Core/Material.cs" Line="5" Column="3" />
       <File FileName="MonoKnight/Core/DataMember.cs" Line="10" Column="3" />
       <File FileName="MonoKnight/Core/ComponentOrder.cs" Line="7" Column="29" />
       <File FileName="MonoKnight/Scripts/TestAwake.cs" Line="12" Column="1" />
-      <File FileName="MonoKnight/Core/Prefab.cs" Line="6" Column="2" />
-      <File FileName="MonoKnight/Core/Shader.cs" Line="39" Column="29" />
+      <File FileName="MonoKnight/Core/Prefab.cs" Line="9" Column="2" />
+      <File FileName="MonoKnight/Core/Shader.cs" Line="9" Column="1" />
       <File FileName="MonoKnight/Core/TextureAtlas.cs" Line="5" Column="3" />
       <File FileName="MonoKnight/Core/Texture.cs" Line="66" Column="1" />
+      <File FileName="MonoKnight/Core/Game.cs" Line="34" Column="3" />
+      <File FileName="MonoKnight/Scripts/BasicControl.cs" Line="69" Column="16" />
+      <File FileName="MonoKnight/Scripts/RotateBehavior.cs" Line="14" Column="36" />
+      <File FileName="MonoKnight/Core/GameConfiguration.cs" Line="10" Column="60" />
+      <File FileName="MonoKnight/Core/WindowConfiguration.cs" Line="8" Column="45" />
+      <File FileName="MonoKnight/Core/ResourceManager.cs" Line="31" Column="1" />
+      <File FileName="MonoKnight/Program.cs" Line="33" Column="1" />
+      <File FileName="MonoKnight/Core/Window.cs" Line="14" Column="15" />
+      <File FileName="MonoKnight/Core/Script.cs" Line="21" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

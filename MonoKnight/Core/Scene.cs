@@ -6,7 +6,7 @@ using OpenTK.Graphics;
 
 namespace MonoKnight
 {
-	public class Scene : Object
+	public class Scene : Resource
 	{
 		public Scene()
 		{
@@ -112,6 +112,10 @@ namespace MonoKnight
 		{
 			Object.DestroySet.RemoveWhere(delegate(Object obj) 
 			{
+				if (obj.GetType() == typeof(Entity)) 
+				{
+					ItemList.Remove(obj as Entity);
+				}
 				Object.ForceDestroy(obj);
 				return true;
 			});

@@ -20,8 +20,13 @@ namespace MonoKnight
                 var handle = GetConsoleWindow();
                 ShowWindow(handle, SW_HIDE);
             }
-			var app = new Application();
-            new Window().Run(60);
+
+			var window = new Window();
+			var game = new Game(new GameConfiguration());
+			window.LoadDelegate = game.Start;
+			window.RenderDelegate = game.Render;
+			window.UpdateDelegate = game.Update;
+            window.Run(60);
 		}
 	}
 }

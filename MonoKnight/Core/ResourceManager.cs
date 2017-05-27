@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace MonoKnight
 {
@@ -23,6 +24,18 @@ namespace MonoKnight
 			_resourceDic[path] = texture;
 			return texture;
 		}
+
+		public Scene LoadScene(string path)
+		{
+			SceneInfo sceneInfo;
+			using (var file = File.OpenRead(path)) {
+    			sceneInfo = ProtoBuf.Serializer.Deserialize<SceneInfo>(file);
+			}
+
+			var scene = Serializer.DeserializeScene(sceneInfo);
+			return scene;
+		}
+
 		//TODO CG Shader Material
 		public Material LoadMaterial(string path)
 		{
@@ -43,10 +56,15 @@ namespace MonoKnight
 				{
 					return LoadModel(path) as T;
 				}
-				else 
+				if (typeof(T).Equals(typeof(Texture)))
 				{
 					return LoadTexture(path) as T;
 				}
+				if (typeof(T).Equals(typeof(Scene)))
+				{
+					return LoadScene(path) as T;
+				}
+				return default(T);
 			}
 		}
 

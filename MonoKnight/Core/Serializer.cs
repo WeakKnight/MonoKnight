@@ -98,16 +98,27 @@ namespace MonoKnight
 			return default(object);
 		}
 
-		//static public SceneInfo SerializeScene(Scene scene)
-		//{
-		//	SceneInfo result = new SceneInfo();
-		//	scene.
-		//	result.ItemList.Add
-		//}
+		static public SceneInfo SerializeScene(Scene scene)
+		{
+			SceneInfo result = new SceneInfo();
+			foreach (var item in scene.ItemList)
+			{
+				var itemInfo = SerializeEntity(item);
+				result.ItemList.Add(itemInfo);
+			}
+			return result;
+		}
 
-		//static public Scene DeserializeScene(SceneInfo sceneInfo)
-		//{
-		//}
+		static public Scene DeserializeScene(SceneInfo sceneInfo)
+		{
+			Scene result = new Scene();
+			foreach (var itemInfo in sceneInfo.ItemList)
+			{
+				var item = DeserializeEntity(itemInfo);
+				result.AddItem(item);
+			}
+			return result;
+		}
 
 		static public GameObjectInfo SerializeEntity(Entity entity)
 		{

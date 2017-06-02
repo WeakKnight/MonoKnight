@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runtime", "MonoKnight\Runti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Editor", "Editor\Editor.csproj", "{01CCB5E2-B901-4B33-958E-D3C4F7F02925}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMGUI", "IMGUI\IMGUI.csproj", "{E79C6345-F03E-4C76-8A92-D007B389B93E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -29,5 +31,13 @@ Global
 		{01CCB5E2-B901-4B33-958E-D3C4F7F02925}.Debug|x64.Build.0 = Debug|x86
 		{01CCB5E2-B901-4B33-958E-D3C4F7F02925}.Release|x64.ActiveCfg = Release|x86
 		{01CCB5E2-B901-4B33-958E-D3C4F7F02925}.Release|x64.Build.0 = Release|x86
+		{E79C6345-F03E-4C76-8A92-D007B389B93E}.Debug|x86.ActiveCfg = Debug|x86
+		{E79C6345-F03E-4C76-8A92-D007B389B93E}.Debug|x86.Build.0 = Debug|x86
+		{E79C6345-F03E-4C76-8A92-D007B389B93E}.Release|x86.ActiveCfg = Release|x86
+		{E79C6345-F03E-4C76-8A92-D007B389B93E}.Release|x86.Build.0 = Release|x86
+		{E79C6345-F03E-4C76-8A92-D007B389B93E}.Debug|x64.ActiveCfg = Debug|x86
+		{E79C6345-F03E-4C76-8A92-D007B389B93E}.Debug|x64.Build.0 = Debug|x86
+		{E79C6345-F03E-4C76-8A92-D007B389B93E}.Release|x64.ActiveCfg = Release|x86
+		{E79C6345-F03E-4C76-8A92-D007B389B93E}.Release|x64.Build.0 = Release|x86
 	EndGlobalSection
 EndGlobal

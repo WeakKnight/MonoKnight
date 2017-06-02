@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{01CCB5E2-B901-4B33-958E-D3C4F7F02925}</ProjectGuid>
+    <ProjectGuid>{E79C6345-F03E-4C76-8A92-D007B389B93E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Editor</RootNamespace>
-    <AssemblyName>Editor</AssemblyName>
+    <RootNamespace>IMGUI</RootNamespace>
+    <AssemblyName>IMGUI</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -33,20 +33,16 @@
     <Reference Include="OpenTK">
       <HintPath>..\packages\OpenTK.3.0.0-pre\lib\net20\OpenTK.dll</HintPath>
     </Reference>
+    <Reference Include="Sichem.Framework">
+      <HintPath>..\packages\Sichem.Framework.0.3.5.13\lib\netstandard1.1\Sichem.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="StbSharp">
+      <HintPath>..\packages\StbSharp.0.4.0.20\lib\netstandard1.1\StbSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MonoKnight\Runtime.csproj">
-      <Project>{01C593A6-7592-406F-AF99-B220EFF508BC}</Project>
-      <Name>Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IMGUI\IMGUI.csproj">
-      <Project>{E79C6345-F03E-4C76-8A92-D007B389B93E}</Project>
-      <Name>IMGUI</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />

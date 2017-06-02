@@ -50,10 +50,13 @@
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
+    <None Include="Shaders\solidcolor.frag" />
+    <None Include="Shaders\solidcolor.vert" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Test\" />
     <Folder Include="Source\" />
+    <Folder Include="Shaders\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

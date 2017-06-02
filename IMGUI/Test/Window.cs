@@ -43,12 +43,14 @@ namespace IMGUI.Test
 
 		protected override void OnUpdateFrame(FrameEventArgs e)
 		{
+            IMGUI.AddRect(0.0f, 0.0f, 50.0f, 50.0f);
 		}
 
         protected void Render()
         {
             GL.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
             GL.Clear(ClearBufferMask.ColorBufferBit|ClearBufferMask.DepthBufferBit);
+            IMGUI.Render();
         }
 	}
 }

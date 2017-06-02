@@ -1,5 +1,6 @@
-﻿<Properties StartupConfiguration="{01CCB5E2-B901-4B33-958E-D3C4F7F02925}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
-  <MonoDevelop.Ide.Workbench ActiveDocument="IMGUI/Program.cs">
+﻿<Properties StartupConfiguration="{E79C6345-F03E-4C76-8A92-D007B389B93E}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
+  <MonoDevelop.Ide.ItemProperties.IMGUI PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="IMGUI/Source/DrawCommandRenderer.cs">
     <Files>
       <File FileName="MonoKnight/Core/MeshFilter.cs" Line="34" Column="1" />
       <File FileName="MonoKnight/Core/Serializer.cs" Line="204" Column="54" />
@@ -30,13 +31,16 @@
       <File FileName="MonoKnight/Core/WindowConfiguration.cs" Line="7" Column="34" />
       <File FileName="MonoKnight/Core/ResourceManager.cs" Line="31" Column="1" />
       <File FileName="MonoKnight/Program.cs" Line="3" Column="1" />
-      <File FileName="MonoKnight/Core/Window.cs" Line="27" Column="6" />
+      <File FileName="MonoKnight/Core/Window.cs" Line="14" Column="1" />
       <File FileName="MonoKnight/Core/Script.cs" Line="18" Column="23" />
       <File FileName="MonoKnight/Resources/sprite.frag" Line="1" Column="1" />
       <File FileName="MonoKnight/Resources/sprite.vert" Line="1" Column="1" />
       <File FileName="MonoKnight/Core/ModelLoader.cs" Line="37" Column="21" />
       <File FileName="Editor/Program.cs" Line="32" Column="1" />
-      <File FileName="IMGUI/Program.cs" Line="1" Column="1" />
+      <File FileName="IMGUI/Program.cs" Line="9" Column="39" />
+      <File FileName="IMGUI/Test/Window.cs" Line="6" Column="11" />
+      <File FileName="IMGUI/Source/IMGUI.cs" Line="12" Column="5" />
+      <File FileName="IMGUI/Source/DrawCommandRenderer.cs" Line="4" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

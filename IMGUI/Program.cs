@@ -6,7 +6,7 @@ namespace IMGUI
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            new Test.Window().Run(60);
         }
     }
 }

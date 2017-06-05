@@ -27,6 +27,7 @@ namespace IMGUI.Test
 		protected override void OnLoad(EventArgs e)
 		{
 			CursorVisible = true;
+            IMGUI.Init();
 		}
 
 		protected override void OnResize(EventArgs e)
@@ -48,7 +49,7 @@ namespace IMGUI.Test
 
         protected void Render()
         {
-            GL.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+            GL.ClearColor(0.1f, 0.3f, 0.4f, 0.0f);
             GL.Clear(ClearBufferMask.ColorBufferBit|ClearBufferMask.DepthBufferBit);
             IMGUI.Render();
         }

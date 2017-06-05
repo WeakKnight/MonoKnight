@@ -7,3 +7,5 @@
 /Users/knight/MonoKnight/IMGUI/obj/x86/Debug/IMGUI.csproj.CoreCompileInputs.cache
 /Users/knight/MonoKnight/IMGUI/obj/x86/Debug/IMGUI.exe
 /Users/knight/MonoKnight/IMGUI/obj/x86/Debug/IMGUI.pdb
+/Users/knight/MonoKnight/IMGUI/bin/Debug/Shaders/solidcolor.frag
+/Users/knight/MonoKnight/IMGUI/bin/Debug/Shaders/solidcolor.vert

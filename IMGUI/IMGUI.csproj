@@ -46,17 +46,24 @@
     <Compile Include="Test\Window.cs" />
     <Compile Include="Source\IMGUI.cs" />
     <Compile Include="Source\DrawCommandRenderer.cs" />
+    <Compile Include="Source\Shader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
-    <None Include="Shaders\solidcolor.frag" />
-    <None Include="Shaders\solidcolor.vert" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Test\" />
     <Folder Include="Source\" />
     <Folder Include="Shaders\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Shaders\solidcolor.frag">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Shaders\solidcolor.vert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

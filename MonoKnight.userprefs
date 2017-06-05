@@ -8,11 +8,11 @@
       <File FileName="MonoKnight/Core/Scene.cs" Line="113" Column="21" />
       <File FileName="MonoKnight/Core/Transform.cs" Line="191" Column="9" />
       <File FileName="MonoKnight/Core/Model.cs" Line="6" Column="26" />
-      <File FileName="MonoKnight/Core/MeshRenderer.cs" Line="40" Column="14" />
-      <File FileName="MonoKnight/Core/Camera.cs" Line="10" Column="22" />
+      <File FileName="MonoKnight/Core/MeshRenderer.cs" Line="40" Column="15" />
+      <File FileName="MonoKnight/Core/Camera.cs" Line="25" Column="12" />
       <File FileName="MonoKnight/Core/ComponentManager.cs" Line="44" Column="15" />
       <File FileName="MonoKnight/Core/Renderer.cs" Line="1" Column="1" />
-      <File FileName="MonoKnight/Core/Mesh.cs" Line="94" Column="5" />
+      <File FileName="MonoKnight/Core/Mesh.cs" Line="70" Column="4" />
       <File FileName="MonoKnight/Core/Object.cs" Line="62" Column="9" />
       <File FileName="MonoKnight/Core/Component.cs" Line="11" Column="31" />
       <File FileName="MonoKnight/Core/Debug.cs" Line="2" Column="1" />
@@ -38,12 +38,12 @@
       <File FileName="MonoKnight/Core/ModelLoader.cs" Line="37" Column="21" />
       <File FileName="Editor/Program.cs" Line="32" Column="1" />
       <File FileName="IMGUI/Program.cs" Line="9" Column="39" />
-      <File FileName="IMGUI/Test/Window.cs" Line="47" Column="4" />
-      <File FileName="IMGUI/Source/IMGUI.cs" Line="14" Column="9" />
-      <File FileName="IMGUI/Source/DrawCommandRenderer.cs" Line="67" Column="14" />
-      <File FileName="IMGUI/Shaders/solidcolor.frag" Line="1" Column="1" />
-      <File FileName="IMGUI/Shaders/solidcolor.vert" Line="1" Column="1" />
-      <File FileName="IMGUI/Source/Shader.cs" Line="39" Column="3" />
+      <File FileName="IMGUI/Test/Window.cs" Line="30" Column="21" />
+      <File FileName="IMGUI/Source/IMGUI.cs" Line="8" Column="34" />
+      <File FileName="IMGUI/Source/DrawCommandRenderer.cs" Line="123" Column="44" />
+      <File FileName="IMGUI/Shaders/solidcolor.frag" Line="2" Column="1" />
+      <File FileName="IMGUI/Shaders/solidcolor.vert" Line="3" Column="19" />
+      <File FileName="IMGUI/Source/Shader.cs" Line="22" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

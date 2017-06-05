@@ -44,14 +44,21 @@ namespace IMGUI.Test
 
 		protected override void OnUpdateFrame(FrameEventArgs e)
 		{
-            IMGUI.AddRect(0.0f, 0.0f, 50.0f, 50.0f);
+            if (IMGUI.CheckUpdate())
+            {
+                IMGUI.AddRect(0.0f, 0.0f, 0.3f, 0.4f);
+                IMGUI.End();
+            }
 		}
 
         protected void Render()
         {
+            GL.Viewport(0,0,Width,Height);
+            GL.Enable(EnableCap.DepthTest);
             GL.ClearColor(0.1f, 0.3f, 0.4f, 0.0f);
             GL.Clear(ClearBufferMask.ColorBufferBit|ClearBufferMask.DepthBufferBit);
-            IMGUI.Render();
+            DrawCommandRenderer.DrawRect(0.0f, 0.0f, 150.0f, 50.0f);
+            //IMGUI.Render();
         }
 	}
 }

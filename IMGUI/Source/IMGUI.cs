@@ -15,7 +15,20 @@ namespace IMGUI
 
         public static void Render()
         {
-            DrawCommandRenderer.Render();
+            if(DrawCommandRenderer.needRender)
+            {
+                DrawCommandRenderer.Render();
+            }
+        }
+
+        public static void End()
+        {
+            DrawCommandRenderer.needRender = true;
+        }
+
+        public static bool CheckUpdate()
+        {
+            return !DrawCommandRenderer.needRender;
         }
     }
 }

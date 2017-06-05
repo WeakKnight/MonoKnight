@@ -4,6 +4,7 @@ using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace IMGUI
 {
@@ -16,61 +17,79 @@ namespace IMGUI
 		Line
 	}
 
-    public static class PrimitiveMode
+    public static class PrimitiveData
     {
-        public const float Triangles = 0.0f;
-        public const float Lines = 1.0f;
-        public const float Points = 2.0f;
-
-        public static PrimitiveType GetPrimitiveType(float pm)
+		public static float[] Rect = 
         {
-            switch (pm)
-            {
-                case Triangles:
-                    return PrimitiveType.Triangles;
-                case Lines:
-                    return PrimitiveType.Lines;
-                case Points:
-                    return PrimitiveType.Points;
-                default:
-                    System.Diagnostics.Debug.Assert(true);
-                    return PrimitiveType.Triangles;
-            }
-        }
+            // Pos      // Tex
+            0.0f, 1.0f, 0.0f, 1.0f,
+		    1.0f, 0.0f, 1.0f, 0.0f,
+		    0.0f, 0.0f, 0.0f, 0.0f,
+
+		    0.0f, 1.0f, 0.0f, 1.0f,
+		    1.0f, 1.0f, 1.0f, 1.0f,
+		    1.0f, 0.0f, 1.0f, 0.0f
+	    };
     }
 
     public static class DrawCommandRenderer
     {
         public static void Init()
         {
-            VAO = GL.GenVertexArray();
-            VBO = GL.GenBuffer();
-        }
+            //VAO = GL.GenVertexArray();
+            //VBO = GL.GenBuffer();
+            RectVBO = GL.GenVertexArray();
+            RectVAO = GL.GenBuffer();
+            projection = Matrix4.CreateOrthographic(800.0f / 1.0f, 600.0f / 1.0f, 0.2f, 100.0f);
+
+			GL.BindVertexArray(RectVAO);
+				GL.BindBuffer(BufferTarget.ArrayBuffer, RectVBO);
+	            GL.BufferData(BufferTarget.ArrayBuffer, sizeof(float) * PrimitiveData.Rect.Length, PrimitiveData.Rect, BufferUsageHint.DynamicDraw);
+
+				GL.VertexAttribPointer(0, 4, VertexAttribPointerType.Float, false, 4 * sizeof(float), 0);
+			    GL.EnableVertexAttribArray(0);
+			GL.BindVertexArray(0);
+		}
         public static void Render()
         {
-            buffer = DataBuffer.ToArray();
-
-            GL.BindVertexArray(VAO);
-            GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
-            GL.BufferData(BufferTarget.ArrayBuffer, sizeof(float) * buffer.Length, buffer, BufferUsageHint.DynamicDraw);
-
-            GL.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, 2 * sizeof(float), 0);
-            GL.EnableVertexAttribArray(0);
-
-            GL.BindVertexArray(0);
-
-            int dataPos = 0;
-            while(DrawCommandList.Count != 0)
+            if(!needRender)
             {
-                var cmd = DrawCommandList.Dequeue();
-                dataPos += DrawByCommand(cmd, dataPos);
-            }    
+                return;
+            }
+
+            //buffer = DataBuffer.ToArray();
+			//GCHandle pinnedArray = GCHandle.Alloc(buffer, GCHandleType.Pinned);
+			//IntPtr pointer = pinnedArray.AddrOfPinnedObject();
+			//// Do your stuff...
+			//pinnedArray.Free();
+            //GL.BindVertexArray(VAO);
+            //GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
+            //GL.BufferData(BufferTarget.ArrayBuffer, sizeof(float) * buffer.Length, buffer, BufferUsageHint.DynamicDraw);
+
+            //GL.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, 4 * sizeof(float), 0);
+            //GL.EnableVertexAttribArray(0);
+
+            //GL.BindVertexArray(0);
+
+            //int dataPos = 0;
+            //while(DrawCommandList.Count != 0)
+            //{
+            //    var cmd = DrawCommandList.Dequeue();
+            //    dataPos += DrawByCommand(cmd, dataPos);
+            //}
+            //DataBuffer.Clear();
+            needRender = false;
         }
 
-        static int VBO = 0;
-        static int VAO = 0;
+        static int RectVBO = 0;
+        static int RectVAO = 0;
+        //static int VBO = 0;
+        //static int VAO = 0;
 
-        static float[] buffer = null;
+        static Matrix4 projection = Matrix4.Identity;
+        //static float[] buffer = null;
+
+        public static bool needRender = true;
 
         static Shader solidShader = new Shader(@"Shaders/solidcolor.vert", @"Shaders/solidcolor.frag");
 
@@ -80,7 +99,7 @@ namespace IMGUI
             {
                 //data length is 5
                 case DrawCommand.Rectangle:
-                    DrawRect(dataPos);
+                    //DrawRect(dataPos);
                     return 13;
                 default:
                     return 0;
@@ -95,28 +114,21 @@ namespace IMGUI
             //triangle 1
             DataBuffer.Enqueue(x);
             DataBuffer.Enqueue(y);
-            DataBuffer.Enqueue(x + width);
-			DataBuffer.Enqueue(y);
-			DataBuffer.Enqueue(x + width);
-			DataBuffer.Enqueue(y + height);
-            //triangle 2
-			DataBuffer.Enqueue(x);
-			DataBuffer.Enqueue(y);
-			DataBuffer.Enqueue(x);
-            DataBuffer.Enqueue(y + height);
-			DataBuffer.Enqueue(x + width);
-			DataBuffer.Enqueue(y + height);
-            //primitive type
-            DataBuffer.Enqueue(PrimitiveMode.Triangles);
+            DataBuffer.Enqueue(width);
+            DataBuffer.Enqueue(height);
         }
 
-		private static void DrawRect(int dataPos)
+		static public void DrawRect(float x, float y, float width, float height)
 		{
+            var model = Matrix4.CreateScale(width, height, 1.0f) * Matrix4.CreateTranslation(x, y, 0.0f) * Matrix4.CreateTranslation(-400.0f, -300.0f, 0.0f);
+            var modelLoc = solidShader.GetUniformLocation(@"model");
+            var projectLoc = solidShader.GetUniformLocation(@"projection");
+            GL.UniformMatrix4(modelLoc, false, ref model);
+            GL.UniformMatrix4(projectLoc, false, ref projection);
             solidShader.Use();
 
-            GL.BindVertexArray(VAO);
-                var primitiveType = PrimitiveMode.GetPrimitiveType(buffer[dataPos + 12]);
-                GL.DrawArrays(primitiveType, dataPos, 12);
+            GL.BindVertexArray(RectVAO);
+                GL.DrawArrays(PrimitiveType.Triangles, 0, 6);
             GL.BindVertexArray(0);
 		}
 

@@ -15,6 +15,8 @@ namespace IMGUI
 			GL.ShaderSource(Fragment, fragShaderSource);
 			GL.CompileShader(Vertex);
 			GL.CompileShader(Fragment);
+            Console.WriteLine(GL.GetShaderInfoLog(Vertex));
+            Console.WriteLine(GL.GetShaderInfoLog(Fragment));
 			Program = GL.CreateProgram();
 			GL.AttachShader(Program, Vertex);
 			GL.AttachShader(Program, Fragment);

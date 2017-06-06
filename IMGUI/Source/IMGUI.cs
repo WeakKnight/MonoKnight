@@ -1,4 +1,5 @@
 ﻿using System;
+using OpenTK.Graphics;
 namespace IMGUI
 {
     public static class IMGUI
@@ -8,9 +9,10 @@ namespace IMGUI
             DrawCommandRenderer.Init();    
         }
 
-        public static void AddRect(float x, float y, float width, float height)
+        public static bool Button()
         {
-            DrawCommandRenderer.AddRect(x, y, width, height);
+            DrawCommandRenderer.AddRect(0.0f, 0.0f, 150.0f, 50.0f, Color4.White, true);
+            return true;
         }
 
         public static void Render()
@@ -25,6 +27,21 @@ namespace IMGUI
         {
             DrawCommandRenderer.needRender = true;
         }
+
+        public static void ProcessInput(float winx, float winy)
+        {
+            NativeWindowX = winx;
+            NativeWindowY = winy;
+            CursorX = OpenTK.Input.Mouse.GetCursorState().X - NativeWindowX;
+            CursorY = OpenTK.Input.Mouse.GetCursorState().Y - NativeWindowY;
+            Console.WriteLine("x is" + CursorX);
+            Console.WriteLine("y is" + CursorY);
+        }
+
+        static float NativeWindowX = 0.0f;
+        static float NativeWindowY = 0.0f;
+        static float CursorX = 0.0f;
+        static float CursorY = 0.0f;
 
         public static bool CheckUpdate()
         {

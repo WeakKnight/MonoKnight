@@ -46,9 +46,16 @@ namespace IMGUI.Test
 		{
             if (IMGUI.CheckUpdate())
             {
-                IMGUI.AddRect(0.0f, 0.0f, 0.3f, 0.4f);
+                IMGUI.ProcessInput(this.X, this.Y);
+                if (IMGUI.Button())
+                {
+                    
+                }
+                //IMGUI.AddRect(0.0f, 0.0f, 150.0f, 50.0f,Color4.Yellow,true);
                 IMGUI.End();
             }
+            Console.WriteLine("x is" + OpenTK.Input.Mouse.GetCursorState().X);
+            Console.WriteLine("y is" + OpenTK.Input.Mouse.GetCursorState().Y);
 		}
 
         protected void Render()
@@ -57,8 +64,8 @@ namespace IMGUI.Test
             GL.Enable(EnableCap.DepthTest);
             GL.ClearColor(0.1f, 0.3f, 0.4f, 0.0f);
             GL.Clear(ClearBufferMask.ColorBufferBit|ClearBufferMask.DepthBufferBit);
-            DrawCommandRenderer.DrawRect(0.0f, 0.0f, 150.0f, 50.0f);
-            //IMGUI.Render();
+            //DrawCommandRenderer.DrawRect(0.0f, 0.0f, 150.0f, 50.0f,Color4.Yellow);
+            IMGUI.Render();
         }
 	}
 }

@@ -9,3 +9,4 @@
 /Users/knight/MonoKnight/IMGUI/obj/x86/Debug/IMGUI.pdb
 /Users/knight/MonoKnight/IMGUI/bin/Debug/Shaders/solidcolor.frag
 /Users/knight/MonoKnight/IMGUI/bin/Debug/Shaders/solidcolor.vert
+/Users/knight/MonoKnight/IMGUI/obj/x86/Debug/IMGUI.csprojResolveAssemblyReference.cache

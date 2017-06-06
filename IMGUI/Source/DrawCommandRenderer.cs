@@ -38,8 +38,8 @@ namespace IMGUI
         {
             //VAO = GL.GenVertexArray();
             //VBO = GL.GenBuffer();
-            RectVBO = GL.GenVertexArray();
-            RectVAO = GL.GenBuffer();
+            RectVAO = GL.GenVertexArray();
+            RectVBO = GL.GenBuffer();
             projection = Matrix4.CreateOrthographic(800.0f / 1.0f, 600.0f / 1.0f, 0.2f, 100.0f);
 
 			GL.BindVertexArray(RectVAO);
@@ -57,27 +57,12 @@ namespace IMGUI
                 return;
             }
 
-            //buffer = DataBuffer.ToArray();
-			//GCHandle pinnedArray = GCHandle.Alloc(buffer, GCHandleType.Pinned);
-			//IntPtr pointer = pinnedArray.AddrOfPinnedObject();
-			//// Do your stuff...
-			//pinnedArray.Free();
-            //GL.BindVertexArray(VAO);
-            //GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
-            //GL.BufferData(BufferTarget.ArrayBuffer, sizeof(float) * buffer.Length, buffer, BufferUsageHint.DynamicDraw);
-
-            //GL.VertexAttribPointer(0, 2, VertexAttribPointerType.Float, false, 4 * sizeof(float), 0);
-            //GL.EnableVertexAttribArray(0);
-
-            //GL.BindVertexArray(0);
-
-            //int dataPos = 0;
-            //while(DrawCommandList.Count != 0)
-            //{
-            //    var cmd = DrawCommandList.Dequeue();
-            //    dataPos += DrawByCommand(cmd, dataPos);
-            //}
-            //DataBuffer.Clear();
+            while(DrawCommandList.Count != 0)
+            {
+                var cmd = DrawCommandList.Dequeue();
+                DrawByCommand(cmd);
+            }
+            DataBuffer.Clear();
             needRender = false;
         }
 
@@ -93,21 +78,20 @@ namespace IMGUI
 
         static Shader solidShader = new Shader(@"Shaders/solidcolor.vert", @"Shaders/solidcolor.frag");
 
-        static int DrawByCommand(DrawCommand cmd, int dataPos)
+        static void DrawByCommand(DrawCommand cmd)
         {
             switch (cmd)
             {
-                //data length is 5
                 case DrawCommand.Rectangle:
-                    //DrawRect(dataPos);
-                    return 13;
+                    ExtractRect();
+                    return;
                 default:
-                    return 0;
+                    return;
             }
         }
 
         //maybe indices is useful
-        public static void AddRect(float x, float y, float width, float height)
+        public static void AddRect(float x, float y, float width, float height, Color4 color, bool filled = true)
         {
             //draw command
             DrawCommandList.Enqueue(DrawCommand.Rectangle);
@@ -116,15 +100,33 @@ namespace IMGUI
             DataBuffer.Enqueue(y);
             DataBuffer.Enqueue(width);
             DataBuffer.Enqueue(height);
+            DataBuffer.Enqueue(color);
+            DataBuffer.Enqueue(filled);
         }
 
-		static public void DrawRect(float x, float y, float width, float height)
+        public static void ExtractRect()
+        {
+            var x = (float)DataBuffer.Dequeue();
+            var y = (float)DataBuffer.Dequeue();
+            var w = (float)DataBuffer.Dequeue();
+            var h = (float)DataBuffer.Dequeue();
+            var color = (Color4)DataBuffer.Dequeue();
+            var filled = (bool)DataBuffer.Dequeue();
+
+            DrawRect(x, y, w, h, color, filled);
+        }
+
+        static public void DrawRect(float x, float y, float width, float height, Color4 color, bool filled = true)
 		{
             var model = Matrix4.CreateScale(width, height, 1.0f) * Matrix4.CreateTranslation(x, y, 0.0f) * Matrix4.CreateTranslation(-400.0f, -300.0f, 0.0f);
             var modelLoc = solidShader.GetUniformLocation(@"model");
             var projectLoc = solidShader.GetUniformLocation(@"projection");
+            var colorLoc = solidShader.GetUniformLocation(@"maskColor");
+
             GL.UniformMatrix4(modelLoc, false, ref model);
             GL.UniformMatrix4(projectLoc, false, ref projection);
+            GL.Uniform4(colorLoc, color);
+
             solidShader.Use();
 
             GL.BindVertexArray(RectVAO);
@@ -152,7 +154,7 @@ namespace IMGUI
             
         }
 
-        static Queue<float> DataBuffer = new Queue<float>();
+        static Queue<object> DataBuffer = new Queue<object>();
         static Queue<DrawCommand> DrawCommandList = new Queue<DrawCommand>();
     }
 }

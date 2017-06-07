@@ -41,6 +41,12 @@
     <Reference Include="StbSharp">
       <HintPath>..\packages\StbSharp.0.4.0.20\lib\netstandard1.1\StbSharp.dll</HintPath>
     </Reference>
+    <Reference Include="SharpFont">
+      <HintPath>SharpFont.dll</HintPath>
+    </Reference>
+    <Reference Include="AssimpNet">
+      <HintPath>..\assimp\AssimpNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -49,6 +55,7 @@
     <Compile Include="Source\IMGUI.cs" />
     <Compile Include="Source\DrawCommandRenderer.cs" />
     <Compile Include="Source\Shader.cs" />
+    <Compile Include="Source\FontRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
@@ -64,6 +71,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Shaders\solidcolor.vert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SharpFont.dll.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="OpenSans-Light.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

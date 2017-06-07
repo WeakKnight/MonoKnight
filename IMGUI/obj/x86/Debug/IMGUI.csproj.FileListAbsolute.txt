@@ -10,3 +10,10 @@
 /Users/knight/MonoKnight/IMGUI/bin/Debug/Shaders/solidcolor.frag
 /Users/knight/MonoKnight/IMGUI/bin/Debug/Shaders/solidcolor.vert
 /Users/knight/MonoKnight/IMGUI/obj/x86/Debug/IMGUI.csprojResolveAssemblyReference.cache
+/Users/knight/MonoKnight/IMGUI/bin/Debug/SharpFont.dll.config
+/Users/knight/MonoKnight/IMGUI/bin/Debug/OpenSans-Light.ttf
+/Users/knight/MonoKnight/IMGUI/bin/Debug/AssimpNet.dll
+/Users/knight/MonoKnight/IMGUI/bin/Debug/SharpFont.dll
+/Users/knight/MonoKnight/IMGUI/bin/Debug/AssimpNet.pdb
+/Users/knight/MonoKnight/IMGUI/bin/Debug/AssimpNet.xml
+/Users/knight/MonoKnight/IMGUI/bin/Debug/AssimpNet.dll.config

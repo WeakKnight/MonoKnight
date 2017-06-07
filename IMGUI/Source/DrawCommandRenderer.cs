@@ -5,6 +5,7 @@ using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using SharpFont;
 
 namespace IMGUI
 {
@@ -133,6 +134,11 @@ namespace IMGUI
                 GL.DrawArrays(PrimitiveType.Triangles, 0, 6);
             GL.BindVertexArray(0);
 		}
+
+        static public void DrawText(float x, float y, string text)
+        {
+            
+        }
 
         public static void AddTriangle(Vector2 a, Vector2 b, Vector2 c)
         {

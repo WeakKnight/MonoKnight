@@ -22,16 +22,31 @@ namespace MonoKnight
 
 	public class Mesh:Object
 	{
-		public Mesh(List<Vertex> vertices, List<int> indices, List<Texture> textures)
+		public Mesh(ref List<Vertex> vertices, ref List<int> indices, ref List<Texture> textures)
 		{
 			_vertices = vertices;
 			_indices = indices;
 			_textures = textures;
 		}
 
-		public int vbo = 0;
-		public int vao = 0;
-		public int ebo = 0;
+        public Mesh(ref List<Vertex> vertices, ref List<int> indices, ref List<Texture> textures, ref Dictionary<string, Bone> boneDic, ref Matrix4 globalInverseTransform)
+		{
+			_vertices = vertices;
+			_indices = indices;
+			_textures = textures;
+            if(boneDic.Count > 0)
+            {
+                hasBone = true;
+            }
+            _boneDic = boneDic;
+            _globalInverseTransform = globalInverseTransform;
+		}
+
+		public int vbo;
+		public int vao;
+		public int ebo;
+
+        public bool hasBone = false;
 
 		public void SetUp()
 		{
@@ -125,5 +140,7 @@ namespace MonoKnight
 		public List<Vertex> _vertices;
 		public List<int> _indices;
 		public List<Texture> _textures;
+        public Dictionary<string,Bone> _boneDic;
+        public Matrix4 _globalInverseTransform;
 	}
 }

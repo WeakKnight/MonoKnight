@@ -90,6 +90,8 @@
     <Compile Include="Scripts\TestAwake.cs" />
     <Compile Include="Core\GameConfiguration.cs" />
     <Compile Include="Core\Window.cs" />
+    <Compile Include="Core\Bone.cs" />
+    <Compile Include="Core\Skeleton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

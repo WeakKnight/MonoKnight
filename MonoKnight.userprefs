@@ -1,59 +1,23 @@
-﻿<Properties StartupConfiguration="{E79C6345-F03E-4C76-8A92-D007B389B93E}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
+﻿<Properties StartupConfiguration="{01C593A6-7592-406F-AF99-B220EFF508BC}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
   <MonoDevelop.Ide.ItemProperties.IMGUI PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="IMGUI/Source/FontRenderer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/ComponentManager.cs">
     <Files>
-      <File FileName="MonoKnight/Core/MeshFilter.cs" Line="34" Column="1" />
-      <File FileName="MonoKnight/Core/Serializer.cs" Line="204" Column="54" />
-      <File FileName="MonoKnight/Core/Entity.cs" Line="86" Column="15" />
-      <File FileName="MonoKnight/Core/Scene.cs" Line="101" Column="11" />
-      <File FileName="MonoKnight/Core/Transform.cs" Line="191" Column="9" />
-      <File FileName="MonoKnight/Core/Model.cs" Line="6" Column="26" />
-      <File FileName="MonoKnight/Core/MeshRenderer.cs" Line="40" Column="15" />
-      <File FileName="MonoKnight/Core/Camera.cs" Line="30" Column="1" />
-      <File FileName="MonoKnight/Core/ComponentManager.cs" Line="44" Column="15" />
-      <File FileName="MonoKnight/Core/Renderer.cs" Line="1" Column="1" />
-      <File FileName="MonoKnight/Core/Mesh.cs" Line="70" Column="4" />
-      <File FileName="MonoKnight/Core/Object.cs" Line="62" Column="9" />
-      <File FileName="MonoKnight/Core/Component.cs" Line="11" Column="31" />
-      <File FileName="MonoKnight/Core/Debug.cs" Line="2" Column="1" />
-      <File FileName="MonoKnight/Core/Material.cs" Line="5" Column="3" />
-      <File FileName="MonoKnight/Core/DataMember.cs" Line="10" Column="3" />
-      <File FileName="MonoKnight/Core/ComponentOrder.cs" Line="7" Column="29" />
-      <File FileName="MonoKnight/Scripts/TestAwake.cs" Line="12" Column="1" />
-      <File FileName="MonoKnight/Core/Prefab.cs" Line="9" Column="2" />
-      <File FileName="MonoKnight/Core/Shader.cs" Line="35" Column="4" />
-      <File FileName="MonoKnight/Core/TextureAtlas.cs" Line="5" Column="3" />
-      <File FileName="MonoKnight/Core/Texture.cs" Line="66" Column="1" />
-      <File FileName="MonoKnight/Core/Game.cs" Line="32" Column="21" />
-      <File FileName="MonoKnight/Scripts/BasicControl.cs" Line="70" Column="7" />
-      <File FileName="MonoKnight/Scripts/RotateBehavior.cs" Line="14" Column="36" />
-      <File FileName="MonoKnight/Core/GameConfiguration.cs" Line="10" Column="60" />
-      <File FileName="MonoKnight/Core/WindowConfiguration.cs" Line="7" Column="34" />
-      <File FileName="MonoKnight/Core/ResourceManager.cs" Line="31" Column="1" />
-      <File FileName="MonoKnight/Program.cs" Line="3" Column="1" />
-      <File FileName="MonoKnight/Core/Window.cs" Line="79" Column="5" />
-      <File FileName="MonoKnight/Core/Script.cs" Line="18" Column="23" />
-      <File FileName="MonoKnight/Resources/sprite.frag" Line="4" Column="1" />
-      <File FileName="MonoKnight/Resources/sprite.vert" Line="1" Column="1" />
-      <File FileName="MonoKnight/Core/ModelLoader.cs" Line="37" Column="21" />
-      <File FileName="Editor/Program.cs" Line="32" Column="1" />
-      <File FileName="IMGUI/Program.cs" Line="9" Column="39" />
-      <File FileName="IMGUI/Test/Window.cs" Line="52" Column="21" />
-      <File FileName="IMGUI/Source/IMGUI.cs" Line="15" Column="66" />
-      <File FileName="IMGUI/Source/DrawCommandRenderer.cs" Line="8" Column="1" />
-      <File FileName="IMGUI/Shaders/solidcolor.frag" Line="7" Column="22" />
-      <File FileName="IMGUI/Shaders/solidcolor.vert" Line="9" Column="32" />
-      <File FileName="IMGUI/Source/Shader.cs" Line="19" Column="62" />
-      <File FileName="MonoKnight/Core/Time.cs" Line="1" Column="1" />
-      <File FileName="MonoKnight/Resources/main.scene" Line="1" Column="1" />
-      <File FileName="IMGUI/OpenTK.dll.config" Line="1" Column="1" />
-      <File FileName="IMGUI/Source/FontRenderer.cs" Line="4" Column="18" />
+      <File FileName="MonoKnight/Core/Bone.cs" Line="10" Column="29" />
+      <File FileName="MonoKnight/Core/ModelLoader.cs" Line="157" Column="15" />
+      <File FileName="MonoKnight/Core/Mesh.cs" Line="103" Column="9" />
+      <File FileName="MonoKnight/Core/Skeleton.cs" Line="11" Column="1" />
+      <File FileName="MonoKnight/Core/MeshFilter.cs" Line="25" Column="5" />
+      <File FileName="MonoKnight/Core/Model.cs" Line="15" Column="17" />
+      <File FileName="MonoKnight/Core/MeshRenderer.cs" Line="45" Column="1" />
+      <File FileName="MonoKnight/Core/Component.cs" Line="1" Column="1" />
+      <File FileName="MonoKnight/Core/ComponentManager.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/knight/MonoKnight/IMGUI/Source/IMGUI.cs" relfile="IMGUI/Source/IMGUI.cs" line="16" column="1" />
+      <Breakpoint file="/Users/knight/MonoKnight/IMGUI/Source/IMGUI.cs" relfile="IMGUI/Source/IMGUI.cs" line="13" column="1" />
+      <Breakpoint file="/Users/knight/MonoKnight/MonoKnight/Core/ModelLoader.cs" relfile="MonoKnight/Core/ModelLoader.cs" line="50" column="2" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

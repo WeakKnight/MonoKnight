@@ -13,5 +13,6 @@ namespace MonoKnight
 		
 		public string path = null;
 		public List<Mesh> meshes = null;
+        public Skeleton skeleton = null;
 	}
 }

@@ -14,6 +14,13 @@ namespace MonoKnight
 
 		public virtual void Start()
 		{
+            var entity = new Entity(1.0f, 1.0f, 1.0f);
+            entity.AddComponent<MeshRenderer>();
+            var meshFilter = entity.AddComponent<MeshFilter>();
+            meshFilter.model = ResourceManager.GetInstance().LoadResource<Model>(@"Resources/animodel/boblampclean.md5mesh");
+            entity.transform.scale = OpenTK.Vector3.One * 0.1f;
+            CurrentScene.AddItem(entity);
+            //
 			CurrentScene.Awake();
 			CurrentScene.Start();
 			CurrentScene.OnDestroy();

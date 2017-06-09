@@ -16,6 +16,7 @@ namespace MonoKnight
         {
         }
 
+        public Matrix4 finalTransform = Matrix4.Identity;
         public Matrix4 offset = Matrix4.Identity; 
         public string name = "";
         public List<VertexWeight> weightList = new List<VertexWeight>();

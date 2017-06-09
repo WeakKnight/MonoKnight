@@ -11,18 +11,13 @@ namespace MonoKnight
 	public class ModelLoader:Object
 	{
 
-		private List<Mesh> _meshes = null;
+		List<Mesh> _meshes;
 
-		public Model model = null;
+		public Model model;
 
-		public ModelLoader()
-		{
-
-		}
-
-        public OpenTK.Matrix4 AssimpMat4ToOpenTKMat4(Assimp.Matrix4x4 matrix)
+        public Matrix4 AssimpMat4ToOpenTKMat4(Matrix4x4 matrix)
         {
-			return new OpenTK.Matrix4(matrix.A1, matrix.A2, matrix.A3, matrix.A4
+			return new Matrix4(matrix.A1, matrix.A2, matrix.A3, matrix.A4
 									, matrix.B1, matrix.B2, matrix.B3, matrix.B4
 									, matrix.C1, matrix.C2, matrix.C3, matrix.C4
 									, matrix.D1, matrix.D2, matrix.D3, matrix.D4);
@@ -74,30 +69,31 @@ namespace MonoKnight
 			List<Vertex> vertices = new List<Vertex>();
 			List<int> indices = new List<int>();
 			List<Texture> textures = new List<Texture>();
-            var boneDic = new Dictionary<string, Bone>();
-            //
-            if(mesh.HasBones)
-            {
-                
-                for (int i = 0; i < mesh.BoneCount; i++)
-                {
-                    var assimpBone = mesh.Bones[i];
-                    if (!boneDic.ContainsKey(assimpBone.Name))
-					{
-                        var bone = new Bone();
-                        bone.name = assimpBone.Name;
-                        bone.offset = AssimpMat4ToOpenTKMat4(assimpBone.OffsetMatrix);
-						for (int j = 0; j < assimpBone.VertexWeightCount; j++)
-						{
-							VertexWeight vertexWeight;
-							vertexWeight.vertexId = assimpBone.VertexWeights[j].VertexID;
-							vertexWeight.weight = assimpBone.VertexWeights[j].Weight;
-							bone.weightList.Add(vertexWeight);
-						}
-						boneDic[assimpBone.Name] = bone;
-					}
-                }
-            }
+   //         var boneDic = new Dictionary<string, Bone>();
+			////
+			//var invertGlobalTransform = AssimpMat4ToOpenTKMat4(scene.RootNode.Transform).Inverted();
+     //       //
+     //       if(mesh.HasBones)
+     //       {
+     //           for (int i = 0; i < mesh.BoneCount; i++)
+     //           {
+     //               var assimpBone = mesh.Bones[i];
+     //               if (!boneDic.ContainsKey(assimpBone.Name))
+					//{
+     //                   var bone = new Bone();
+     //                   bone.name = assimpBone.Name;
+     //                   bone.offset = AssimpMat4ToOpenTKMat4(assimpBone.OffsetMatrix);
+					//	for (int j = 0; j < assimpBone.VertexWeightCount; j++)
+					//	{
+					//		VertexWeight vertexWeight;
+					//		vertexWeight.vertexId = assimpBone.VertexWeights[j].VertexID;
+					//		vertexWeight.weight = assimpBone.VertexWeights[j].Weight;
+					//		bone.weightList.Add(vertexWeight);
+					//	}
+					//	boneDic[assimpBone.Name] = bone;
+					//}
+            //    }
+            //}
             //
 			for (int i = 0; i < mesh.VertexCount; i++)
 			{
@@ -157,9 +153,7 @@ namespace MonoKnight
 				//TODO other type texture
 			}
             //
-            var invertGlobalTransform = AssimpMat4ToOpenTKMat4(scene.RootNode.Transform).Inverted();
-            //
-            return new Mesh(ref vertices, ref indices, ref textures, ref boneDic, ref invertGlobalTransform);		
+            return new Mesh(ref vertices, ref indices, ref textures);		
 		}
 
 	}

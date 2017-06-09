@@ -1,23 +1,23 @@
 ﻿<Properties StartupConfiguration="{01C593A6-7592-406F-AF99-B220EFF508BC}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
   <MonoDevelop.Ide.ItemProperties.IMGUI PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/ComponentManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoKnight/Core/Game.cs">
     <Files>
-      <File FileName="MonoKnight/Core/Bone.cs" Line="10" Column="29" />
-      <File FileName="MonoKnight/Core/ModelLoader.cs" Line="157" Column="15" />
-      <File FileName="MonoKnight/Core/Mesh.cs" Line="103" Column="9" />
+      <File FileName="MonoKnight/Core/Bone.cs" Line="25" Column="1" />
+      <File FileName="MonoKnight/Core/ModelLoader.cs" Line="21" Column="47" />
+      <File FileName="MonoKnight/Core/Mesh.cs" Line="50" Column="11" />
       <File FileName="MonoKnight/Core/Skeleton.cs" Line="11" Column="1" />
       <File FileName="MonoKnight/Core/MeshFilter.cs" Line="25" Column="5" />
       <File FileName="MonoKnight/Core/Model.cs" Line="15" Column="17" />
       <File FileName="MonoKnight/Core/MeshRenderer.cs" Line="45" Column="1" />
       <File FileName="MonoKnight/Core/Component.cs" Line="1" Column="1" />
-      <File FileName="MonoKnight/Core/ComponentManager.cs" Line="1" Column="1" />
+      <File FileName="MonoKnight/Core/ComponentManager.cs" Line="53" Column="5" />
+      <File FileName="MonoKnight/Core/Game.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/knight/MonoKnight/IMGUI/Source/IMGUI.cs" relfile="IMGUI/Source/IMGUI.cs" line="13" column="1" />
-      <Breakpoint file="/Users/knight/MonoKnight/MonoKnight/Core/ModelLoader.cs" relfile="MonoKnight/Core/ModelLoader.cs" line="50" column="2" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

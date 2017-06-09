@@ -29,24 +29,26 @@ namespace MonoKnight
 			_textures = textures;
 		}
 
-        public Mesh(ref List<Vertex> vertices, ref List<int> indices, ref List<Texture> textures, ref Dictionary<string, Bone> boneDic, ref Matrix4 globalInverseTransform)
-		{
-			_vertices = vertices;
-			_indices = indices;
-			_textures = textures;
-            if(boneDic.Count > 0)
-            {
-                hasBone = true;
-            }
-            _boneDic = boneDic;
-            _globalInverseTransform = globalInverseTransform;
-		}
+  //      public Mesh(ref List<Vertex> vertices, ref List<int> indices, ref List<Texture> textures, ref Dictionary<string, Bone> boneDic, ref Matrix4 globalInverseTransform, ref Assimp.Scene scene)
+		//{
+		//	_vertices = vertices;
+		//	_indices = indices;
+		//	_textures = textures;
+  //          if(boneDic.Count > 0)
+  //          {
+  //              hasBone = true;
+  //          }
+  //          _boneDic = boneDic;
+  //          _globalInverseTransform = globalInverseTransform;
+  //          _scene = scene;
+		//}
 
 		public int vbo;
 		public int vao;
 		public int ebo;
 
         public bool hasBone = false;
+        //public Assimp.Scene _scene;
 
 		public void SetUp()
 		{

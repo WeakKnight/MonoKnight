@@ -8,7 +8,8 @@ namespace IMGUI
     {
         public static void Init()
         {
-            DrawCommandRenderer.Init();    
+            FontRenderer.Init();
+            DrawCommandRenderer.Init();
         }
 
         public static bool Button()

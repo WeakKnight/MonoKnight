@@ -3,11 +3,23 @@ using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using SharpFont;
+using System.Collections.Generic;
 
-namespace IMGUI.Source
+namespace IMGUI
 {
+    public struct CharacterInfo
+    {
+        public int TextureId;
+        public Vector2 Size;
+        public Vector2 Pos;
+        public Vector2 Advance;
+    }
+
     public static class FontRenderer
     {
+        public static int VAO;
+        public static int VBO;
+
         public static void Init()
         {
 			//OpenSans - Light.ttf
@@ -31,31 +43,30 @@ namespace IMGUI.Source
                               PixelFormat.Rgba,
                               PixelType.UnsignedByte,
                               bitmap.Buffer);
-                //GL.TexParameterI(TextureTarget.Texture2D,TextureParameterName.TextureWrapS,CLAMP)
-			//    int texture = 0;
-			//       glGenTextures(1, &texture);
-			//       glBindTexture(GL_TEXTURE_2D, texture);
-			//       glTexImage2D(
-			//           GL_TEXTURE_2D,
-			//           0,
-			//           GL_RED,
-			//           face->glyph->bitmap.width,
-			//           face->glyph->bitmap.rows,
-			//           0,
-			//           GL_RED,
-			//           GL_UNSIGNED_BYTE,
-			//           face->glyph->bitmap.buffer
-			//);
-			       //// Set texture options
-			       //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-			       //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-			       //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-			       //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-                //
-
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Linear);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Linear);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.ClampToEdge);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.ClampToEdge);
+                CharacterInfo charInfo;
+                charInfo.TextureId = tex;
+                charInfo.Size = new Vector2(bitmap.Width, bitmap.Rows);
+                charInfo.Pos = new Vector2(face.Glyph.BitmapLeft, face.Glyph.BitmapTop);
+                charInfo.Advance = new Vector2(face.Glyph.Advance.X.ToSingle(), face.Glyph.Advance.Y.ToSingle());
+                CharacterDictionary[(char)c] = charInfo;
             }
+            //
+            VAO = GL.GenVertexArray();
+            VBO = GL.GenBuffer();
+            //
+            GL.BindVertexArray(VAO);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, VBO);
+            GL.BufferData(BufferTarget.ArrayBuffer, sizeof(float) * 6 * 4, new float[]{}, BufferUsageHint.DynamicDraw);
 
-
+			GL.VertexAttribPointer(0, 4, VertexAttribPointerType.Float, false, 4 * sizeof(float), 0);
+			GL.EnableVertexAttribArray(0);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            GL.BindVertexArray(0);
         }
+        public static Dictionary<char, CharacterInfo> CharacterDictionary = new Dictionary<char, CharacterInfo>();
     }
 }

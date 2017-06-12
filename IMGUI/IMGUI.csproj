@@ -60,6 +60,8 @@
   <ItemGroup>
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
+    <None Include="Shaders\font.vert" />
+    <None Include="Shaders\font.frag" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Test\" />

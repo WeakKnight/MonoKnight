@@ -78,6 +78,7 @@ namespace IMGUI
         public static bool needRender = true;
 
         static Shader solidShader = new Shader(@"Shaders/solidcolor.vert", @"Shaders/solidcolor.frag");
+        static Shader fontShader = new Shader(@"Shaders/solidcolor.vert", @"Shaders/solidcolor.frag");
 
         static void DrawByCommand(DrawCommand cmd)
         {
@@ -137,7 +138,43 @@ namespace IMGUI
 
         static public void DrawText(float x, float y, string text)
         {
-            
+            GL.BindVertexArray(FontRenderer.VAO);
+            for (int i = 0; i < text.Length; i++)
+            {
+                char c = text[i];
+                CharacterInfo cInfo = FontRenderer.CharacterDictionary[c];
+                //
+                float xpos =  x + cInfo.Pos.X;
+                float ypos = y - cInfo.Size.Y + cInfo.Pos.Y;
+                float w = cInfo.Size.X;
+                float h = cInfo.Size.Y;
+
+				float[] fontRect =
+				{
+		            // Pos      // Tex
+		            xpos, ypos + h, 0.0f, 0.0f,
+					xpos, ypos    , 0.0f, 1.0f,
+					xpos + w, ypos, 1.0f, 1.0f,
+
+					xpos, ypos + h, 0.0f, 1.0f,
+					xpos + w, ypos, 1.0f, 1.0f,
+					xpos + w, ypos + h, 1.0f, 0.0f
+				};
+
+                GL.BindTexture(TextureTarget.Texture2D, cInfo.TextureId);
+
+                GL.BindBuffer(BufferTarget.ArrayBuffer, FontRenderer.VBO);
+                GL.BufferSubData(BufferTarget.ArrayBuffer, (IntPtr)0, fontRect.Length, fontRect);
+                GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+
+				//
+				var projectLoc = fontShader.GetUniformLocation(@"projection");
+				GL.UniformMatrix4(projectLoc, false, ref projection);
+				fontShader.Use();
+				GL.DrawArrays(PrimitiveType.Triangles, 0, 6);
+                x += ((int)cInfo.Advance.X >> 6);
+            }
+            GL.BindVertexArray(0);
         }
 
         public static void AddTriangle(Vector2 a, Vector2 b, Vector2 c)

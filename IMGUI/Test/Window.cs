@@ -47,7 +47,7 @@ namespace IMGUI.Test
             if (IMGUI.CheckUpdate())
             {
                 IMGUI.ProcessInput(this.X, this.Y);
-                if (IMGUI.Button())
+                //if (IMGUI.Button())
                 {
                     
                 }
@@ -64,6 +64,7 @@ namespace IMGUI.Test
             GL.Enable(EnableCap.DepthTest);
             GL.ClearColor(0.1f, 0.3f, 0.4f, 0.0f);
             GL.Clear(ClearBufferMask.ColorBufferBit|ClearBufferMask.DepthBufferBit);
+            DrawCommandRenderer.DrawText(0.0f, 0.0f, "hahahahahahha");
             //DrawCommandRenderer.DrawRect(0.0f, 0.0f, 150.0f, 50.0f,Color4.Yellow);
             IMGUI.Render();
         }
